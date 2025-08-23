@@ -78,7 +78,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
             background-color: var(--nav-bg-color);
             padding: 10px 20px;
             border-bottom: 2px solid var(--nav-hover-bg-color);
@@ -90,8 +89,8 @@
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            flex-grow: 1;
         }
         nav ul li a {
             display: block;
@@ -107,19 +106,19 @@
             background-color: var(--nav-hover-bg-color);
         }
         #theme-toggle {
-            padding: 8px 12px;
-            background-color: var(--primary-color);
-            color: var(--primary-text-color);
+            font-size: 1.2em;
+            padding: 5px;
+            background-color: transparent;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
             transition: background-color 0.3s;
         }
         .module {
             padding: 25px;
             margin-top: 20px;
             border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 70px;
         }
         .module:last-child { border-bottom: none; }
         .module h2 {
@@ -132,6 +131,7 @@
             font-size: 1.5em;
             color: var(--subheading-color);
             margin-top: 25px;
+            scroll-margin-top: 70px;
         }
         .tool-list {
             list-style-type: none;
@@ -205,4 +205,17 @@
 
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+
+        /* Glossary Styles */
+        #glosario dt {
+            font-weight: bold;
+            font-size: 2em;
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--nav-bg-color);
+            padding-bottom: 10px;
+        }
+
+        body.dark-mode #glosario dt {
+            color: var(--heading-color);
         }
