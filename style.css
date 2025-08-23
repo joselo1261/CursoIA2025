@@ -215,9 +215,20 @@
             color: var(--subheading-color) !important;
         }
 
-        body.dark-mode #glosario dt,
+                body.dark-mode #glosario dt,
         body.dark-mode #glosario dt strong {
             color: var(--subheading-color) !important;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            display: none; /* Hidden by default on large screens */
+            font-size: 1.5em;
+            background: none;
+            border: none;
+            color: var(--nav-link-color);
+            cursor: pointer;
+            padding: 5px;
         }
 
         /* Responsive Adjustments */
@@ -238,11 +249,17 @@
             nav {
                 flex-direction: column;
                 padding: 10px;
+                align-items: flex-start; /* Align items to the start */
             }
 
             nav ul {
                 flex-direction: column;
                 width: 100%;
+                display: none; /* Hidden by default on small screens */
+            }
+
+            nav ul.active {
+                display: flex; /* Show when active */
             }
 
             nav ul li {
@@ -273,6 +290,13 @@
 
             #theme-toggle {
                 margin-top: 10px;
+            }
+
+            .hamburger-menu {
+                display: block; /* Show on small screens */
+                position: absolute; /* Position it absolutely within the nav */
+                right: 10px; /* Adjust as needed */
+                top: 10px; /* Adjust as needed */
             }
 
             .module {

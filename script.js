@@ -38,3 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Also recalculate if images or other content load that might affect layout
     window.addEventListener('load', setScrollPadding);
 });
+
+// Hamburger menu toggle
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mainNavList = document.getElementById('main-nav-list');
+
+    if (hamburgerMenu && mainNavList) {
+        hamburgerMenu.addEventListener('click', () => {
+            mainNavList.classList.toggle('active');
+        });
+    }
+});
