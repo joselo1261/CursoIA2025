@@ -6,6 +6,21 @@
     <meta name="description" content="Un glosario completo de términos clave en Inteligencia Artificial.">
     <title>Glosario de Inteligencia Artificial</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Highlight for Glosario link */
+        .highlight-glosario a {
+            background-color: var(--primary-color);
+            color: var(--primary-text-color) !important; /* Ensure text color is visible */
+            border: 2px solid var(--primary-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        .highlight-glosario a:hover {
+            background-color: var(--primary-color); /* Keep the same background on hover */
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body id="top">
 
@@ -22,7 +37,7 @@
                 <li><a href="index.html#m3">Deep Learning</a></li>
                 <li><a href="index.html#m4">IA Generativa</a></li>
                 <li><a href="herramientas.html">Herramientas</a></li>
-                <li><a href="glosario.html">Glosario</a></li>
+                <li class="highlight-glosario"><a href="glosario.html">Glosario</a></li>
             </ul>
             <button id="theme-toggle">🌙</button>
             <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
