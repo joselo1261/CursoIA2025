@@ -208,14 +208,13 @@
         }
 
         /* Glossary Styles */
-        #glosario dt {
-            font-weight: bold;
-            font-size: 2em;
-            color: var(--heading-color);
-            border-bottom: 2px solid var(--nav-bg-color);
-            padding-bottom: 10px;
+        #glosario dt,
+        #glosario dt strong {
+            font-weight: bold !important;
+            color: var(--subheading-color) !important;
         }
 
-        body.dark-mode #glosario dt {
-            color: var(--heading-color);
+        body.dark-mode #glosario dt,
+        body.dark-mode #glosario dt strong {
+            color: var(--subheading-color) !important;
         }
