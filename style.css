@@ -40,7 +40,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 200px; /* Increased value to ensure content is not obscured by fixed header */
+            
         }
 
         body {
@@ -319,10 +319,9 @@
 
             /* Adjust scroll-padding-top for smaller screens if needed */
             html {
-                scroll-padding-top: 100px; /* Adjusted for potentially smaller header on mobile */
+                
             }
         }
 
         main {
-            scroll-padding-top: 200px; /* Ensure content is not obscured by fixed header */
         }
