@@ -19,3 +19,22 @@ themeToggle.addEventListener('click', () => {
         themeToggle.textContent = '🌙';
     }
 });
+
+// Dynamic scroll padding for fixed header
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('nav');
+    const html = document.documentElement;
+
+    const setScrollPadding = () => {
+        html.style.scrollPaddingTop = `${nav.offsetHeight}px`;
+    };
+
+    // Set padding on load
+    setScrollPadding();
+
+    // Recalculate on window resize
+    window.addEventListener('resize', setScrollPadding);
+
+    // Also recalculate if images or other content load that might affect layout
+    window.addEventListener('load', setScrollPadding);
+});
