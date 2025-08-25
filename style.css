@@ -331,3 +331,46 @@
         .alphabet-nav a {
             margin-right: 0.5rem;
         }
+
+        .category-section {
+            margin-bottom: 2rem;
+        }
+
+        .tool-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .tool-card {
+            background-color: var(--tool-bg-color);
+            border: 1px solid var(--tool-border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px var(--shadow-color);
+        }
+
+        .tool-card a {
+            text-decoration: none;
+            font-weight: bold;
+            color: var(--subheading-color);
+            transition: color 0.3s;
+        }
+
+        .tool-card a:hover {
+            text-decoration: underline;
+        }
+
+        .tool-card p {
+            margin-top: 0.5rem;
+            flex-grow: 1;
+        }
