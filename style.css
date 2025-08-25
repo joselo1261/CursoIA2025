@@ -1,4 +1,5 @@
 :root {
+            
             --bg-color: #f4f7f9;
             --bg-secondary-color: #ffffff;
             --text-color: #333333;
@@ -16,6 +17,11 @@
             --google-border-color: #c8e6c9;
             --google-accent-color: #4caf50;
             --shadow-color: rgba(0,0,0,0.05);
+        
+
+  --anchor-offset: 0px;
+
+            --nav-offset: 0px;
         }
 
         body.dark-mode {
@@ -38,10 +44,7 @@
             --shadow-color: rgba(255,255,255,0.05);
         }
 
-        html {
-            scroll-behavior: smooth;
-            
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -55,7 +58,7 @@
         .container {
             max-width: 900px;
             margin: 20px auto;
-            padding: 20px;
+            padding: 8px 20px 20px;
             background-color: var(--bg-secondary-color);
             border-radius: 8px;
             box-shadow: 0 4px 8px var(--shadow-color);
@@ -235,7 +238,7 @@
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
-                padding: 15px;
+                padding: 8px 15px 15px;
             }
 
             header h1 {
@@ -319,10 +322,7 @@
                 padding: 15px;
             }
 
-            /* Adjust scroll-padding-top for smaller screens if needed */
-            html {
-                
-            }
+            html { scroll-behavior: smooth; }
         }
 
         main {
@@ -374,3 +374,133 @@
             margin-top: 0.5rem;
             flex-grow: 1;
         }
+
+/* Dropdown menu */
+nav ul li.dropdown { position: relative; }
+nav ul li .dropdown-toggle { cursor: pointer; display: inline-block; padding: 10px; }
+nav ul li .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: var(--bg-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    display: none;
+    z-index: 1000;
+    padding: 8px 0;
+}
+nav ul li .dropdown-menu li a {
+    display: block;
+    padding: 10px 14px;
+    color: var(--nav-link-color);
+    text-decoration: none;
+    white-space: nowrap;
+}
+nav ul li .dropdown-menu li a:hover {
+    background: var(--nav-hover-bg-color);
+}
+/* Show on hover for desktop */
+@media (hover:hover) {
+    nav ul li.dropdown:hover > /* removed: global dropdown always-open */
+}
+/* Mobile: show when parent has .open */
+nav ul li.dropdown.open > /* removed: global dropdown always-open */
+/* Ensure dropdown works within hamburger expanded list */
+#main-nav-list.active li .dropdown-menu { position: static; box-shadow: none; border: none; }
+
+/* --- Ajustes solicitados por Joselo (jul 2025) --- */
+/* Asegurar que el dropdown muestre opciones alineadas a la izquierda */
+nav ul li .dropdown-menu,
+nav ul li .dropdown-menu li,
+nav ul li .dropdown-menu li a {
+    text-align: left !important;
+}
+
+/* Evitar que el nav recorte el dropdown */
+nav { overflow: visible; }
+
+/* Contenido de los módulos justificado a la izquierda */
+.module, .module * {
+    text-align: left;
+}
+
+/* Corregir posible centrado por estilos heredados en enlaces del nav */
+nav ul li a { text-align: left; }
+
+/* Alinear a la izquierda los items del dropdown */
+nav ul li .dropdown-menu,
+nav ul li .dropdown-menu li,
+nav ul li .dropdown-menu li a { text-align: left; }
+
+/* Estilo para items deshabilitados del dropdown */
+nav ul li .dropdown-menu li.disabled a {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Asegurar que el dropdown no se recorte por overflow */
+nav { overflow: visible; }
+
+/* Alinear contenido del módulo a la izquierda */
+.module, .module * { text-align: left; }
+
+/* Dropdown visibility rules (fixed) */
+nav ul li .dropdown-menu { display: none; }
+@media (hover:hover) {
+  nav ul li.dropdown:hover > .dropdown-menu { display: block; }
+}
+/* Open via JS (mobile / click) */
+nav ul li.dropdown.open > .dropdown-menu { display: block; }
+/* Mobile expanded list + open dropdown */
+#main-nav-list.active li.dropdown.open > .dropdown-menu { display: block; position: static; box-shadow: none; border: none; }
+
+/* --- Dropdown behavior (fixed) --- */
+nav ul li .dropdown-menu { display: none; }
+@media (hover:hover) {
+  nav ul li.dropdown:hover > .dropdown-menu { display: block; }
+}
+nav ul li.dropdown.open > .dropdown-menu { display: block; }
+#main-nav-list.active li.dropdown > .dropdown-menu {
+  position: static;
+  box-shadow: none;
+  border: none;
+}
+
+/* Alinear bien y que no tape clics */
+nav ul li .dropdown-menu,
+nav ul li .dropdown-menu li,
+nav ul li .dropdown-menu li a { text-align: left; }
+
+/* Que el nav no recorte el dropdown */
+nav { overflow: visible; }
+
+/* If the anchor is on a section.module (#p1, #p2...), add a tiny top padding so the title doesn't touch the nav */
+
+/* If the anchor is directly on the heading itself */
+
+html { scroll-behavior: smooth; }
+
+
+
+
+/* Global anchor offset equals sticky nav height */
+[id] { }
+
+
+/* === Anchor behavior: CSS-only fix === */
+:root {
+  --nav-h: 64px;   /* alto del navbar (ajustable) */
+  --anchor-gap: 4px; /* respirito mínimo */
+}
+[id] {
+  scroll-margin-top: calc(var(--nav-h) + var(--anchor-gap));
+}
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 64px;   /* si cambia en mobile, ajustar acá */
+    --anchor-gap: 4px;
+  }
+}
+/* === End anchor fix === */
