@@ -513,10 +513,111 @@ Descripción: &lt;qué hace y para quién&gt;
 </section>
 
 
-      <section id="m3_p5" class="module">
-        <h2>5. Un buen Dataset</h2>
-        <p class="muted"><em>Contenido en preparación.</em> Criterios para datasets y curaduría.</p>
-      </section>
+      
+<section id="m3_p5" class="module">
+  <h2>5. Un buen Dataset</h2>
+
+  <p>La calidad del <strong>dataset</strong> determina qué tan bien rinde tu GPT cuando usa <em>Conocimientos</em>. Pensalo como una <strong>mochila de documentación</strong>: información curada y fácil de consultar por el modelo.</p>
+
+  <div class="chips" aria-label="Claves del dataset">
+    <span class="chip">RAG (mochila)</span>
+    <span class="chip">Hasta 20 archivos</span>
+    <span class="chip">512&nbsp;MB por archivo</span>
+    <span class="chip">TXT/Markdown preferidos</span>
+    <span class="chip">Imágenes: base visual</span>
+    <span class="chip">ZIP: requiere Intérprete</span>
+  </div>
+
+  <h3>Tipos de archivos y cuándo usarlos</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead><tr><th>Tipo</th><th>Úsalo cuando…</th><th>Notas y mejores prácticas</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>TXT / Markdown</strong></td>
+          <td>Tenés texto “limpio” y querés máxima interpretabilidad.</td>
+          <td>Preferidos. Estructurá con encabezados/listas; si el Markdown es muy largo, convertí a TXT.</td>
+        </tr>
+        <tr>
+          <td><strong>PDF / Word</strong></td>
+          <td>Solo cuentas con documentos de oficina.</td>
+          <td>No ideales: traen “ruido”. Extraé el texto y subilo como TXT; separá imágenes con nombres descriptivos.</td>
+        </tr>
+        <tr>
+          <td><strong>Imágenes</strong></td>
+          <td>Necesitás una base visual de referencia (catálogo, recetas, piezas).</td>
+          <td>Útiles como apoyo; nombrá descriptivamente para facilitar referencias.</td>
+        </tr>
+        <tr>
+          <td><strong>ZIP</strong></td>
+          <td>Querés subir múltiples archivos y procesarlos dentro del chat.</td>
+          <td>Habilitá <em>Intérprete de código / Análisis de datos</em>. Puede ralentizar; usalo con criterio.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Cómo preparar un dataset de calidad</h3>
+  <div class="k-cards">
+    <article class="k-card">
+      <h4>Estructurado</h4>
+      <ul class="check">
+        <li>Usá TXT o Markdown con secciones y títulos claros.</li>
+        <li>Una idea por párrafo; evita textos escaneados sin OCR.</li>
+      </ul>
+    </article>
+    <article class="k-card">
+      <h4>Elaborado</h4>
+      <ul class="check">
+        <li>No temas a la extensión: más contexto útil mejora la respuesta.</li>
+        <li>Incluí definiciones, glosarios y decisiones previas.</li>
+      </ul>
+    </article>
+    <article class="k-card">
+      <h4>Ejemplos y contra‑ejemplos</h4>
+      <ul class="check">
+        <li>Aporta <em>buenos ejemplos</em> de lo que esperás.</li>
+        <li>Incluí también <em>lo que NO debe hacer</em> para acotar el comportamiento.</li>
+      </ul>
+    </article>
+  </div>
+
+  <h3>Flujo de preparación del dataset</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead><tr><th>Paso</th><th>Acción</th><th>Salida</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Recolectar fuentes</td><td>Docs, procedimientos, FAQs, ejemplos.</td></tr>
+        <tr><td>2</td><td>Limpiar y estructurar</td><td>TXT/MD con secciones; imágenes aparte.</td></tr>
+        <tr><td>3</td><td>Nombrado</td><td>Prefijos por tema (p.ej., <code>ventas_</code>, <code>soporte_</code>).</td></tr>
+        <tr><td>4</td><td>Versionado</td><td>Fechas o semántica (v1.2); changelog simple.</td></tr>
+        <tr><td>5</td><td>Iterar con el GPT</td><td>Guardar buenas/malas respuestas y anexarlas como ejemplos.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Estructura sugerida de carpetas</h3>
+  <pre><code>conocimientos/
+├─ 00_lineamientos.md
+├─ 10_glosario.md
+├─ 20_procedimientos/
+│  ├─ ventas_proceso.md
+│  └─ soporte_protocolo.md
+├─ 30_ejemplos/
+│  ├─ buenos/
+│  │  ├─ ejemplo_1.txt
+│  │  └─ ejemplo_2.txt
+│  └─ malos/
+│     ├─ anti_1.txt
+│     └─ anti_2.txt
+└─ 40_imagenes/ (nombres descriptivos)
+</code></pre>
+
+  <div class="callout">
+    <strong>Tip:</strong> podés comprimir conjuntos temáticos en <strong>ZIP</strong>, pero recordá activar <em>Intérprete</em>. Alternativamente, mantené archivos TXT por tema para búsqueda más precisa.
+  </div>
+</section>
+
 
       <section id="m3_p6" class="module">
         <h2>6. Construyendo un GPT con Documentación</h2>
