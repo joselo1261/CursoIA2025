@@ -1,53 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3: GPTs</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 3: GPTs</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Módulo 3: GPTs</h1>
-        <p>Guía de Inteligencia Artificial - Curso 2025</p>
-    </header>
+  <!-- Header consistente -->
+  <header>
+    <h1>Módulo 3: GPTs</h1>
+    <p>Guía de Inteligencia Artificial - Curso 2025</p>
+  </header>
 
-    <div class="container">
-        
+  <div class="container">
 
-<nav>
-  <ul id="main-nav-list">
-    <li><a href="index.html">Inicio</a></li>
-    
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
-  <ul class="dropdown-menu">
-    <li class="disabled"><a href="#">(Contenido próximamente)</a></li>
-  </ul>
-</li>
+    <!-- NAV igual a los otros módulos (dropdown + dark mode + hamburguesa) -->
+    <nav>
+      <ul id="main-nav-list">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#m3_p1">1. Introducción a los GPTs</a></li>
+            <li><a href="#m3_p2">2. Interfaz del GPT Builder</a></li>
+            <li><a href="#m3_p3">3. Instrucciones</a></li>
+            <li><a href="#m3_p4">4. Creando un GPT Sencillo</a></li>
+            <li><a href="#m3_p5">5. Un buen Dataset</a></li>
+            <li><a href="#m3_p6">6. Construyendo un GPT con Documentación</a></li>
+            <li><a href="#m3_p7">7. Seguridad y Jailbreak</a></li>
+            <li><a href="#m3_p8">8. GitHub: Grimoire (Leaked GPTs)</a></li>
+          </ul>
+        </li>
+        <li><a href="herramientas.html">Herramientas</a></li>
+        <li><a href="glosario.html">Glosario</a></li>
+      </ul>
+      <button id="theme-toggle">🌙</button>
+      <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
+    </nav>
 
-    <li><a href="herramientas.html">Herramientas</a></li>
-    <li><a href="glosario.html">Glosario</a></li>
-  </ul>
-  <button id="theme-toggle">🌙</button>
-  <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
-</nav>
+    <main>
+
+      
+<section id="m3_p1" class="module">
+  <h2>1. Introducción a los GPTs</h2>
+
+  <p>Los <strong>GPTs personalizados</strong> son configuraciones de ChatGPT orientadas a tareas específicas: se “entrenan” con <em>instrucciones</em> claras y pueden incorporar <strong>documentación propia</strong> (archivos, datos internos, procedimientos). El resultado es un asistente a medida que automatiza procesos sin requerir programación.</p>
+
+  <div class="chips" aria-label="Claves del módulo">
+    <span class="chip">Personalización</span>
+    <span class="chip">Automatización</span>
+    <span class="chip">Accesibles</span>
+    <span class="chip">Documentación propia</span>
+    <span class="chip">Compartibles</span>
+  </div>
+
+  <h3>¿Cómo funcionan?</h3>
+  <p>Operan de forma similar a las <em>custom instructions</em>: definís el comportamiento (qué hace, cómo responde) y, si querés, adjuntás fuentes internas para que responda con contexto del negocio. Todo dentro de la plataforma de ChatGPT, sin coste adicional.</p>
+
+  <h3>Ventajas principales</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead>
+        <tr><th>Ventaja</th><th>Qué aporta</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Personalización</td><td>Se adapta a procesos y lenguaje de la organización.</td></tr>
+        <tr><td>Automatización</td><td>Reduce tareas repetitivas; ahorra tiempo y esfuerzo.</td></tr>
+        <tr><td>Accesibilidad</td><td>Se crean con lenguaje natural; no requiere programar.</td></tr>
+        <tr><td>Documentación propia</td><td>Usa información específica (clientes, manuales, plantillas).</td></tr>
+        <tr><td>Compartibles</td><td>Se comparten con el equipo para estandarizar flujos.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Ejemplos de uso</h3>
+  <div class="k-cards">
+    <article class="k-card">
+      <h4>Resumen de reuniones</h4>
+      <p>Del texto de una reunión, genera <em>resumen narrativo</em>, <em>esquema</em> y <em>próximos pasos</em>.</p>
+    </article>
+    <article class="k-card">
+      <h4>Analista de pliegos</h4>
+      <p>Extrae datos clave del pliego (datos del contrato, criterios de adjudicación) y sugiere mejoras.</p>
+    </article>
+    <article class="k-card">
+      <h4>Generador de contratos</h4>
+      <p>Rellena plantillas solicitando al usuario los datos necesarios para completar el documento.</p>
+    </article>
+    <article class="k-card">
+      <h4>YouTube: títulos y descripciones</h4>
+      <p>A partir del guion, crea títulos atractivos y descripciones con enlaces a patrocinadores o productos.</p>
+    </article>
+  </div>
+
+  <h3>Tipos de GPTs</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead>
+        <tr><th>Tipo</th><th>Disponibilidad</th><th>Cuándo usarlos</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Genéricos</td>
+          <td>Visibles en la store de OpenAI</td>
+          <td>Casos comunes; utilidad variable (muchos son simples “lead magnets”).</td>
+        </tr>
+        <tr>
+          <td>Personalizados</td>
+          <td>Creados por vos para tu caso específico</td>
+          <td>Recomendados: maximizan impacto en procesos del negocio.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Recomendaciones:</strong> priorizá los GPTs <em>personalizados</em>, profundizá en su creación/optimización y considerá conectarlos con otras herramientas (email, automatización) para llevar la productividad al siguiente nivel.
+  </div>
+</section>
 
 
+      <section id="m3_p2" class="module">
+        <h2>2. Interfaz del GPT Builder</h2>
+        <p class="muted"><em>Contenido en preparación.</em> Se documentará la interfaz y sus componentes.</p>
+      </section>
 
-        <main>
-            <section class="module">
-                <h2>Módulo 3: GPTs</h2>
-                <p><em>Contenido en preparación. Aquí se incluirán las lecciones resumidas del curso.</em></p>
-                <ul>
-                    <li>Lección 1</li>
-                    <li>Lección 2</li>
-                    <li>Lección 3</li>
-                </ul>
-            </section>
-        </main>
-    </div>
+      <section id="m3_p3" class="module">
+        <h2>3. Instrucciones</h2>
+        <p class="muted"><em>Contenido en preparación.</em> Se incorporará la guía de mejores prácticas para instrucciones.</p>
+      </section>
 
-    <script src="script.js"></script>
+      <section id="m3_p4" class="module">
+        <h2>4. Creando un GPT Sencillo</h2>
+        <p class="muted"><em>Contenido en preparación.</em> Paso a paso para crear un GPT básico.</p>
+      </section>
+
+      <section id="m3_p5" class="module">
+        <h2>5. Un buen Dataset</h2>
+        <p class="muted"><em>Contenido en preparación.</em> Criterios para datasets y curaduría.</p>
+      </section>
+
+      <section id="m3_p6" class="module">
+        <h2>6. Construyendo un GPT con Documentación</h2>
+        <p class="muted"><em>Contenido en preparación.</em> Integración de documentos y enlazado.</p>
+      </section>
+
+      <section id="m3_p7" class="module">
+        <h2>7. Seguridad y Jailbreak</h2>
+        <p class="muted"><em>Contenido en preparación.</em> Riesgos, mitigaciones y checklist de seguridad.</p>
+      </section>
+
+      <section id="m3_p8" class="module">
+        <h2>8. GitHub: Grimoire (Leaked GPTs)</h2>
+        <p class="muted">
+          <em>Contenido en preparación.</em> Se evaluará la integración del recurso externo
+          <a href="https://github.com/friuns2/Leaked-GPTs/blob/main/gpts/Grimoire.md" target="_blank" rel="noopener noreferrer">
+            Grimoire.md
+          </a> con una síntesis curada y referencias.
+        </p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- JS (modo oscuro, hamburguesa, footer dinámico) -->
+  <script src="script.js"></script>
 </body>
 </html>
