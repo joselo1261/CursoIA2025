@@ -1018,3 +1018,35 @@ a:focus-visible { outline: 2px dashed var(--link-hover-color); outline-offset: 2
     left: 50%; right: auto; top: auto; bottom: -.5rem; width: 2px; height: .5rem; transform: translateX(-50%);
   }
 }
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--nav-bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+.site-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.site-footer .linkedin-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+

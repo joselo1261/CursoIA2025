@@ -63,4 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // === Footer ===
+  const footer = document.createElement('footer');
+  footer.className = 'site-footer';
+
+  const p = document.createElement('p');
+  p.innerHTML = `2025 - Realizado por Ing. Jose Luis Elisseche - <a href="https://www.linkedin.com/in/jle1261/" target="_blank" rel="noopener noreferrer"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn" class="linkedin-icon"></a> - Agradecimiento especial a Jon Hernández / BIG school y todo su equipo de profesores.`;
+
+  footer.appendChild(p);
+  document.body.appendChild(footer);
 });
