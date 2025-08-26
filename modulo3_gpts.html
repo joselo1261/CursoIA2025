@@ -121,10 +121,137 @@
 </section>
 
 
-      <section id="m3_p2" class="module">
-        <h2>2. Interfaz del GPT Builder</h2>
-        <p class="muted"><em>Contenido en preparación.</em> Se documentará la interfaz y sus componentes.</p>
-      </section>
+      
+<section id="m3_p2" class="module">
+  <h2>2. Interfaz del GPT Builder</h2>
+
+  <p>El <strong>GPT Builder</strong> permite crear y personalizar GPTs orientados a tareas concretas mediante una interfaz simple: definís campos, activás funciones y probás el comportamiento antes de publicarlo o compartirlo.</p>
+
+  <div class="chips" aria-label="Componentes del Builder">
+    <span class="chip">Icono</span>
+    <span class="chip">Nombre</span>
+    <span class="chip">Descripción</span>
+    <span class="chip">Instrucciones</span>
+    <span class="chip">Iniciadores</span>
+    <span class="chip">Conocimientos</span>
+    <span class="chip">Funciones</span>
+    <span class="chip">Acciones API</span>
+    <span class="chip">Previsualización</span>
+    <span class="chip">Compartir</span>
+  </div>
+
+  <h3>Acceso y uso rápido</h3>
+  <div class="k-cards">
+    <article class="k-card">
+      <h4>¿Dónde están?</h4>
+      <p>Tus GPTs aparecen en la <em>barra lateral izquierda</em> de ChatGPT; desde ahí los abrís o anclás.</p>
+    </article>
+    <article class="k-card">
+      <h4>Invocar en un chat</h4>
+      <p>Escribí <code>@</code> para buscar/seleccionar un GPT y <em>mandar el mensaje</em> con su especialización activa.</p>
+    </article>
+    <article class="k-card">
+      <h4>Menú de un GPT</h4>
+      <ul class="check">
+        <li><strong>Nuevo chat</strong> · iniciar conversación</li>
+        <li><strong>Acerca de</strong> · info del creador</li>
+        <li><strong>Editar GPT</strong> (si sos el creador)</li>
+        <li><strong>Quitar de la barra</strong> · ocultar el acceso</li>
+        <li><strong>Enviar comentarios</strong> · feedback</li>
+        <li><strong>Revisar GPT</strong> · valoración con estrellas</li>
+      </ul>
+    </article>
+  </div>
+
+  <h3>Campos del Builder</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead>
+        <tr><th>Campo</th><th>Qué configura</th><th>Buenas prácticas</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Icono</td>
+          <td>Imagen del GPT (subida propia) o generada con DALL·E.</td>
+          <td>Usá iconos claros y distintivos para reconocerlo rápido.</td>
+        </tr>
+        <tr>
+          <td>Nombre</td>
+          <td>Identificador visible en la barra lateral.</td>
+          <td>Descriptivo y específico (ej. “Analista de Pliegos”).</td>
+        </tr>
+        <tr>
+          <td>Descripción</td>
+          <td>Propósito y alcance del GPT.</td>
+          <td>Resumen en 1–2 líneas, orientado a resultados.</td>
+        </tr>
+        <tr>
+          <td>Instrucciones</td>
+          <td>Comportamiento: qué hace y cómo responde.</td>
+          <td>Claridad, tono, formato de salida y límites; podés usar texto extenso.</td>
+        </tr>
+        <tr>
+          <td>Iniciadores de conversación</td>
+          <td>Botones con prompts sugeridos cuando se ingresa por enlace.</td>
+          <td>Incluí 3–5 acciones frecuentes y bien redactadas.</td>
+        </tr>
+        <tr>
+          <td>Conocimientos</td>
+          <td>Archivos adjuntos para contexto propio.</td>
+          <td>Hasta 20 archivos, máx. 512&nbsp;MB c/u; sin video ni audio.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Funciones y capacidades</h3>
+  <div class="k-cards">
+    <article class="k-card">
+      <h4>Navegación</h4>
+      <p>Permite al GPT consultar información actualizada en internet cuando sea pertinente.</p>
+    </article>
+    <article class="k-card">
+      <h4>Generación de imágenes</h4>
+      <p>Activa DALL·E para crear imágenes desde texto o para el icono del GPT.</p>
+    </article>
+    <article class="k-card">
+      <h4>Intérprete de código / Análisis de datos</h4>
+      <p>Habilita análisis de datos y ejecución de código en un entorno controlado.</p>
+    </article>
+    <article class="k-card">
+      <h4>Acciones API</h4>
+      <p>Integra con apps externas (p. ej., enviar emails o actualizar bases). Requiere conocimientos técnicos.</p>
+    </article>
+  </div>
+
+  <h3>Previsualización y publicación</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead>
+        <tr><th>Elemento</th><th>Uso</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ventana de previsualización</td>
+          <td>Probá el GPT durante la creación; ajustá hasta que el flujo sea correcto.</td>
+        </tr>
+        <tr>
+          <td>Botones</td>
+          <td><strong>Eliminar</strong> (descarta) y <strong>Crear</strong> (guarda) el GPT.</td>
+        </tr>
+        <tr>
+          <td>Compartir</td>
+          <td><strong>Solo vos</strong>, <strong>Cualquiera con enlace</strong> o <strong>Tienda de GPTs</strong> (requiere cuenta builder aprobada).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>Checklist de creación:</strong> 1) Definí objetivo y usuarios; 2) Escribí instrucciones claras; 3) Prepará iniciadores; 4) Adjuntá conocimientos curados; 5) Activá solo funciones necesarias; 6) Probá en la previsualización; 7) Elegí el modo de compartir.
+  </div>
+</section>
+
 
       <section id="m3_p3" class="module">
         <h2>3. Instrucciones</h2>
