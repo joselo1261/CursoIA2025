@@ -1,53 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2: ChatGPT</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 2: ChatGPT</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Módulo 2: ChatGPT</h1>
-        <p>Guía de Inteligencia Artificial - Curso 2025</p>
-    </header>
+  <!-- Header consistente con Módulo 1 -->
+  <header>
+    <h1>Módulo 2: ChatGPT</h1>
+    <p>Guía de Inteligencia Artificial - Curso 2025</p>
+  </header>
 
-    <div class="container">
-        
+  <div class="container">
+    <!-- Nav idéntico en estructura al del Módulo 1 -->
+    <nav>
+      <ul id="main-nav-list">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="#m2_p1">1. LLMs: nuestra interacción con la IA</a></li>
+            <li><a href="#m2_p2">2. Introducción a ChatGPT e interfaz</a></li>
+            <li><a href="#m2_p3">3. Usando ChatGPT</a></li>
+            <li><a href="#m2_p4">4. El Prompting</a></li>
+            <li><a href="#m2_p5">5. Otras herramientas de ChatGPT</a></li>
+            <li><a href="#m2_p6">6. Otras funciones avanzadas</a></li>
+            <li><a href="#m2_p7">7. Prompt Engineering</a></li>
+            <li><a href="#m2_p8">8. Ejemplos prácticos</a></li>
+            <li><a href="#m2_p9">9. Modelos de razonamiento</a></li>
+            <li><a href="#m2_p10">10. Los primeros agentes de IA</a></li>
+          </ul>
+        </li>
+        <li><a href="herramientas.html">Herramientas</a></li>
+        <li><a href="glosario.html">Glosario</a></li>
+      </ul>
+      <button id="theme-toggle">🌙</button>
+      <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
+    </nav>
 
-<nav>
-  <ul id="main-nav-list">
-    <li><a href="index.html">Inicio</a></li>
-    
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
-  <ul class="dropdown-menu">
-    <li class="disabled"><a href="#">(Contenido próximamente)</a></li>
-  </ul>
-</li>
+    <main>
+      <!-- Intro breve -->
+      <section class="module" id="intro">
+        <h2>Módulo 2 · ChatGPT</h2>
+        <p>Cómo conversar con modelos de lenguaje, sacarles provecho en tareas reales y entender sus límites y funciones avanzadas.</p>
+      </section>
 
-    <li><a href="herramientas.html">Herramientas</a></li>
-    <li><a href="glosario.html">Glosario</a></li>
-  </ul>
-  <button id="theme-toggle">🌙</button>
-  <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
-</nav>
+      <section id="m2_p1" class="module">
+        <h2>1. LLMs: nuestra interacción con la IA</h2>
+        <p>Un <strong>LLM</strong> (Large Language Model) es un modelo entrenado para predecir texto y mantener una conversación. Sirve como <em>interfaz</em> universal con la IA: le damos <em>instrucciones</em> y devuelve <em>respuestas</em>; puede usar herramientas y seguir un contexto.</p>
+        <div class="k-cards">
+          <article class="k-card"><h4>Qué pueden hacer</h4><ul><li>Escribir, resumir, traducir.</li><li>Razonar y explicar paso a paso.</li><li>Usar herramientas (búsqueda, código, archivos).</li></ul></article>
+          <article class="k-card"><h4>Qué no son</h4><ul><li>No “saben” hechos por sí mismos.</li><li>Se equivocan (alucinaciones).</li><li>Necesitan instrucciones claras.</li></ul></article>
+          <article class="k-card"><h4>Buenas prácticas</h4><ul><li>Proveer contexto y objetivo.</li><li>Iterar con ejemplos.</li><li>Validar y citar fuentes si aplica.</li></ul></article>
+        </div>
+      </section>
 
+      <section id="m2_p2" class="module">
+        <h2>2. Introducción a ChatGPT e interfaz</h2>
+        <div class="k-cards">
+          <article class="k-card">
+            <h4>Partes clave</h4>
+            <ul>
+              <li>Campo de mensaje y envío.</li>
+              <li>Selector de modelo y opciones.</li>
+              <li>Historial y administración de chats.</li>
+            </ul>
+          </article>
+          <article class="k-card">
+            <h4>Buenas prácticas de uso</h4>
+            <ul>
+              <li>Una conversación por objetivo.</li>
+              <li>Nombrar chats con intención.</li>
+              <li>Actualizar contexto cuando cambie la tarea.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
+      <section id="m2_p3" class="module">
+        <h2>3. Usando ChatGPT</h2>
+        <div class="stepper" aria-label="Flujo básico de uso">
+          <div class="s-step"><span class="s-num">1</span><span class="s-label">Define objetivo</span></div>
+          <div class="s-step"><span class="s-num">2</span><span class="s-label">Entrega contexto/archivos</span></div>
+          <div class="s-step"><span class="s-num">3</span><span class="s-label">Escribe el primer prompt</span></div>
+          <div class="s-step"><span class="s-num">4</span><span class="s-label">Itera y refina</span></div>
+          <div class="s-step"><span class="s-num">5</span><span class="s-label">Verifica y aplica</span></div>
+        </div>
+        <div class="callout"><strong>Tip:</strong> usa listas, ejemplos y formato claro; pedí pasos numerados cuando corresponda.</div>
+      </section>
 
-        <main>
-            <section class="module">
-                <h2>Módulo 2: ChatGPT</h2>
-                <p><em>Contenido en preparación. Aquí se incluirán las lecciones resumidas del curso.</em></p>
-                <ul>
-                    <li>Lección 1</li>
-                    <li>Lección 2</li>
-                    <li>Lección 3</li>
-                </ul>
-            </section>
-        </main>
-    </div>
+      <section id="m2_p4" class="module">
+        <h2>4. El Prompting</h2>
+        <div class="table-responsive">
+          <table class="tabla tabla-compacta">
+            <thead><tr><th>Técnica</th><th>Para qué</th><th>Ejemplo breve</th></tr></thead>
+            <tbody>
+              <tr><td>Role prompting</td><td>Define el comportamiento</td><td>“Actuá como revisor técnico…”</td></tr>
+              <tr><td>In-context (few-shot)</td><td>Aprende por ejemplos</td><td>Proveer 2–3 casos de entrada/salida</td></tr>
+              <tr><td>Chain-of-thought</td><td>Fuerza pasos explícitos</td><td>“Explicá tu razonamiento en pasos”</td></tr>
+              <tr><td>Crítica / Reflexión</td><td>Auto-revisión</td><td>“Revisá y mejorá tu respuesta”</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <script src="script.js"></script>
+      <section id="m2_p5" class="module">
+        <h2>5. Otras herramientas de ChatGPT</h2>
+        <div class="k-cards">
+          <article class="k-card"><h4>Archivos</h4><p>Subí documentos y pedí análisis, resúmenes o extracción de datos.</p></article>
+          <article class="k-card"><h4>Imágenes</h4><p>Describir o pedir edición/creación (según el modelo disponible).</p></article>
+          <article class="k-card"><h4>Navegación/Búsqueda</h4><p>Cuando necesitás información actualizada o citas.</p></article>
+          <article class="k-card"><h4>Código</h4><p>Explicación, depuración y generación de fragmentos.</p></article>
+        </div>
+      </section>
+
+      <section id="m2_p6" class="module">
+        <h2>6. Otras funciones avanzadas</h2>
+        <ul class="chips">
+          <li class="chip">Memoria de la conversación</li>
+          <li class="chip">Plantillas y estilos</li>
+          <li class="chip">Acciones con herramientas</li>
+          <li class="chip">Integraciones</li>
+        </ul>
+      </section>
+
+      <section id="m2_p7" class="module">
+        <h2>7. Prompt Engineering</h2>
+        <div class="k-cards">
+          <article class="k-card"><h4>Estructura sugerida</h4><ul><li>Rol + objetivo</li><li>Contexto + restricciones</li><li>Formato de salida</li><li>Ejemplos (opcional)</li></ul></article>
+          <article class="k-card"><h4>Antipatrones</h4><ul><li>Pedidos ambiguos</li><li>Prompts infinitos</li><li>Falta de verificación</li></ul></article>
+        </div>
+      </section>
+
+      <section id="m2_p8" class="module">
+        <h2>8. Ejemplos prácticos con ChatGPT</h2>
+        <div class="k-cards">
+          <article class="k-card"><h4>Trabajo</h4><p>Crear un informe, plan de proyecto o minuta desde puntos sueltos.</p></article>
+          <article class="k-card"><h4>Educación</h4><p>Explicar un tema con niveles (niño, secundario, experto).</p></article>
+          <article class="k-card"><h4>Código</h4><p>Generar tests unitarios y explicar errores.</p></article>
+        </div>
+      </section>
+
+      <section id="m2_p9" class="module">
+        <h2>9. Modelos de razonamiento</h2>
+        <p>Modelos que siguen pasos de reflexión interna para resolver problemas complejos (matemática, lógica, planificación). En la práctica, mejoran la precisión en tareas de múltiples pasos.</p>
+      </section>
+
+      <section id="m2_p10" class="module">
+        <h2>10. Los primeros agentes de IA</h2>
+        <p>De los LLMs pasamos a <strong>agentes</strong> que planifican y ejecutan usando herramientas (RAG, APIs, automatizaciones). Ver <a href="modulo1_introIA.html#p7">“La era de los agentes”</a> del Módulo 1.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><a href="index.html">← Volver al índice</a></p>
+    </footer>
+  </div>
+
+  <!-- JS de la guía (modo oscuro, hamburguesa, dropdown) -->
+  <script src="script.js"></script>
 </body>
 </html>
