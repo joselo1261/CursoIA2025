@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760">
+  <style>
+    .title { font: 700 28px sans-serif; }
+    .sub { font: 600 18px sans-serif; }
+    .body { font: 400 16px sans-serif; }
+    .box { fill: #ffffff; stroke: #ccc; rx: 16; ry: 16; }
+    .pill { fill: #f6f7fb; stroke: #d0d4dc; rx: 18; ry: 18; }
+  </style>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="40" y="60" class="title">Qué es la IA — Tipos, pipeline y ejemplos</text>
+
+  <!-- Tipos de IA -->
+  <text x="60" y="110" class="sub">Enfoques de IA</text>
+  <rect x="60" y="125" width="320" height="150" class="box"/>
+  <text x="80" y="155" class="sub">Simbólica</text>
+  <text x="80" y="180" class="body">• Reglas “si‑entonces” y conocimiento explícito</text>
+  <text x="80" y="205" class="body">• Usada en motores de reglas y expertos</text>
+
+  <rect x="420" y="125" width="320" height="150" class="box"/>
+  <text x="440" y="155" class="sub">Estadística / ML</text>
+  <text x="440" y="180" class="body">• Aprende patrones desde datos</text>
+  <text x="440" y="205" class="body">• Clasificación, predicción</text>
+
+  <rect x="780" y="125" width="320" height="150" class="box"/>
+  <text x="800" y="155" class="sub">Generativa</text>
+  <text x="800" y="180" class="body">• Crea texto, imagen, audio, video, código</text>
+  <text x="800" y="205" class="body">• ChatGPT, DALL·E, etc.</text>
+
+  <!-- Pipeline -->
+  <text x="60" y="320" class="sub">Pipeline de IA</text>
+  <rect x="60" y="335" width="1020" height="120" class="box"/>
+  <rect x="80" y="355" width="150" height="80" class="pill"/>
+  <text x="90" y="400" class="body">Definir problema</text>
+  <rect x="260" y="355" width="150" height="80" class="pill"/>
+  <text x="285" y="400" class="body">Datos</text>
+  <rect x="440" y="355" width="150" height="80" class="pill"/>
+  <text x="455" y="400" class="body">Modelado</text>
+  <rect x="620" y="355" width="150" height="80" class="pill"/>
+  <text x="635" y="400" class="body">Despliegue</text>
+  <rect x="800" y="355" width="150" height="80" class="pill"/>
+  <text x="812" y="400" class="body">Monitoreo</text>
+
+  <!-- Casos -->
+  <text x="60" y="500" class="sub">Casos de uso</text>
+  <rect x="60" y="515" width="320" height="180" class="box"/>
+  <text x="80" y="545" class="body">• Asistentes virtuales</text>
+  <text x="80" y="570" class="body">• Recomendaciones</text>
+  <text x="80" y="595" class="body">• Productividad con IA</text>
+
+  <rect x="420" y="515" width="320" height="180" class="box"/>
+  <text x="440" y="545" class="body">• Visión por computadora</text>
+  <text x="440" y="570" class="body">• Detección de fraude</text>
+  <text x="440" y="595" class="body">• Predicción de demanda</text>
+
+  <rect x="780" y="515" width="320" height="180" class="box"/>
+  <text x="800" y="545" class="body">• Vehículos autónomos</text>
+  <text x="800" y="570" class="body">• Industria 4.0</text>
+  <text x="800" y="595" class="body">• Salud y educación</text>
+</svg>

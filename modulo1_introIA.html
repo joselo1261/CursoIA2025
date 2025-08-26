@@ -1,134 +1,701 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 1: Introduciendo la Inteligencia Artificial</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 1: Introduciendo la Inteligencia Artificial</title>
+<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-    <header>
-        <h1>Módulo 1: Introduciendo la Inteligencia Artificial</h1>
-        <p>Guía de Inteligencia Artificial - Curso 2025</p>
-    </header>
-
-    <div class="container">
-        
-
+<header>
+<h1>Módulo 1: Introduciendo la Inteligencia Artificial</h1>
+<p>Guía de Inteligencia Artificial - Curso 2025</p>
+</header>
+<div class="container">
 <nav>
-  <ul id="main-nav-list">
-    <li><a href="index.html">Inicio</a></li>
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="#p1">1. ¿Qué es la Inteligencia Artificial?</a></li>
-        <li><a href="#p2">2. Historia de la IA</a></li>
-        <li><a href="#p3">3. Fundamentos: Machine Learning y Deep Learning</a></li>
-        <li><a href="#p4">4. La IA Generativa</a></li>
-        <li><a href="#p5">5. Las Tres Olas del Peligro de la IA</a></li>
-        <li><a href="#p6">6. Beneficios de la IA</a></li>
-        <li><a href="#p7">7. La Era de los Agentes</a></li>
-      </ul>
-    </li>
-    <li><a href="herramientas.html">Herramientas</a></li>
-    <li><a href="glosario.html">Glosario</a></li>
-  </ul>
-  <button id="theme-toggle">🌙</button>
-  <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
+<ul id="main-nav-list">
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" href="#">Contenido ▾</a>
+<ul class="dropdown-menu">
+<li><a href="#p1">1. ¿Qué es la Inteligencia Artificial?</a></li>
+<li><a href="#p2">2. Historia de la IA</a></li>
+<li><a href="#p3">3. Fundamentos: Machine Learning y Deep Learning</a></li>
+<li><a href="#p4">4. La IA Generativa</a></li>
+<li><a href="#p5">5. Las Tres Olas del Peligro de la IA</a></li>
+<li><a href="#p6">6. Beneficios de la IA</a></li>
+<li><a href="#p7">7. La Era de los Agentes</a></li>
+</ul>
+</li>
+<li><a href="herramientas.html">Herramientas</a></li>
+<li><a href="glosario.html">Glosario</a></li>
+</ul>
+<button id="theme-toggle">🌙</button>
+<button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
 </nav>
-
-
-
-        
 <main>
-            <section class="module" id="p1">
-                <h2>1. ¿Qué es la Inteligencia Artificial?</h2>
-                <p>La <strong>Inteligencia Artificial (IA)</strong> es la capacidad de las máquinas de realizar tareas que requieren inteligencia humana, como razonar, aprender, planificar, adaptarse y hasta crear.</p>
-                <p>A diferencia de los programas tradicionales, que siguen instrucciones fijas, los sistemas de IA <strong>aprenden de los datos</strong> y se ajustan a nuevas situaciones. Esto los hace mucho más flexibles y poderosos.</p>
-                <ul>
-                    <li><strong>Ejemplos comunes:</strong> Asistentes virtuales (Siri, Alexa), sistemas de recomendación (Netflix, Spotify), vehículos autónomos.</li>
-                    <li><strong>IA Generativa:</strong> puede producir texto, imágenes, música y código. Herramientas como ChatGPT y DALL·E han democratizado la creatividad.</li>
-                    <li><strong>AGI:</strong> Inteligencia Artificial General, aún en investigación, con la ambición de replicar la inteligencia humana en cualquier tarea.</li>
-                </ul>
-            </section>
+<section class="module" id="p1">
+<h2>1. ¿Qué es la Inteligencia Artificial?</h2>
+<p>
+    La <strong>Inteligencia Artificial (IA)</strong> es la capacidad de un sistema para <em>percibir</em> su entorno, 
+    <em>aprender</em> de los datos, <em>razonar</em> y <em>actuar</em> para alcanzar objetivos. A diferencia del software tradicional,
+    los sistemas de IA pueden <strong>mejorar su desempeño</strong> con la experiencia y adaptarse a nuevas situaciones.
+  </p>
+<h3>1.1. ¿Qué la hace “inteligente”?</h3>
+<ul>
+<li><strong>Percepción:</strong> reconoce patrones en imágenes, audio y texto.</li>
+<li><strong>Comprensión:</strong> identifica intención, entidades y contexto en lenguaje natural.</li>
+<li><strong>Aprendizaje:</strong> ajusta parámetros internos para mejorar resultados.</li>
+<li><strong>Razonamiento y decisión:</strong> selecciona la mejor acción para un objetivo dado.</li>
+<li><strong>Generación:</strong> produce contenido original (texto, imágenes, audio, video, código).</li>
+</ul>
+<h3>1.2. Ejemplos cotidianos</h3>
+<ul>
+<li><strong>Asistentes virtuales</strong> (Siri, Alexa, Google Assistant): consultan, ejecutan acciones y automatizan tareas.</li>
+<li><strong>Recomendadores</strong> (Netflix, Spotify, e-commerce): personalizan contenido y productos.</li>
+<li><strong>Vehículos autónomos:</strong> perciben el entorno y toman decisiones en tiempo real.</li>
+<li><strong>Productividad:</strong> redactores, generadores de imágenes y asistentes de código (IA generativa).</li>
+</ul>
+<h3>1.3. Tipos y enfoques de IA</h3>
+<div class="table-responsive">
+<table class="tabla">
+<caption>Cuadro 1 — Enfoques de IA</caption>
+<thead>
+<tr><th>Enfoque</th><th>Descripción</th><th>Ejemplos</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Simbólica</strong> (basada en reglas)</td>
+<td>Conocimiento explícito y reglas lógicas “si‑entonces”.</td>
+<td>Asistentes de diagnóstico antiguos, motores de reglas empresariales.</td>
+</tr>
+<tr>
+<td><strong>Estadística / Aprendizaje automático</strong></td>
+<td>Modelos que aprenden patrones a partir de datos (supervisado, no supervisado, refuerzo).</td>
+<td>Clasificación de imágenes, detección de fraude, predicción de demanda.</td>
+</tr>
+<tr>
+<td><strong>Generativa</strong></td>
+<td>Modelos que crean contenido nuevo (texto, imagen, audio, video, código).</td>
+<td>ChatGPT, DALL·E, generadores de música e imágenes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>1.4. IA tradicional vs IA generativa</h3>
+<p>La IA tradicional optimiza decisiones y clasificaciones; la IA generativa crea contenido. Resumen:</p>
+<div class="table-responsive">
+<table class="tabla">
+<caption>Cuadro 2 — IA Tradicional vs IA Generativa</caption>
+<thead>
+<tr><th>Característica</th><th>IA Tradicional</th><th>IA Generativa</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Objetivo</strong></td><td>Analizar, predecir, clasificar</td><td>Crear contenido original</td></tr>
+<tr><td><strong>Salida típica</strong></td><td>Etiqueta, puntaje, decisión</td><td>Texto, imagen, audio, video, código</td></tr>
+<tr><td><strong>Datos de entrenamiento</strong></td><td>Etiquetados o históricos</td><td>Grandes corpus no estructurados</td></tr>
+<tr><td><strong>Uso principal</strong></td><td>Automatizar procesos específicos</td><td>Creatividad, prototipado, automatización avanzada</td></tr>
+<tr><td><strong>Riesgos</strong></td><td>Sesgos en datos, sobreajuste</td><td>Alucinaciones, derechos de autor, desinformación</td></tr>
+</tbody>
+</table>
+</div>
+<h3>1.5. Pipeline de un proyecto de IA</h3>
+<ol>
+<li><strong>Definición del problema</strong> y métricas de éxito.</li>
+<li><strong>Datos</strong>: recolección, limpieza, etiquetado y partición (train/val/test).</li>
+<li><strong>Modelado</strong>: selección de algoritmo o LLM, entrenamiento y validación.</li>
+<li><strong>Despliegue</strong>: integración en apps/servicios.</li>
+<li><strong>Monitoreo</strong>: calidad, sesgos, deriva de datos y seguridad.</li>
+</ol>
+<div aria-labelledby="infografia-title" class="infografia-grid" role="group">
+<h4 class="infografia-title" id="infografia-title">Qué es la IA — Tipos, pipeline y ejemplos</h4>
+<section class="info-bloque">
+<h5>Enfoques de IA</h5>
+<div class="cards-3">
+<article class="card">
+<h6>Simbólica</h6>
+<ul>
+<li>Reglas “si‑entonces” y conocimiento explícito</li>
+<li>Usada en motores de reglas y expertos</li>
+</ul>
+</article>
+<article class="card">
+<h6>Estadística / ML</h6>
+<ul>
+<li>Aprende patrones desde datos</li>
+<li>Clasificación, predicción</li>
+</ul>
+</article>
+<article class="card">
+<h6>Generativa</h6>
+<ul>
+<li>Crea texto, imagen, audio, video, código</li>
+<li>ChatGPT, DALL·E, etc.</li>
+</ul>
+</article>
+</div>
+</section>
+<section class="info-bloque">
+<h5>Pipeline de IA</h5>
+<div class="pills">
+<span class="pill">Definir problema</span>
+<span class="pill">Datos</span>
+<span class="pill">Modelado</span>
+<span class="pill">Despliegue</span>
+<span class="pill">Monitoreo</span>
+</div>
+</section>
+<section class="info-bloque">
+<h5>Casos de uso</h5>
+<div class="cards-3">
+<article class="card">
+<ul>
+<li>Asistentes virtuales</li>
+<li>Recomendaciones</li>
+<li>Productividad con IA</li>
+</ul>
+</article>
+<article class="card">
+<ul>
+<li>Visión por computadora</li>
+<li>Detección de fraude</li>
+<li>Predicción de demanda</li>
+</ul>
+</article>
+<article class="card">
+<ul>
+<li>Vehículos autónomos</li>
+<li>Industria 4.0</li>
+<li>Salud y educación</li>
+</ul>
+</article>
+</div>
+</section>
+</div>
+<h3>1.6. Alcances y límites</h3>
+<div class="table-responsive">
+<table class="tabla">
+<caption>Cuadro 3 — Capacidades y limitaciones actuales</caption>
+<thead><tr><th>Capacidades</th><th>Limitaciones</th></tr></thead>
+<tbody>
+<tr>
+<td>Escala y velocidad superiores a la humana; personalización masiva; creación de contenido.</td>
+<td>Alucinaciones, sesgos, dependencia de datos, necesidad de supervisión humana.</td>
+</tr>
+<tr>
+<td>Automatiza tareas repetitivas y análisis complejos.</td>
+<td>Falta de “comprensión” semántica profunda y sentido común robusto.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>1.7. Conceptos clave</h3>
+<ul class="glosario-inline">
+<li><strong>ML (Machine Learning):</strong> modelos que aprenden de datos.</li>
+<li><strong>DL (Deep Learning):</strong> redes neuronales con muchas capas.</li>
+<li><strong>LLM:</strong> modelos de lenguaje de gran tamaño (p. ej., GPT).</li>
+<li><strong>AGI:</strong> inteligencia artificial general (todavía hipotética).</li>
+</ul>
+</section>
+<section class="module" id="p2">
+<h2>2. Historia de la IA</h2>
+<p>Desde los <strong>orígenes en 1950</strong> hasta la <strong>era generativa</strong>, la IA avanzó por ciclos de grandes hitos y “inviernos” de estancamiento. A continuación, un recorrido claro y visual para entender <em>dónde estamos hoy</em> y cómo llegamos acá.</p>
+<div aria-label="Escala de tiempo — Hitos clave (compacta)" class="milestone-bar" role="group">
+<ul class="milestones">
+<li class="node">
+<div aria-hidden="true" class="badge">💬</div>
+<div class="year">1950</div>
+<div class="label">Test de Turing</div>
+</li>
+<li class="node">
+<div aria-hidden="true" class="badge">🎓</div>
+<div class="year">1956</div>
+<div class="label">Dartmouth</div>
+</li>
+<li class="node">
+<div aria-hidden="true" class="badge">⚙️</div>
+<div class="year">60‑70s</div>
+<div class="label">IA simbólica</div>
+</li>
+<li class="node">
+<div aria-hidden="true" class="badge">🧠</div>
+<div class="year">1980s</div>
+<div class="label">Machine Learning</div>
+</li>
+<li class="node">
+<div aria-hidden="true" class="badge">♟️</div>
+<div class="year">1997</div>
+<div class="label">Deep Blue</div>
+</li>
+<li class="node">
+<div aria-hidden="true" class="badge">📷</div>
+<div class="year">2012</div>
+<div class="label">ImageNet</div>
+</li>
+<li class="node">
+<div aria-hidden="true" class="badge">⚡</div>
+<div class="year">2017</div>
+<div class="label">Transformers</div>
+</li>
+<li class="node">
+<div aria-hidden="true" class="badge">🤖</div>
+<div class="year">2018‑24</div>
+<div class="label">GPT/ChatGPT</div>
+</li>
+</ul>
+</div>
+<h3>2.1. Orígenes y el Test de Turing (1950)</h3>
+<p>Alan Turing plantea su famosa prueba: si una máquina puede mantener una conversación indistinguible de la humana, entonces puede considerarse “inteligente”. Este planteo ordenó el debate sobre lo que significa que una máquina “piense”.</p>
+<h3>2.2. Dartmouth: nacimiento formal (1956)</h3>
+<p>La <em>Conferencia de Dartmouth</em> acuña el término “Inteligencia Artificial” y abre la investigación como disciplina, con la ambición de replicar la inteligencia humana mediante máquinas.</p>
+<h3>2.3. Reglas y primer invierno (1960‑70s)</h3>
+<ul>
+<li><strong>Sistemas basados en reglas:</strong> “si‑entonces” y conocimiento explícito, eficaces en dominios acotados (sistemas expertos).</li>
+<li><strong>Limitaciones:</strong> fragilidad fuera de sus reglas y falta de potencia de cómputo.</li>
+<li><strong>Resultado:</strong> disminuye el financiamiento y llega el <em>primer invierno de la IA</em>.</li>
+</ul>
+<div class="callout info">
+<strong>Idea clave:</strong> la IA simbólica mostraba potencial, pero no podía generalizar ni aprender de la experiencia.
+  </div>
+<h3>2.4. Machine Learning y el cambio de paradigma (1980s)</h3>
+<p>El enfoque pasa de programar reglas a <em>aprender de datos</em>. Se popularizan algoritmos como <strong>árboles de decisión</strong> y <strong>redes neuronales artificiales</strong>.</p>
+<h3>2.5. Redes neuronales y Deep Blue (1990s)</h3>
+<p>Las redes neuronales ganan tracción con más cómputo y datos. En 1997, <strong>Deep Blue</strong> de IBM derrota al campeón mundial Garry Kasparov: un símbolo de desempeño superhumano en tareas específicas.</p>
+<h3>2.6. Deep Learning e ImageNet (2012)</h3>
+<p>El uso de <strong>redes profundas</strong> dispara un salto de calidad. El equipo de Geoffrey Hinton gana <em>ImageNet</em> (2012) con “deep nets”, marcando el despegue de la visión por computadora moderna.</p>
+<h3>2.7. Transformers y la era generativa (2017‑2024)</h3>
+<ul>
+<li><strong>2017:</strong> “<em>Attention is All You Need</em>” introduce <strong>Transformers</strong>, revolucionando el NLP.</li>
+<li><strong>2018‑2023:</strong> la familia <strong>GPT</strong> (GPT‑2, GPT‑3, GPT‑4) demuestra generación de texto de alta calidad.</li>
+<li><strong>2022:</strong> <strong>ChatGPT</strong> democratiza el acceso a IA avanzada para millones de personas.</li>
+</ul>
+<div class="table-responsive">
+<table class="tabla">
+<caption>Cuadro — Hitos clave por década</caption>
+<thead>
+<tr><th>Década</th><th>Hito</th><th>Qué cambió</th></tr>
+</thead>
+<tbody>
+<tr><td>1950</td><td>Test de Turing</td><td>Marco conceptual de “máquina inteligente”.</td></tr>
+<tr><td>1956</td><td>Dartmouth</td><td>Nace la IA como disciplina.</td></tr>
+<tr><td>60‑70s</td><td>IA simbólica</td><td>Reglas explícitas; aparece el 1er invierno.</td></tr>
+<tr><td>1980s</td><td>Machine Learning</td><td>Aprender de datos &gt; programar reglas.</td></tr>
+<tr><td>1997</td><td>Deep Blue</td><td>Rendimiento superhumano en dominio acotado.</td></tr>
+<tr><td>2012</td><td>Deep Learning</td><td>Salto en visión/voz/NLP con redes profundas.</td></tr>
+<tr><td>2017</td><td>Transformers</td><td>Nueva arquitectura para lenguaje.</td></tr>
+<tr><td>2018‑2024</td><td>GPT &amp; ChatGPT</td><td>IA generativa masiva para usuarios.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="module" id="p3">
+<h2>3. Fundamentos: Machine Learning y Deep Learning</h2>
+<p>El <strong>Machine Learning (ML)</strong> y el <strong>Deep Learning (DL)</strong> son los pilares técnicos de la IA moderna: el primero <em>aprende patrones</em> desde datos y el segundo lo hace con <em>redes neuronales profundas</em>, permitiendo representar relaciones complejas.</p>
+<h3>3.1. ¿Qué es Machine Learning?</h3>
+<p>ML permite que un sistema <strong>aprenda a partir de datos</strong> sin ser programado con reglas explícitas para cada caso. En lugar de escribir todas las condiciones, entrenamos un modelo para que <em>generalice</em> y prediga.</p>
+<div aria-label="Flujo de trabajo de ML" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Recolección de datos</span></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Pretratamiento</span></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Entrenamiento</span></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Evaluación</span></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Ajuste/Mejora</span></div>
+</div>
+<h4>Tipos de aprendizaje</h4>
+<ul>
+<li><strong>Supervisado:</strong> aprende con <em>datos etiquetados</em> (clasificación, regresión).</li>
+<li><strong>No supervisado:</strong> descubre <em>patrones/agrupaciones</em> sin etiquetas (clustering, reducción de dimensión).</li>
+<li><strong>Semi‑supervisado / por refuerzo:</strong> combina etiquetas parciales o aprende por <em>interacción</em> con el entorno.</li>
+</ul>
+<div class="callout">
+<strong>Ejemplo:</strong> clasificar CVs como adecuados/no adecuados a partir de ejemplos previos; el modelo aprende qué señales ponderar.
+  </div>
+<h3>3.2. ¿Qué es Deep Learning?</h3>
+<p>DL es un subconjunto de ML que utiliza <strong>redes neuronales con múltiples capas</strong> (entrada → capas ocultas → salida). Cada capa aplica transformaciones no lineales (p. ej., ReLU, sigmoide, softmax) y los <em>pesos</em> se ajustan minimizando el error.</p>
+<h4>Entrenamiento</h4>
+<p>Se basa en <em>retropropagación del error</em> y métodos de optimización (como gradiente descendente). Requiere gran poder de cómputo y muchos datos.</p>
+<div class="callout">
+<strong>Ejemplo:</strong> una CNN para radiografías de tórax aprende a detectar patrones sutiles y puede superar desempeño humano en tareas específicas.
+  </div>
+<h3>3.3. ML vs. DL (cuadro comparativo)</h3>
+<div class="table-responsive">
+<table class="tabla">
+<thead>
+<tr><th>Característica</th><th>Machine Learning</th><th>Deep Learning</th></tr>
+</thead>
+<tbody>
+<tr><td>Tipo de IA</td><td>Subcampo general de la IA</td><td>Subcampo dentro de ML</td></tr>
+<tr><td>Datos necesarios</td><td>Puede funcionar con pocos datos</td><td>Requiere grandes volúmenes</td></tr>
+<tr><td>Supervisión</td><td>Frecuente</td><td>Mayor autonomía</td></tr>
+<tr><td>Tiempo de entrenamiento</td><td>Menor</td><td>Mayor (modelos complejos)</td></tr>
+<tr><td>Patrones</td><td>Más simples/lineales</td><td>Complejos y no lineales</td></tr>
+<tr><td>Procesamiento</td><td>CPUs convencionales</td><td>GPUs/TPUs de alto rendimiento</td></tr>
+</tbody>
+</table>
+</div>
+<h3>3.4. ¿Y la IA Generativa?</h3>
+<p>Es una especialidad dentro del DL que <strong>crea contenido nuevo</strong> siguiendo la distribución de los datos (p. ej., <em>GANs</em> y <em>Transformers</em>). En el <a href="#p4">Punto 4</a> la desarrollamos en detalle.</p>
+</section>
+<section class="module" id="p4">
+<h2>4. La IA Generativa</h2>
+<p>La <strong>IA generativa</strong> crea <em>contenido original</em> (texto, imágenes, audio, video y 3D) aprendiendo la distribución de los datos. Su evolución se apoya en ML/DL y en arquitecturas modernas como <strong>Transformers</strong>.</p>
+<h3>4.1. Paridad humana</h3>
+<p>Es el punto donde un modelo <em>igualó o superó</em> el desempeño humano en una tarea específica. Algunos hitos recientes:</p>
+<ul class="chips">
+<li class="chip">2015 · Reconocimiento de imágenes (ResNet)</li>
+<li class="chip">2017 · Reconocimiento de voz (Deep Speech 2)</li>
+</ul>
+<h3>4.2. Datos sintéticos</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Métodos iniciales</h4>
+<ul>
+<li><strong>Mannequin Challenge</strong>: videos virales para 3D.</li>
+<li><strong>10 Year Challenge</strong>: series de fotos para cambios en el tiempo.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Hoy</h4>
+<p>Los modelos generan datos sintéticos a gran escala para entrenar otros modelos avanzados.</p>
+<ul>
+<li>Menor dependencia de datos con derechos.</li>
+<li>Privacidad: evita exponer datos sensibles.</li>
+<li>Útiles cuando los datos reales son escasos.</li>
+</ul>
+</article>
+</div>
+<h3>4.3. GAN (Generative Adversarial Networks)</h3>
+<p>Dos redes compiten y mejoran entre sí:</p>
+<div class="process-rail">
+<div class="p-step"><span class="p-badge">1</span><span class="p-label"><strong>Generador</strong>: crea datos “falsos”</span></div>
+<div aria-hidden="true" class="p-arrow">→</div>
+<div class="p-step"><span class="p-badge">2</span><span class="p-label"><strong>Discriminador</strong>: distingue real vs generado</span></div>
+</div>
+<div class="callout">
+<strong>Analogía:</strong> falsificador de arte (generador) vs. experto que detecta copias (discriminador).
+  </div>
+<div class="table-responsive">
+<table class="tabla">
+<caption>Limitaciones típicas de GAN</caption>
+<thead><tr><th>Reto</th><th>Consecuencia</th></tr></thead>
+<tbody>
+<tr><td>Contenido poco novedoso</td><td>Imita patrones existentes</td></tr>
+<tr><td>Modo colapso</td><td>Genera pocas variantes</td></tr>
+</tbody>
+</table>
+</div>
+<h3>4.4. Modelos de difusión</h3>
+<p>Superan límites de las GAN con un proceso de <em>ruido → restauración</em> que permite mayor detalle y originalidad.</p>
+<div class="process-rail two-lines">
+<div class="p-step"><span class="p-badge">A</span><span class="p-label"><strong>Difuminar</strong>: añadir ruido hasta perder la imagen</span></div>
+<div aria-hidden="true" class="p-arrow">⇄</div>
+<div class="p-step"><span class="p-badge">B</span><span class="p-label"><strong>Reconstruir</strong>: quitar ruido paso a paso</span></div>
+</div>
+<h3>4.5. Transformers</h3>
+<ul>
+<li><strong>Origen (2017)</strong>: “Attention is All You Need”.</li>
+<li><strong>Cómo funcionan</strong>: tokenización → <em>embeddings</em> → <em>self‑attention</em> que capta relaciones y contexto.</li>
+<li><strong>Impacto</strong>: base de los <em>LLM</em> modernos y la IA generativa de texto.</li>
+</ul>
+<h3>4.6. LLM: panorama y desafíos</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Ecosistema</h4>
+<ul>
+<li>Google (Bard/Gemini)</li>
+<li>Mistral (modelos livianos)</li>
+<li>OpenAI (GPT‑4 y sucesores)</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Riesgos</h4>
+<ul>
+<li><strong>Alucinaciones</strong>: respuestas plausibles pero incorrectas.</li>
+<li><strong>Uso indebido</strong>: necesidad de filtros de seguridad.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Mitigación</h4>
+<ul>
+<li><strong>Ingeniería de prompts</strong> para guiar mejor las respuestas.</li>
+<li>Controles de seguridad para contenido dañino.</li>
+</ul>
+</article>
+</div>
+</section>
+<section class="module" id="p5">
+<h2>5. Las Tres Olas del Peligro de la IA</h2>
+<p>La evolución de la IA trae beneficios y <strong>tres olas de riesgo</strong> que conviene entender y gestionar: <em>manipulación de la información</em>, <em>automatización/desplazamiento laboral</em> y <em>riesgo existencial (AGI)</em>.</p>
+<div class="risk-cards">
+<article class="risk-card s-low">
+<header class="risk-head">
+<span class="risk-num">1</span>
+<h3>Primera ola · Manipulación de la información</h3>
+<div aria-label="Impacto actual" class="semaforo s-low" title="Impacto actual">
+<span class="luz rojo"></span>
+<span class="luz amarillo"></span>
+<span class="luz verde"></span>
+</div></header>
+<ul class="checklist">
+<li><strong>Deepfakes</strong> de imagen/video/audio generan contenidos altamente convincentes.</li>
+<li><strong>Voz clonada</strong> con segundos de muestra; difícil detección en llamadas.</li>
+<li><strong>Facilidad de acceso</strong> a apps que crean fakes en minutos.</li>
+</ul>
+<div class="mitig">
+<strong>Mitigación:</strong> legislación, <em>watermarks</em> invisibles, detección y educación mediática.
+      </div>
+</article>
+<article class="risk-card s-med">
+<header class="risk-head">
+<span class="risk-num">2</span>
+<h3>Segunda ola · Desplazamiento laboral</h3>
+<div aria-label="Impacto medio plazo" class="semaforo s-med" title="Impacto medio plazo">
+<span class="luz rojo"></span>
+<span class="luz amarillo"></span>
+<span class="luz verde"></span>
+</div></header>
+<ul class="checklist">
+<li><strong>Traducción y localización</strong> con alta precisión.</li>
+<li><strong>Doblaje/Síntesis de voz</strong>; preferencia por voces humanas persiste en algunos mercados.</li>
+<li><strong>Atención al cliente</strong> (ej.: grandes reducciones de personal; caso Klarna).</li>
+<li><strong>Stock/foto generativa y música</strong> con nuevas especializaciones.</li>
+</ul>
+<div class="mitig">
+<strong>Mitigación:</strong> recualificación, supervisión de IA, diseño de interacción, políticas de transición.
+      </div>
+</article>
+<article class="risk-card s-high">
+<header class="risk-head">
+<span class="risk-num">3</span>
+<h3>Tercera ola · Riesgo existencial (AGI)</h3>
+<div aria-label="Impacto sistémico" class="semaforo s-high" title="Impacto sistémico">
+<span class="luz rojo"></span>
+<span class="luz amarillo"></span>
+<span class="luz verde"></span>
+</div></header>
+<ul class="checklist">
+<li><strong>AGI</strong> más inteligente que los humanos podría volverse incontrolable.</li>
+<li><strong>Alineación</strong>: metas no compatibles (p. ej., “paperclip maximizer”).</li>
+<li><strong>Declaración 2023</strong>: líderes del campo priorizan mitigar riesgo de extinción.</li>
+</ul>
+<div class="mitig">
+<strong>Mitigación:</strong> regulación, investigación en alineación, controles y evaluación rigurosa.
+      </div>
+</article>
+</div>
+<div class="table-responsive">
+<table class="tabla">
+<caption>Cuadro — Tres olas de riesgo: señales y respuestas</caption>
+<thead>
+<tr><th>Ola</th><th>Impacto</th><th>Riesgo clave</th><th>Señales/Ejemplos</th><th>Respuestas/mitigaciones</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td class="impact"><span aria-label="Impacto actual" class="dot dot-low" title="Impacto actual"></span><span class="i-text">Impacto actual</span></td><td>Manipulación de la información</td><td>Deepfakes; clonación de voz con ~15s; herramientas accesibles</td><td>Leyes, marcas de agua, detección, alfabetización mediática</td></tr>
+<tr><td>2</td><td class="impact"><span aria-label="Impacto medio plazo" class="dot dot-med" title="Impacto medio plazo"></span><span class="i-text">Impacto medio plazo</span></td><td>Automatización y empleo</td><td>Traducción, doblaje, atención al cliente (Klarna), stock, música</td><td>Reentrenamiento, rediseño de procesos, nuevos roles, políticas</td></tr>
+<tr><td>3</td><td class="impact"><span aria-label="Impacto sistémico" class="dot dot-high" title="Impacto sistémico"></span><span class="i-text">Impacto sistémico</span></td><td>Riesgo existencial (AGI)</td><td>Automejora, desalineación de objetivos, llamado 2023</td><td>Regulación, seguridad por diseño, inversión en alineación</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="module" id="p6">
+<h2>6. Beneficios de la IA</h2>
+<p>La <strong>Inteligencia Artificial</strong> ya produce mejoras concretas en <em>ciencia</em>, <em>educación</em> y <em>trabajo</em>, y abre nuevas <em>oportunidades</em> de uso cotidiano y profesional.</p>
+<div class="benefit-grid">
+<article class="benefit-card">
+<header class="b-head">
+<span class="b-badge">Ciencia</span>
+<h3>Investigación y medicina</h3>
+</header>
+<ul>
+<li><strong>Aceleración de fármacos:</strong> análisis y pruebas asistidas por IA pueden recortar drásticamente tiempos de diseño y validación.</li>
+<li><strong>Diagnóstico por imagen:</strong> precisión comparable a especialistas en RMN, TAC y Rx.</li>
+<li><strong>Descubrimientos:</strong> predicciones climáticas y <em>exoplanetas</em> mediante análisis masivo de datos.</li>
+</ul>
+<div class="stat">Hecho: la IA puede reducir ciclos de descubrimiento de fármacos de años a semanas.</div>
+</article>
+<article class="benefit-card">
+<header class="b-head">
+<span class="b-badge">Educación</span>
+<h3>Aprendizaje personalizado</h3>
+</header>
+<ul>
+<li><strong>Tutores adaptativos:</strong> ajustan contenido, ritmo y ejercicios al progreso del estudiante.</li>
+<li><strong>Asistentes 24/7:</strong> chatbots educativos y simulaciones interactivas para practicar conceptos complejos.</li>
+<li><strong>Apoyo docente:</strong> corrección, informes y planes automatizados para liberar tiempo de enseñanza.</li>
+</ul>
+</article>
+<article class="benefit-card">
+<header class="b-head">
+<span class="b-badge">Trabajo</span>
+<h3>Productividad y nuevos roles</h3>
+</header>
+<ul>
+<li><strong>Automatización de tareas:</strong> redacción, informes y análisis repetitivos con asistentes como Copilot.</li>
+<li><strong>Decisión y previsión:</strong> analítica predictiva y optimización logística.</li>
+<li><strong>Upskilling:</strong> demanda de perfiles en datos, IA y ética aplicada.</li>
+</ul>
+</article>
+</div>
+<div class="bars-card">
+<h3 class="bars-title">Impacto percibido por ámbito</h3>
+<div class="bar-row">
+<span class="b-label">Ciencia</span>
+<div class="bar"><i style="--w: 0.88"></i></div>
+<span class="b-val">Alto</span>
+</div>
+<div class="bar-row">
+<span class="b-label">Educación</span>
+<div class="bar"><i style="--w: 0.78"></i></div>
+<span class="b-val">Medio‑alto</span>
+</div>
+<div class="bar-row">
+<span class="b-label">Trabajo</span>
+<div class="bar"><i style="--w: 0.70"></i></div>
+<span class="b-val">Medio</span>
+</div>
+</div>
+<div class="table-responsive">
+<table class="tabla tabla-compacta">
+<caption>Cuadro — Beneficios por ámbito</caption>
+<thead>
+<tr><th>Ámbito</th><th>Beneficio</th><th>Indicador/ejemplo</th><th>Plazo</th></tr>
+</thead>
+<tbody>
+<tr><td>Ciencia</td><td>Descubrimiento más rápido</td><td>Diseño de fármacos y diagnósticos por imagen</td><td>Corto–Medio</td></tr>
+<tr><td>Educación</td><td>Personalización del aprendizaje</td><td>Tutores adaptativos, chatbots y simulaciones</td><td>Corto</td></tr>
+<tr><td>Trabajo</td><td>Productividad y nuevos puestos</td><td>Automatización, asistentes de IA y análisis predictivo</td><td>Corto–Medio</td></tr>
+</tbody>
+</table>
+</div>
+<h3>6.1. Oportunidades de uso</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Asistente personal</h4>
+<p>Recordatorios, organización y recomendaciones contextuales (rutas, contenido, compras).</p>
+</article>
+<article class="k-card">
+<h4>Mejora continua</h4>
+<p>Herramientas de generación de contenido, análisis de datos y aprendizaje automático para potenciar habilidades y negocios.</p>
+</article>
+</div>
+<ul class="key-points">
+<li>Ya impacta <em>ciencia, educación y trabajo</em> con beneficios medibles.</li>
+<li>En lo cotidiano, mejora la <em>organización</em> y el <em>acceso a información</em> personalizada.</li>
+<li>El valor aumenta al combinar IA con <em>buen diseño</em>, <em>datos de calidad</em> y <em>ética</em>.</li>
+</ul>
+</section>
+<section class="module" id="p7">
+<h2>7. La era de los agentes</h2>
+<p>Pasamos de modelos que sólo <em>responden</em> a consultas a <strong>agentes</strong> que <em>razonan, planifican y actúan</em> con autonomía para alcanzar objetivos, usando herramientas y datos en tiempo real.</p>
+<h3>7.1. ¿Qué es un agente?</h3>
+<div aria-label="Componentes de un agente" class="component-grid">
+<div class="comp">
+<div class="c-ico">🎯</div>
+<h4>Objetivo</h4>
+<p>Meta concreta que guía las decisiones del agente.</p>
+</div>
+<div class="comp">
+<div class="c-ico">🧠</div>
+<h4>Modelo (LLM)</h4>
+<p>Cerebro que interpreta instrucciones, razona y planifica.</p>
+</div>
+<div class="comp">
+<div class="c-ico">🧰</div>
+<h4>Herramientas</h4>
+<p>APIs, bases de datos y dispositivos para ejecutar acciones.</p>
+</div>
+<div class="comp">
+<div class="c-ico">🎛️</div>
+<h4>Orquestación</h4>
+<p>Reglas y estrategias que deciden qué hacer, cuándo y con qué.</p>
+</div>
+</div>
+<div class="flowchart">
+<ol aria-label="Flujo de un agente (de izquierda a derecha)" class="flow">
+<li class="f-step">
+<span class="f-count">1</span>
+<span aria-hidden="true" class="f-ico">🎯</span>
+<div class="f-title">Objetivo</div>
+<div class="f-sub">definido</div>
+</li>
+<li class="f-step">
+<span class="f-count">2</span>
+<span aria-hidden="true" class="f-ico">🧠</span>
+<div class="f-title">Razona</div>
+<div class="f-sub">con el modelo</div>
+</li>
+<li class="f-step">
+<span class="f-count">3</span>
+<span aria-hidden="true" class="f-ico">🧰</span>
+<div class="f-title">Elige</div>
+<div class="f-sub">herramienta</div>
+</li>
+<li class="f-step">
+<span class="f-count">4</span>
+<span aria-hidden="true" class="f-ico">⚙️</span>
+<div class="f-title">Actúa</div>
+<div class="f-sub">y recopila resultados</div>
+</li>
+<li class="f-step">
+<span class="f-count">5</span>
+<span aria-hidden="true" class="f-ico">↻</span>
+<div class="f-title">Ajusta</div>
+<div class="f-sub">y repite (loop)</div>
+</li>
+</ol>
+</div>
 
-            <section class="module" id="p2">
-                <h2>2. Historia de la IA</h2>
-                <p>La historia de la IA combina avances técnicos y periodos de entusiasmo con “inviernos” de estancamiento:</p>
-                <ul>
-                    <li><strong>1950:</strong> Alan Turing propone el <em>Test de Turing</em>.</li>
-                    <li><strong>1956:</strong> Conferencia de Dartmouth, nacimiento oficial de la IA.</li>
-                    <li><strong>1960-70:</strong> Sistemas basados en reglas, limitados y poco adaptables.</li>
-                    <li><strong>1980s:</strong> Nace el <em>Machine Learning</em>, con algoritmos como árboles de decisión.</li>
-                    <li><strong>1997:</strong> Deep Blue de IBM vence a Kasparov en ajedrez.</li>
-                    <li><strong>2012:</strong> Explosión del Deep Learning con ImageNet.</li>
-                    <li><strong>2017:</strong> Paper <em>Attention is All You Need</em> y nacimiento de Transformers.</li>
-                    <li><strong>2018-2023:</strong> GPT-2, GPT-3, GPT-4 y ChatGPT democratizan la IA.</li>
-                </ul>
-                <p>Hoy vivimos en la era de la <strong>IA Generativa</strong>, capaz de crear contenido original y redefinir industrias.</p>
-            </section>
-
-            <section class="module" id="p3">
-                <h2>3. Fundamentos: Machine Learning y Deep Learning</h2>
-                <p>El <strong>Machine Learning (ML)</strong> y el <strong>Deep Learning (DL)</strong> son la base técnica de la IA moderna.</p>
-                <ul>
-                    <li><strong>ML:</strong> aprende a partir de datos, con enfoques supervisados, no supervisados y por refuerzo.</li>
-                    <li><strong>DL:</strong> utiliza redes neuronales profundas, especializadas en visión y lenguaje natural.</li>
-                    <li><strong>Diferencias:</strong> ML funciona con menos datos, DL necesita grandes volúmenes y potencia computacional.</li>
-                </ul>
-                <p>El DL ha permitido avances revolucionarios en reconocimiento de imágenes, voz y procesamiento de lenguaje natural.</p>
-            </section>
-
-            <section class="module" id="p4">
-                <h2>4. La IA Generativa</h2>
-                <p>La <strong>IA Generativa</strong> es la rama que crea contenido original como texto, imágenes, música o código.</p>
-                <ul>
-                    <li><strong>Paridad humana:</strong> IA que iguala o supera al humano en tareas específicas (ResNet en visión, Deep Speech en voz).</li>
-                    <li><strong>Datos sintéticos:</strong> generados artificialmente para entrenar modelos.</li>
-                    <li><strong>GANs:</strong> redes enfrentadas que producen imágenes realistas.</li>
-                    <li><strong>Modelos de difusión:</strong> añaden y eliminan ruido para generar imágenes detalladas.</li>
-                    <li><strong>Transformers:</strong> base de los LLM como GPT.</li>
-                    <li><strong>Retos:</strong> alucinaciones, sesgos y riesgos éticos.</li>
-                </ul>
-            </section>
-
-            <section class="module" id="p5">
-                <h2>5. Las Tres Olas del Peligro de la IA</h2>
-                <p>Los riesgos de la IA se dividen en tres grandes olas:</p>
-                <h3>Primera Ola: Manipulación de la Información</h3>
-                <p>Deepfakes, clonación de voz y desinformación que afectan la confianza pública.</p>
-                <h3>Segunda Ola: Desplazamiento Laboral</h3>
-                <p>La automatización transforma sectores como traducción, doblaje, atención al cliente, música e imagen.</p>
-                <h3>Tercera Ola: Peligro Existencial</h3>
-                <p>Una IA General (AGI) podría superar al ser humano y actuar de manera impredecible.</p>
-                <p><strong>Conclusión:</strong> debemos regular, alinear y usar con responsabilidad el desarrollo de la IA.</p>
-            </section>
-
-            <section class="module" id="p6">
-                <h2>6. Beneficios de la IA</h2>
-                <ul>
-                    <li><strong>Ciencia:</strong> acelera desarrollo de fármacos, diagnósticos médicos, predicción climática, astronomía.</li>
-                    <li><strong>Educación:</strong> aprendizaje personalizado, chatbots educativos, automatización docente.</li>
-                    <li><strong>Trabajo:</strong> mayor productividad (Copilot, ChatGPT), nuevos empleos en programación y ética en IA.</li>
-                    <li><strong>Vida cotidiana:</strong> asistentes virtuales, recomendaciones personalizadas, optimización empresarial.</li>
-                </ul>
-                <p><strong>Conclusión:</strong> la IA es una fuerza transformadora positiva si se usa estratégicamente.</p>
-            </section>
-
-            <section class="module" id="p7">
-                <h2>7. La Era de los Agentes</h2>
-                <p>Los <strong>agentes de IA</strong> son sistemas proactivos que no solo responden, sino que también actúan de manera autónoma.</p>
-                <ul>
-                    <li><strong>Definición:</strong> combinan un objetivo, un modelo de IA y herramientas para actuar.</li>
-                    <li><strong>Ejemplos:</strong> búsqueda de vuelos, reclutamiento, gestión de impuestos, agentes como Devin o en LinkedIn.</li>
-                    <li><strong>Características:</strong> autonomía, proactividad, uso de herramientas, aprendizaje dinámico.</li>
-                    <li><strong>Diferencia con modelos:</strong> los agentes extienden el conocimiento, son autónomos y toman decisiones.</li>
-                </ul>
-                <p><strong>Conclusión:</strong> los agentes representan el próximo gran paso de la IA, colaborando activamente con los humanos.</p>
-            </section>
-        </main>
-    </div>
-
-    <script src="script.js"></script>
+<h3>7.2. Modelos vs. agentes</h3>
+<div class="table-responsive">
+<table class="tabla tabla-compacta">
+<thead>
+<tr><th>Aspecto</th><th>Modelos de IA</th><th>Agentes de IA</th></tr>
+</thead>
+<tbody>
+<tr><td>Conocimiento</td><td>Limitado al entrenamiento</td><td>Se extiende con herramientas</td></tr>
+<tr><td>Reactividad</td><td>Responden a entradas</td><td>Planifican y toman acciones</td></tr>
+<tr><td>Autonomía</td><td>No actúan por sí mismos</td><td>Operan de manera independiente</td></tr>
+</tbody>
+</table>
+</div>
+<h3>7.3. Cómo aprenden los agentes</h3>
+<ul class="chips">
+<li class="chip">Por contexto (interacciones, percepción)</li>
+<li class="chip">Basado en recuperación (RAG)</li>
+<li class="chip">Fine‑tuning para tareas específicas</li>
+</ul>
+<h3>7.4. Ejemplos</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Viajes</h4>
+<p>Busca y compra vuelos según preferencias y restricciones.</p>
+</article>
+<article class="k-card">
+<h4>Reclutamiento</h4>
+<p>Filtra CVs, agenda entrevistas y empareja perfiles con ofertas.</p>
+</article>
+<article class="k-card">
+<h4>Impuestos</h4>
+<p>Recolecta, valida y prepara la declaración fiscal.</p>
+</article>
+<article class="k-card">
+<h4>LinkedIn</h4>
+<p>Agentes que optimizan el <em>matching</em> entre candidatos y puestos.</p>
+</article>
+<article class="k-card">
+<h4>Devin (coding)</h4>
+<p>Asiste a programadores automatizando etapas del desarrollo.</p>
+</article>
+</div>
+<h3>7.5. ¿Hacia dónde vamos?</h3>
+<ul class="key-points">
+<li>Los agentes se integrarán como <em>herramientas esenciales</em> en múltiples sectores.</li>
+<li>Crearán nuevos <em>departamentos de IT</em> dedicados a su gestión y evolución.</li>
+<li>Conviviremos con agentes que ejecutan tareas complejas y cotidianas.</li>
+</ul>
+</section>
+</main>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
