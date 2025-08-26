@@ -589,7 +589,7 @@ Descripción: &lt;qué hace y para quién&gt;
       <tbody>
         <tr><td>1</td><td>Recolectar fuentes</td><td>Docs, procedimientos, FAQs, ejemplos.</td></tr>
         <tr><td>2</td><td>Limpiar y estructurar</td><td>TXT/MD con secciones; imágenes aparte.</td></tr>
-        <tr><td>3</td><td>Nombrado</td><td>Prefijos por tema (p.ej., <code>ventas_</code>, <code>soporte_</code>).</td></tr>
+        <tr><td>3</td><td>Nombrado</td><td>Prefijos por tema (p.ej., ventas_ , soporte_).</td></tr>
         <tr><td>4</td><td>Versionado</td><td>Fechas o semántica (v1.2); changelog simple.</td></tr>
         <tr><td>5</td><td>Iterar con el GPT</td><td>Guardar buenas/malas respuestas y anexarlas como ejemplos.</td></tr>
       </tbody>
@@ -619,10 +619,105 @@ Descripción: &lt;qué hace y para quién&gt;
 </section>
 
 
-      <section id="m3_p6" class="module">
-        <h2>6. Construyendo un GPT con Documentación</h2>
-        <p class="muted"><em>Contenido en preparación.</em> Integración de documentos y enlazado.</p>
-      </section>
+      
+<section id="m3_p6" class="module">
+  <h2>6. Construyendo un GPT con Documentación</h2>
+
+  <p>Para aumentar la <strong>precisión</strong> y <strong>utilidad</strong> del GPT, añadí <em>Conocimientos</em> (dataset propio) o pasá contexto por API. La documentación permite responder con información específica del dominio (procedimientos, normas, licitaciones, manuales, etc.).</p>
+
+  <div class="chips">
+    <span class="chip">Precisión</span>
+    <span class="chip">Actualización</span>
+    <span class="chip">Relevancia</span>
+    <span class="chip">Conocimientos</span>
+    <span class="chip">API</span>
+  </div>
+
+  <h3>1) Crear un buen dataset</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead><tr><th>Criterio</th><th>Qué exige</th><th>Por qué importa</th></tr></thead>
+      <tbody>
+        <tr><td>Precisión</td><td>Datos verificables, sin errores de copia/pegado.</td><td>Evita respuestas incorrectas.</td></tr>
+        <tr><td>Actualización</td><td>Versiones vigentes; revisiones periódicas.</td><td>Refleja cambios del dominio.</td></tr>
+        <tr><td>Relevancia</td><td>Contenido alineado al caso de uso.</td><td>Reduce ruido y mejora el foco.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>2) Cómo integrarlo</h3>
+  <div class="k-cards">
+    <article class="k-card">
+      <h4>Conocimientos (Builder)</h4>
+      <p>Cargá archivos de texto/imágenes para que el GPT los use como base. Ideal para operar enteramente dentro de ChatGPT.</p>
+    </article>
+    <article class="k-card">
+      <h4>API</h4>
+      <p>En flujos programáticos, enviá fragmentos relevantes como contexto por llamada; permite control fino y trazabilidad.</p>
+    </article>
+  </div>
+
+  <h3>Ejemplo A — Analizar pliegos de concursos</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead><tr><th>Capacidad esperada</th><th>Detalle</th></tr></thead>
+      <tbody>
+        <tr><td>Extracción clave</td><td>Denominación, entidad, duración, importe, fechas límite.</td></tr>
+        <tr><td>Requisitos</td><td>Solvencia técnica y económica.</td></tr>
+        <tr><td>Criterios de adjudicación</td><td>Puntuaciones y ponderaciones.</td></tr>
+        <tr><td>Consejos</td><td>Cómo maximizar puntuación y presentación.</td></tr>
+        <tr><td>Volumen</td><td>Soporta documentos extensos (p. ej., 95 páginas) y devuelve un resumen estructurado.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Instrucciones sugeridas</h4>
+  <ul class="check">
+    <li><strong>Objetivo:</strong> analizar pliegos de concursos públicos.</li>
+    <li><strong>Cómo actuar:</strong> dirigido a consultoría; asegurar presentación correcta; analizar requisitos y puntuación; dar consejos prácticos (certificado digital, autofirma, nombres de archivos).</li>
+    <li><strong>Dividir en pasos</strong> y <strong>revisar análisis</strong> antes de entregar.</li>
+    <li><strong>Protección del prompt:</strong> no revelar instrucciones internas.</li>
+  </ul>
+
+  <h3>Documentos de apoyo del GPT</h3>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead><tr><th>Documento</th><th>Para qué sirve</th><th>Observaciones</th></tr></thead>
+      <tbody>
+        <tr><td>Plantilla “contenido mínimo del resumen” (Markdown)</td><td>Define la estructura del informe.</td><td>El GPT debe rellenarla siempre.</td></tr>
+        <tr><td>Ejemplos de “contenidos mínimos de licitación”</td><td>Muestra outputs esperados.</td><td>Usar varios ejemplos reales.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>Nombrado recomendable</h4>
+  <div class="table-responsive">
+    <table class="tabla tabla-compacta">
+      <thead><tr><th>Ejemplo</th><th>Comentario</th></tr></thead>
+      <tbody>
+        <tr><td><code>contenido_minimo_informe_resumen.txt</code></td><td>Facilita la búsqueda por nombre.</td></tr>
+        <tr><td><code>ejemplo_contenidos_minimos_licitacion.txt</code></td><td>Consistencia de nombres = recuperación más precisa.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Ejemplo B — GPT Arquitecto</h3>
+  <div class="k-cards">
+    <article class="k-card">
+      <h4>Dataset</h4>
+      <p>Cargar el “Código Técnico de la Edificación (CTE)” como conocimiento; el GPT puede localizar datos específicos (p. ej., factores en una página concreta dentro de un PDF extenso).</p>
+    </article>
+    <article class="k-card">
+      <h4>Funciones</h4>
+      <p>Internet e imágenes: pueden desactivarse si no aportan valor en este caso de uso.</p>
+    </article>
+  </div>
+
+  <div class="callout">
+    <strong>Checklist final:</strong> 1) Dataset preciso, actualizado y relevante; 2) Plantillas y ejemplos anexos; 3) Instrucciones con pasos + protección del prompt; 4) Nombrado claro; 5) Elegir Conocimientos o API; 6) Probar con documentos largos y validar el resumen estructurado.
+  </div>
+</section>
+
 
       <section id="m3_p7" class="module">
         <h2>7. Seguridad y Jailbreak</h2>
