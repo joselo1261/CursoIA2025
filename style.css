@@ -694,19 +694,8 @@ html { scroll-behavior: smooth; }
 }
 
 /* --- Stepper (flujo ML) --- */
-.stepper {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(120px,1fr));
-  gap: .6rem; margin: .8rem 0 1rem;
-}
-.s-step {
-  position: relative;
-  display: flex; align-items: center; gap: .65rem;
-  border: 1px solid var(--border-color); border-radius: 10px;
-  background: var(--card-bg); padding: 1rem .9rem .85rem 1rem;
-  box-shadow: 0 6px 14px var(--shadow-color);
-  
-overflow: visible; }
+.stepper { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: .8rem; margin: .8rem 0 1rem; }
+.s-step { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; border: 1px solid var(--border-color); border-radius: 10px; background: var(--card-bg); padding: 1rem .9rem .85rem 1rem; box-shadow: 0 6px 14px var(--shadow-color); overflow: visible; }
 .s-step::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0;
   width: 4px; background: var(--primary-color);
@@ -726,7 +715,7 @@ overflow: visible; }
 .s-label { font-weight: 600; }
 
 @media (max-width: 900px) {
-  .stepper { grid-template-columns: 1fr 1fr; }
+  .stepper { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: .8rem; margin: .8rem 0 1rem; }
 }
 
 
@@ -749,11 +738,11 @@ a:focus-visible { outline: 2px dashed var(--link-hover-color); outline-offset: 2
 .chip { border: 1px solid var(--border-color); background: var(--muted-bg); padding: .45rem .7rem; border-radius: 999px; box-shadow: 0 4px 10px var(--shadow-color); }
 
 /* --- Knowledge cards grid --- */
-.k-cards { display: grid; gap: .9rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: .6rem 0 1rem; }
+.k-cards { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: .6rem 0 1rem; }
 .k-card { border: 1px solid var(--border-color); background: var(--card-bg); border-radius: 14px; padding: .85rem 1rem; box-shadow: 0 6px 14px var(--shadow-color); }
 .k-card h4 { margin: 0 0 .45rem; font-size: 1.02rem; }
-@media (max-width: 1000px) { .k-cards { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .k-cards { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .k-cards { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: .6rem 0 1rem; } }
+@media (max-width: 640px) { .k-cards { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: .6rem 0 1rem; } }
 
 /* --- Process rail (GAN/Difusión) --- */
 .process-rail { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .6rem; margin: .6rem 0 1rem; }
@@ -1050,3 +1039,42 @@ a:focus-visible { outline: 2px dashed var(--link-hover-color); outline-offset: 2
     margin: 0 5px;
 }
 
+/* --- Ajustes Punto 8: botones de navegación (aislados) --- */
+.btn-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 14px auto 18px;
+  max-width: 900px;
+}
+@media (min-width: 900px) {
+  .btn-list { grid-template-columns: 1fr 1fr; }
+}
+.btn-long {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  background: var(--nav-bg-color);
+  color: var(--nav-link-color);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+.btn-long:hover {
+  background: var(--nav-hover-bg-color);
+  text-decoration: none;
+}
+.btn-long.ghost { background: transparent; border-color: var(--border-color); }
+.btn-long.xsmall { padding: 6px 10px; font-size: .9rem; border-radius: 14px; font-weight: 500; display: inline-block; width: auto; }
+.m2-back { text-align: center; margin: 12px 0; }
+
+.s-step p{margin:0;}
+
+/* --- Correcciones responsive para tablas y bloques de código --- */
+.tabla table { table-layout: fixed; width: 100%; }
+.tabla th, .tabla td { vertical-align: top; }
+.tabla td pre, .tabla td code { white-space: pre-wrap; word-break: break-word; max-width: 100%; display: block; }
+pre { overflow-x: auto; max-width: 100%; box-sizing: border-box; }

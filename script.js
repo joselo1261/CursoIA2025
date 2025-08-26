@@ -63,13 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
+  
   // === Footer ===
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
 
   const p = document.createElement('p');
-  p.innerHTML = `2025 - Realizado por Ing. Jose Luis Elisseche - <a href="https://www.linkedin.com/in/jle1261/" target="_blank" rel="noopener noreferrer"><img src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg" alt="LinkedIn" class="linkedin-icon"></a> - Agradecimiento especial a Jon Hernández / BIG school y todo su equipo de profesores.`;
+  p.innerHTML = '2025 - Realizado por Ing. Jose Luis Elisseche ';
+
+  // Enlace LinkedIn justo después del nombre
+  const a = document.createElement('a');
+  a.href = 'https://www.linkedin.com/in/jle1261/';
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  a.title = 'LinkedIn de Jose Luis Elisseche';
+  a.setAttribute('aria-label', 'LinkedIn de Jose Luis Elisseche');
+  a.innerHTML = '<svg class="linkedin-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.6c0-1.33-.03-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.7H9.32V9.75h3.42v1.46h.05c.48-.9 1.65-1.86 3.4-1.86 3.64 0 4.31 2.4 4.31 5.5v5.6ZM5.34 8.29a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9.75h3.56v10.7ZM22 2H2C.9 2 0 2.9 0 4v16c0 1.1.9 2 2 2h20a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z"/></svg>';
+  p.appendChild(a);
+
+  // Texto de agradecimiento después
+  const span = document.createElement('span');
+  span.textContent = ' - Agradecimiento especial a Jon Hernández / BIG school y todo su equipo de profesores.';
+  p.appendChild(span);
 
   footer.appendChild(p);
   document.body.appendChild(footer);
