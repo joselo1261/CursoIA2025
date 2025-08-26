@@ -6,6 +6,19 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Módulo 1: Introduciendo la Inteligencia Artificial</title>
 <link href="style.css" rel="stylesheet"/>
+
+    <style>
+      /* Highlight for Contenido dropdown */
+      .highlight-contenido > a,
+      .highlight-contenido .dropdown-toggle {
+        background-color: var(--primary-color);
+        color: var(--primary-text-color) !important;
+        border: 2px solid var(--primary-color);
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+    </style>
+    
 </head>
 <body>
 <header>
@@ -16,7 +29,7 @@
 <nav>
 <ul id="main-nav-list">
 <li><a href="index.html">Inicio</a></li>
-<li class="dropdown">
+<li class="dropdown highlight-contenido">
 <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" href="#">Contenido ▾</a>
 <ul class="dropdown-menu">
 <li><a href="#p1">1. ¿Qué es la Inteligencia Artificial?</a></li>

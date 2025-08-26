@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Módulo 3: GPTs</title>
   <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* Highlight for Contenido dropdown */
+      .highlight-contenido > a,
+      .highlight-contenido .dropdown-toggle {
+        background-color: var(--primary-color);
+        color: var(--primary-text-color) !important;
+        border: 2px solid var(--primary-color);
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+    </style>
+    
 </head>
 <body>
   <!-- Header consistente -->
@@ -19,7 +32,7 @@
     <nav>
       <ul id="main-nav-list">
         <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown">
+        <li class="dropdown highlight-contenido">
           <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
           <ul class="dropdown-menu">
             <li><a href="#m3_p1">1. Introducción a los GPTs</a></li>
