@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noticias de IA</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    /* Resaltar 'Noticias' en esta página */
+    .highlight-noticias > a {
+      background-color: var(--primary-color);
+      color: var(--primary-text-color) !important;
+      border: 2px solid var(--primary-color);
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+  </style>
+<style>/* Highlight for Contenido dropdown */
+.highlight-contenido > a,
+.highlight-contenido .dropdown-toggle {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color) !important;
+  border: 2px solid var(--primary-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+}</style></head>
+<body>
+<header>
+<h1>Noticias de Inteligencia Artificial</h1>
+<p>Mantente al día con las novedades más relevantes en español.</p>
+</header>
+<div class="container">
+<nav>
+<ul id="main-nav-list">
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown highlight-contenido">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" href="#">Contenido ▾</a>
+<ul class="dropdown-menu">
+<li><a href="#fuentes">Fuentes destacadas</a></li>
+<li><a href="#hoy">Últimos titulares (manual)</a></li>
+<li><a href="#consejos">Cómo mantenerse al día</a></li>
+</ul>
+</li>
+<li><a href="herramientas.html">Herramientas</a></li>
+<li><a href="glosario.html">Glosario</a></li>
+</ul>
+<button id="theme-toggle">🌙</button>
+<button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
+</nav>
+<main>
+<section class="module" id="intro">
+<h2>Tu resumen diario en español</h2>
+<p>Acá tendrás un acceso rápido a fuentes confiables y un espacio para listar los titulares más importantes del día.</p>
+<p class="muted">Por ahora, la recopilación de titulares es manual; más adelante podemos automatizarla con RSS.</p>
+</section>
+<section class="module" id="fuentes">
+<h3>Fuentes destacadas</h3>
+<div class="btn-list">
+<a class="btn" href="https://www.xataka.com/categoria/inteligencia-artificial" rel="noopener noreferrer" target="_blank">Xataka · IA</a>
+<a class="btn" href="https://www.genbeta.com/categoria/inteligencia-artificial" rel="noopener noreferrer" target="_blank">Genbeta · IA</a>
+<a class="btn" href="https://hipertextual.com/tag/inteligencia-artificial" rel="noopener noreferrer" target="_blank">Hipertextual · IA</a>
+<a class="btn" href="https://elpais.com/tecnologia/inteligencia-artificial/" rel="noopener noreferrer" target="_blank">EL PAÍS · IA</a>
+<a class="btn" href="https://www.infobae.com/tag/inteligencia-artificial/" rel="noopener noreferrer" target="_blank">Infobae · IA</a>
+<a class="btn" href="https://es.wired.com/tag/inteligencia-artificial" rel="noopener noreferrer" target="_blank">WIRED (ES) · IA</a>
+<a class="btn" href="https://www.eldiario.es/tecnologia/inteligencia-artificial/" rel="noopener noreferrer" target="_blank">elDiario.es · IA</a>
+<a class="btn" href="https://diarioia.com/" rel="noopener noreferrer" target="_blank">DiarioIA</a>
+</div>
+<p class="muted">Sugerencia: visitá 2–3 fuentes por día; guardá los mejores titulares en la sección de abajo.</p>
+</section>
+<section class="module" id="hoy">
+<h3>Últimos titulares (manual)</h3>
+<div class="table-responsive">
+<table class="tabla tabla-compacta">
+<thead><tr><th>Fecha</th><th>Titular</th><th>Fuente</th></tr></thead>
+<tbody>
+<tr><td>—</td><td>Agregá aquí tu primer titular</td><td>—</td></tr>
+<tr><td>—</td><td>…y otro titular breve</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="module" id="consejos">
+<h3>Cómo mantenerse al día</h3>
+<ul class="check">
+<li>Definí 10 minutos diarios para leer titulares.</li>
+<li>Priorizá notas con impacto en tu trabajo o industria.</li>
+<li>Guardá resúmenes en un documento para consulta rápida.</li>
+<li>Si un tema es clave, volvemos a ver su cobertura en varios medios.</li>
+</ul>
+<div class="callout">
+<strong>Próximo paso:</strong> podemos añadir una página “Resumen diario” y automatizar titulares con RSS.
+        </div>
+</section>
+</main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

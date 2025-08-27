@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Herramientas de Inteligencia Artificial.">
-    <title>Herramientas de Inteligencia Artificial</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Herramientas de Inteligencia Artificial." name="description"/>
+<title>Herramientas de Inteligencia Artificial</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
         /* Highlight for Categories dropdown */
         .dropdown .dropbtn {
             background-color: var(--primary-color);
@@ -23,547 +24,525 @@
     </style>
 </head>
 <body id="top">
-
-    <header>
-        <h1>Herramientas de Inteligencia Artificial</h1>
-        <p>Explora las principales herramientas de IA</p>
-    </header>
-
-    <div class="container">
-        <nav>
-            <ul id="main-nav-list">
-                <li><a href="index.html">Inicio</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Categorías &#9662;</a>
-                    <div class="dropdown-content">
-                        <a href="#tools-automatizaciones">Automatizaciones</a>
-                        <a href="#tools-chatbots">Chatbots</a>
-                        <a href="#tools-directories">Directorios de IA</a>
-                        <a href="#tools-google">Ecosistema de Google</a>
-                        <a href="#tools-china">IA Chinas</a>
-                        <a href="#tools-images">Imágenes</a>
-                        <a href="#tools-programming">Programación</a>
-                        <a href="#tools-video">Video</a>
-                        <a href="#tools-voice">Voz</a>
-                    </div>
-                </li>
-                <li><a href="glosario.html">Glosario</a></li>
-            </ul>
-            <button id="theme-toggle">🌙</button>
-            <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
-        </nav>
-
-        <main>
-            <section id="herramientas-content" class="module">
-                <!-- Content from index.html#m5 will go here -->
-
-                <div class="category-section">
-                    <section id="tools-automatizaciones" class="module">
-                        <h3>Automatizaciones</h3>
-                        <h4>No-code / low-code (rápidas para integrar apps)</h4>
-                        <ul class="tool-card-grid">
-                            <li class="tool-card">
-                                <a href="https://www.activepieces.com/" target="_blank">Activepieces</a>
-                                <p>alternativa open-source “estilo Zapier? se puede self-hostear o usar en la nube.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://www.make.com/" target="_blank">Make (ex Integromat)</a>
-                                <p>builder visual muy flexible (routers, arrays), con foco en compliance (GDPR, SOC 2 Type II). Buena relación potencia/precio.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://pipedream.com/" target="_blank">Pipedream</a>
-                                <p>híbrido no-code + code; excelente para APIs con pasos JavaScript/Node y webhooks. Bueno para devs que quieren control.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://zapier.com/" target="_blank">Zapier</a>
-                                <p>enorme ecosistema (8.000+ apps) y módulos como Canvas y Functions para flujos más complejos. Ideal cuando querés velocidad sin code.</p>
-                            </li>
-                        </ul>
-
-                        <h4>Open-source / self-host (control y privacidad)</h4>
-                        <ul class="tool-card-grid">
-                            <li class="tool-card">
-                                <a href="https://github.com/huginn/huginn" target="_blank">Huginn</a>
-                                <p>version hackeable de IFTTT/Zapier, en tu propio servidor, basado en agentes que leen la web y actúan.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://n8n.io/" target="_blank">n8n</a>
-                                <p>flujos drag-and-drop o con código; self-host u hospedado por ellos. Fuerte para equipos técnicos y agentes/LLMs.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://nodered.org/" target="_blank">Node-RED</a>
-                                <p>low-code para eventos/IoT; gran comunidad de nodes y despliegue sencillo.</p>
-                            </li>
-                        </ul>
-
-                        <h4>iPaaS enterprise (seguridad, gobierno, escala)</h4>
-                        <ul class="tool-card-grid">
-                            <li class="tool-card">
-                                <a href="https://tray.io/" target="_blank">Tray.io</a>
-                                <p>low-code para integraciones complejas y agentes; pensado para equipos de ops y TI.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://workato.com/" target="_blank">Workato</a>
-                                <p>plataforma de orquestación e integración enterprise con fuerte enfoque AI/agents.</p>
-                            </li>
-                        </ul>
-
-                        <h4>RPA (robots de escritorio/web + procesos)</h4>
-                        <ul class="tool-card-grid">
-                            <li class="tool-card">
-                                <a href="https://www.automationanywhere.com/" target="_blank">Automation Anywhere</a>
-                                <p>RPA cloud con bots y capacidades AI para procesos críticos.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://www.blueprism.com/" target="_blank">Blue Prism</a>
-                                <p>RPA enterprise con fuerte foco en seguridad y gobierno.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://powerautomate.microsoft.com/" target="_blank">Microsoft Power Automate</a>
-                                <p>combina cloud flows con Desktop (RPA) y cientos de conectores (ecosistema M365).</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://www.uipath.com/" target="_blank">UiPath</a>
-                                <p>suite RPA muy completa (UI+API, process mining, governance).</p>
-                            </li>
-                        </ul>
-
-                        <h4>Otras útiles según caso</h4>
-                        <ul class="tool-card-grid">
-                            <li class="tool-card">
-                                <a href="https://www.bardeen.ai/" target="_blank">Bardeen</a>
-                                <p>automatización desde el navegador (scraping ligero, prospección, workflows GTM).</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://ifttt.com/" target="_blank">IFTTT</a>
-                                <p>simples para hogar/ móvil/pequeñas tareas de negocio.</p>
-                            </li>
-                            <li class="tool-card">
-                                <a href="https://parabola.io/" target="_blank">Parabola</a>
-                                <p>automatización de datos para retail/e-commerce (emails, PDFs, hojas de cálculo, ERP/Shopify).</p>
-                            </li>
-                        </ul>
-                    </section>
-                </div>
-
-                <div class="category-section">
-                    <h3 id="tools-chatbots">Chatbots y Asistentes Conversacionales</h3>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://www.character.ai/" target="_blank">Character.AI</a>
-                            <p>Permite conversar con personalidades de IA de ficción o históricas.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://chatgpt.com/" target="_blank">ChatGPT (OpenAI)</a>
-                            <p>El popular chatbot versátil para todo tipo de tareas.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://claude.ai/" target="_blank">Claude (Anthropic)</a>
-                            <p>Destaca por su gran "ventana de contexto" para analizar documentos largos.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://grok.x.ai/" target="_blank">Grok (xAI)</a>
-                            <p>El chatbot de X, con acceso a información en tiempo real.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://copilot.microsoft.com/" target="_blank">Microsoft Copilot</a>
-                            <p>El asistente de IA de Microsoft, integrado en Windows y Edge.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.perplexity.ai/" target="_blank">Perplexity AI</a>
-                            <p>Un motor de respuestas que cita sus fuentes, ideal para investigación.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.phind.com/" target="_blank">Phind</a>
-                            <p>Un motor de búsqueda y respuestas enfocado en desarrolladores.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://pi.ai/" target="_blank">Pi, your personal AI</a>
-                            <p>Un chatbot diseñado para ser empático y comprensivo.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://poe.com/" target="_blank">Poe (de Quora)</a>
-                            <p>Agrupa múltiples modelos de IA en una sola interfaz.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://you.com/" target="_blank">You.com</a>
-                            <p>El asistente de búsqueda con IA para la web.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="category-section">
-                    <h3 id="tools-directories">Directorios de IA</h3>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://aitoptools.com/" target="_blank">AI Top Tools</a>
-                            <p>Directorio curado con reseñas y guías.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.findmyaitool.com/" target="_blank">Find My AI Tool</a>
-                            <p>Busca herramientas por categoría y palabra clave.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://futurepedia.io/" target="_blank">Futurepedia</a>
-                            <p>Otro directorio masivo de herramientas de IA, actualizado diariamente.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.g2.com/best-software-companies/top-ai" target="_blank">G2</a>
-                            <p>Plataforma de reseñas de software con una sección de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://opentools.ai/" target="_blank">OpenTools</a>
-                            <p>Un directorio de herramientas de IA de código abierto curado por la comunidad.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.producthunt.com/" target="_blank">Product Hunt</a>
-                            <p>Encuentra los últimos lanzamientos de productos de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.saashub.com/" target="_blank">SaaSHub</a>
-                            <p>Descubre y compara software, incluyendo una gran sección de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://theresanaiforthat.com/" target="_blank">There's An AI For That</a>
-                            <p>La base de datos más grande de herramientas de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.toolify.ai/" target="_blank">Toolify</a>
-                            <p>Un completo directorio para descubrir nuevas herramientas de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://topai.tools/" target="_blank">Top AI Tools</a>
-                            <p>Un directorio simple y fácil de navegar.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="category-section google-section">
-                    <h3 id="tools-google">Ecosistema de IA de Google</h3>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://cloud.google.com/tpu/" target="_blank">Cloud TPUs</a>
-                            <p>Hardware especializado para acelerar cargas de trabajo de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <strong>Gems (en Gemini Advanced)</strong>
-                            <p>Permite crear versiones personalizadas de Gemini.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://gemini.google.com/" target="_blank">Gemini</a>
-                            <p>El modelo multimodal más avanzado de Google.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://ai.google/build/" target="_blank">Google AI Platform</a>
-                            <p>Herramientas para desarrolladores de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://colab.research.google.com/" target="_blank">Google Colab</a>
-                            <p>Entorno de programación en la nube con acceso a GPUs.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://deepmind.google/technologies/" target="_blank">Google DeepMind</a>
-                            <p>Laboratorio de investigación líder en avances de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.kaggle.com/" target="_blank">Kaggle</a>
-                            <p>Comunidad para científicos de datos con datasets y competiciones.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://notebooklm.google.com/" target="_blank">NotebookLM</a>
-                            <p>Asistente de investigación personal basado en tus fuentes.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://tensorflow.org" target="_blank">TensorFlow</a>
-                            <p>La biblioteca de código abierto para ML y IA de Google.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://cloud.google.com/vertex-ai" target="_blank">Vertex AI</a>
-                            <p>Plataforma para construir y desplegar modelos de ML.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="category-section">
-                    <h3 id="tools-china" style="color: red;">IA Chinas</h3>
-                    <h4>LLMs generales (SaaS/API)</h4>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://intl.cloud.baidu.com/en/" target="_blank" style="color: red;">Baidu — ERNIE / Qianfan</a>
-                            <p>suite empresarial (incl. razón/multimodal).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://seed.bytedance.com/en/" target="_blank" style="color: red;">ByteDance — Doubao (Volcano Engine)</a>
-                            <p>foco precio/volumen.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://chat.deepseek.com/" target="_blank" style="color: red;">DeepSeek (R1 / V3)</a>
-                            <p>razonamiento y costo agresivo.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.huaweicloud.com/intl/en-us/" target="_blank" style="color: red;">Huawei — Pangu</a>
-                            <p>modelos por industria (cloud/on-prem).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.iflytek.com/en/" target="_blank" style="color: red;">iFLYTEK — Spark</a>
-                            <p>LLM + voz (ecosistema hardware/software).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.sensetime.com/en/" target="_blank" style="color: red;">SenseTime — SenseNova</a>
-                            <p>plataforma multimodal enterprise.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.tencent.com/en-us/" target="_blank" style="color: red;">Tencent — Hunyuan</a>
-                            <p>LLM corporativo + familia multimodal.</p>
-                        </li>
-                    </ul>
-                    <h4>Open-source / auto-hosting (pesos y docs en EN)</h4>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://01.ai" target="_blank" style="color: red;">01.AI — Yi</a>
-                            <p>(Yi-1.5, Yi-VL, Yi-Coder).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://qwenlm.github.io/blog/qwen3/" target="_blank" style="color: red;">Alibaba — Qwen3</a>
-                            <p>(serie abierta + APIs).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://bagel-ai.org/" target="_blank" style="color: red;">BAGEL</a>
-                            <p>El Modelo Multimodal Unificado de Código Abierto.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.baichuan-ai.com" target="_blank" style="color: red;">Baichuan — Baichuan2</a>
-                            <p>(base y chat).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.openbmb.org" target="_blank" style="color: red;">OpenBMB — MiniCPM (V / o)</a>
-                            <p>(multimodal, edge).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.shlab.org.cn/en" target="_blank" style="color: red;">Shanghai AI Lab — InternLM / InternVL</a>
-                            <p>(LLM + VLM).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.xverse.cn/en" target="_blank" style="color: red;">XVERSE — XVERSE-LLM</a>
-                            <p>(7B–65B; multilingüe).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://z.ai" target="_blank" style="color: red;">Zhipu (Z.ai) — GLM-4.5</a>
-                            <p>(open-source; foco “agents”).</p>
-                        </li>
-                    </ul>
-                    <h4>Video generativo (texto-a-video)</h4>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://klingai.com/" target="_blank" style="color: red;">Kuaishou — Kling</a>.
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://hunyuan.tencent.com/bot/video" target="_blank" style="color: red;">Tencent — HunyuanVideo (13B)</a>.
-                        </li>
-                    </ul>
-                    <h4>Mixto (SaaS + OS)</h4>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://platform.moonshot.cn/" target="_blank" style="color: red;">Moonshot AI — Kimi / K2</a>
-                            <p>(app + modelo abierto K2).</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="category-section">
-                    <h3 id="tools-images">Generación de Imágenes</h3>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://firefly.adobe.com/" target="_blank">Adobe Firefly</a>
-                            <p>La IA generativa integrada en la suite de Adobe.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://clipdrop.co/" target="_blank">Clipdrop (by Stability AI)</a>
-                            <p>Ecosistema de apps y herramientas de imagen.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://openai.com/dall-e-3" target="_blank">DALL-E 3 (OpenAI)</a>
-                            <p>Integrado en herramientas como ChatGPT y Microsoft Copilot.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://ideogram.ai/" target="_blank">Ideogram</a>
-                            <p>Destaca por su capacidad para generar texto coherente en las imágenes.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.krea.ai/" target="_blank">Krea AI</a>
-                            <p>Generación de imágenes y videos en tiempo real.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://leonardo.ai/" target="_blank">Leonardo.Ai</a>
-                            <p>Plataforma para crear assets de videojuegos y arte conceptual.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://magnific.ai/" target="_blank">Magnific AI</a>
-                            <p>Herramienta para mejorar la resolución y el detalle de las imágenes.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.midjourney.com/" target="_blank">Midjourney</a>
-                            <p>Famoso por sus imágenes de alta calidad y estilo artístico.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://playground.com/" target="_blank">Playground AI</a>
-                            <p>Editor de imágenes online con generación de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://stability.ai/stable-diffusion" target="_blank">Stable Diffusion</a>
-                            <p>Modelo de código abierto con una gran comunidad de usuarios.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="category-section">
-                    <h3 id="tools-programming">Asistentes de Programación</h3>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://aws.amazon.com/codewhisperer/" target="_blank">Amazon CodeWhisperer</a>
-                            <p>El asistente de código de AWS, gratuito para desarrolladores.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.askcodi.com/" target="_blank">AskCodi</a>
-                            <p>Asistente para desarrolladores con varias funcionalidades.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.bito.ai/" target="_blank">Bito AI</a>
-                            <p>Ayuda a generar código, tests y documentación.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.codeium.com/" target="_blank">Codeium</a>
-                            <p>Alternativa a Copilot con un generoso plan gratuito.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://sourcegraph.com/cody" target="_blank">Cody (Sourcegraph)</a>
-                            <p>Asistente con conocimiento de toda tu base de código.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://cursor.sh/" target="_blank">Cursor</a>
-                            <p>Un editor de código "AI-first" con múltiples asistentes integrados.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a>
-                            <p>El "copiloto" de código más popular, integrado en el editor.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://refact.ai/" target="_blank">Refact.ai</a>
-                            <p>Herramienta de IA para analizar, refactorizar y mejorar código.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://replit.com/" target="_blank">Replit AI</a>
-                            <p>Ayuda a escribir y depurar código en su IDE online.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.tabnine.com/" target="_blank">Tabnine</a>
-                            <p>Asistente de código que se personaliza según tus patrones.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="category-section">
-                    <h3 id="tools-video">Generación y Edición de Video</h3>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://descript.com/" target="_blank">Descript</a>
-                            <p>Edición de video y audio tan fácil como editar un documento.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://fliki.ai/" target="_blank">Fliki</a>
-                            <p>Convierte texto en videos con voces de IA.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.heygen.com/" target="_blank">HeyGen</a>
-                            <p>Videos con avatares, traducción de video y clonación de voz.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://invideo.io/" target="_blank">InVideo AI</a>
-                            <p>Crea videos a partir de un simple prompt de texto.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://pictory.ai/" target="_blank">Pictory</a>
-                            <p>Crea videos cortos a partir de contenido de texto largo.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://pika.art/" target="_blank">Pika</a>
-                            <p>Herramienta para generar y editar video a partir de texto e imágenes.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://runwayml.com/" target="_blank">Runway</a>
-                            <p>Suite de edición de video con IA, incluyendo Texto-a-Video.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://openai.com/sora" target="_blank">Sora (OpenAI)</a>
-                            <p>Modelo de texto-a-video de alta calidad (aún no público).</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.synthesia.io/" target="_blank">Synthesia</a>
-                            <p>Crea videos profesionales con avatares de IA realistas.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.veed.io/" target="_blank">Veed.io</a>
-                            <p>Editor de video online con un conjunto de herramientas de IA.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="category-section">
-                    <h3 id="tools-voice">Generación y Clonación de Voz</h3>
-                    <ul class="tool-card-grid">
-                        <li class="tool-card">
-                            <a href="https://coqui.ai/" target="_blank">Coqui</a>
-                            <p>Voces emotivas y realistas con modelos de código abierto.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://elevenlabs.io/" target="_blank">ElevenLabs</a>
-                            <p>Voces ultra realistas y clonación de voz de alta calidad.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://lovo.ai/" target="_blank">Lovo.ai</a>
-                            <p>Generador de voz con más de 500 voces en 100 idiomas.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://murf.ai/" target="_blank">Murf.ai</a>
-                            <p>Locuciones de calidad de estudio con un amplio catálogo de voces.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://play.ht/" target="_blank">Play.ht</a>
-                            <p>Generador de voz con IA y clones de voz realistas.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https.replicastudios.com/" target="_blank">Replica Studios</a>
-                            <p>Voces de IA para personajes de videojuegos y animación.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://www.resemble.ai/" target="_blank">Resemble.ai</a>
-                            <p>Plataforma completa para clonación y generación de voz.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://speechify.com/" target="_blank">Speechify</a>
-                            <p>Lector de texto-a-voz con voces naturales.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://elevenlabs.io/voice-cloning" target="_blank">Voice Cloning (ElevenLabs)</a>
-                            <p>Herramienta específica para clonar tu propia voz.</p>
-                        </li>
-                        <li class="tool-card">
-                            <a href="https://wellsaidlabs.com/" target="_blank">WellSaid Labs</a>
-                            <p>Voces de IA para producciones corporativas y creativas.</p>
-                        </li>
-                    </ul>
-                </div>
-
-            </section>
-
-        </main>
-
-        <footer>
-        </footer>
-
-    </div>
-
-    <script src="script.js" defer></script>
-
+<header>
+<h1>Herramientas de Inteligencia Artificial</h1>
+<p>Explora las principales herramientas de IA</p>
+</header>
+<div class="container">
+<nav>
+<ul id="main-nav-list">
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown">
+<a class="dropbtn" href="#">Categorías ▾</a>
+<div class="dropdown-content">
+<a href="#tools-automatizaciones">Automatizaciones</a>
+<a href="#tools-chatbots">Chatbots</a>
+<a href="#tools-directories">Directorios de IA</a>
+<a href="#tools-google">Ecosistema de Google</a>
+<a href="#tools-china">IA Chinas</a>
+<a href="#tools-images">Imágenes</a>
+<a href="#tools-programming">Programación</a>
+<a href="#tools-video">Video</a>
+<a href="#tools-voice">Voz</a>
+</div>
+</li>
+<li><a href="glosario.html">Glosario</a></li>
+</ul>
+<button id="theme-toggle">🌙</button>
+<button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
+</nav>
+<main>
+<section class="module" id="herramientas-content">
+<!-- Content from index.html#m5 will go here -->
+<div class="category-section">
+<section class="module" id="tools-automatizaciones">
+<h3>Automatizaciones</h3>
+<h4>No-code / low-code (rápidas para integrar apps)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://www.activepieces.com/" target="_blank">Activepieces</a>
+<p>alternativa open-source “estilo Zapier? se puede self-hostear o usar en la nube.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.make.com/" target="_blank">Make (ex Integromat)</a>
+<p>builder visual muy flexible (routers, arrays), con foco en compliance (GDPR, SOC 2 Type II). Buena relación potencia/precio.</p>
+</li>
+<li class="tool-card">
+<a href="https://pipedream.com/" target="_blank">Pipedream</a>
+<p>híbrido no-code + code; excelente para APIs con pasos JavaScript/Node y webhooks. Bueno para devs que quieren control.</p>
+</li>
+<li class="tool-card">
+<a href="https://zapier.com/" target="_blank">Zapier</a>
+<p>enorme ecosistema (8.000+ apps) y módulos como Canvas y Functions para flujos más complejos. Ideal cuando querés velocidad sin code.</p>
+</li>
+</ul>
+<h4>Open-source / self-host (control y privacidad)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://github.com/huginn/huginn" target="_blank">Huginn</a>
+<p>version hackeable de IFTTT/Zapier, en tu propio servidor, basado en agentes que leen la web y actúan.</p>
+</li>
+<li class="tool-card">
+<a href="https://n8n.io/" target="_blank">n8n</a>
+<p>flujos drag-and-drop o con código; self-host u hospedado por ellos. Fuerte para equipos técnicos y agentes/LLMs.</p>
+</li>
+<li class="tool-card">
+<a href="https://nodered.org/" target="_blank">Node-RED</a>
+<p>low-code para eventos/IoT; gran comunidad de nodes y despliegue sencillo.</p>
+</li>
+</ul>
+<h4>iPaaS enterprise (seguridad, gobierno, escala)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://tray.io/" target="_blank">Tray.io</a>
+<p>low-code para integraciones complejas y agentes; pensado para equipos de ops y TI.</p>
+</li>
+<li class="tool-card">
+<a href="https://workato.com/" target="_blank">Workato</a>
+<p>plataforma de orquestación e integración enterprise con fuerte enfoque AI/agents.</p>
+</li>
+</ul>
+<h4>RPA (robots de escritorio/web + procesos)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://www.automationanywhere.com/" target="_blank">Automation Anywhere</a>
+<p>RPA cloud con bots y capacidades AI para procesos críticos.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.blueprism.com/" target="_blank">Blue Prism</a>
+<p>RPA enterprise con fuerte foco en seguridad y gobierno.</p>
+</li>
+<li class="tool-card">
+<a href="https://powerautomate.microsoft.com/" target="_blank">Microsoft Power Automate</a>
+<p>combina cloud flows con Desktop (RPA) y cientos de conectores (ecosistema M365).</p>
+</li>
+<li class="tool-card">
+<a href="https://www.uipath.com/" target="_blank">UiPath</a>
+<p>suite RPA muy completa (UI+API, process mining, governance).</p>
+</li>
+</ul>
+<h4>Otras útiles según caso</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://www.bardeen.ai/" target="_blank">Bardeen</a>
+<p>automatización desde el navegador (scraping ligero, prospección, workflows GTM).</p>
+</li>
+<li class="tool-card">
+<a href="https://ifttt.com/" target="_blank">IFTTT</a>
+<p>simples para hogar/ móvil/pequeñas tareas de negocio.</p>
+</li>
+<li class="tool-card">
+<a href="https://parabola.io/" target="_blank">Parabola</a>
+<p>automatización de datos para retail/e-commerce (emails, PDFs, hojas de cálculo, ERP/Shopify).</p>
+</li>
+</ul>
+</section>
+</div>
+<div class="category-section">
+<h3 id="tools-chatbots">Chatbots y Asistentes Conversacionales</h3>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://www.character.ai/" target="_blank">Character.AI</a>
+<p>Permite conversar con personalidades de IA de ficción o históricas.</p>
+</li>
+<li class="tool-card">
+<a href="https://chatgpt.com/" target="_blank">ChatGPT (OpenAI)</a>
+<p>El popular chatbot versátil para todo tipo de tareas.</p>
+</li>
+<li class="tool-card">
+<a href="https://claude.ai/" target="_blank">Claude (Anthropic)</a>
+<p>Destaca por su gran "ventana de contexto" para analizar documentos largos.</p>
+</li>
+<li class="tool-card">
+<a href="https://grok.x.ai/" target="_blank">Grok (xAI)</a>
+<p>El chatbot de X, con acceso a información en tiempo real.</p>
+</li>
+<li class="tool-card">
+<a href="https://copilot.microsoft.com/" target="_blank">Microsoft Copilot</a>
+<p>El asistente de IA de Microsoft, integrado en Windows y Edge.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.perplexity.ai/" target="_blank">Perplexity AI</a>
+<p>Un motor de respuestas que cita sus fuentes, ideal para investigación.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.phind.com/" target="_blank">Phind</a>
+<p>Un motor de búsqueda y respuestas enfocado en desarrolladores.</p>
+</li>
+<li class="tool-card">
+<a href="https://pi.ai/" target="_blank">Pi, your personal AI</a>
+<p>Un chatbot diseñado para ser empático y comprensivo.</p>
+</li>
+<li class="tool-card">
+<a href="https://poe.com/" target="_blank">Poe (de Quora)</a>
+<p>Agrupa múltiples modelos de IA en una sola interfaz.</p>
+</li>
+<li class="tool-card">
+<a href="https://you.com/" target="_blank">You.com</a>
+<p>El asistente de búsqueda con IA para la web.</p>
+</li>
+</ul>
+</div>
+<div class="category-section">
+<h3 id="tools-directories">Directorios de IA</h3>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://aitoptools.com/" target="_blank">AI Top Tools</a>
+<p>Directorio curado con reseñas y guías.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.findmyaitool.com/" target="_blank">Find My AI Tool</a>
+<p>Busca herramientas por categoría y palabra clave.</p>
+</li>
+<li class="tool-card">
+<a href="https://futurepedia.io/" target="_blank">Futurepedia</a>
+<p>Otro directorio masivo de herramientas de IA, actualizado diariamente.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.g2.com/best-software-companies/top-ai" target="_blank">G2</a>
+<p>Plataforma de reseñas de software con una sección de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://opentools.ai/" target="_blank">OpenTools</a>
+<p>Un directorio de herramientas de IA de código abierto curado por la comunidad.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.producthunt.com/" target="_blank">Product Hunt</a>
+<p>Encuentra los últimos lanzamientos de productos de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.saashub.com/" target="_blank">SaaSHub</a>
+<p>Descubre y compara software, incluyendo una gran sección de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://theresanaiforthat.com/" target="_blank">There's An AI For That</a>
+<p>La base de datos más grande de herramientas de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.toolify.ai/" target="_blank">Toolify</a>
+<p>Un completo directorio para descubrir nuevas herramientas de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://topai.tools/" target="_blank">Top AI Tools</a>
+<p>Un directorio simple y fácil de navegar.</p>
+</li>
+</ul>
+</div>
+<div class="category-section google-section">
+<h3 id="tools-google">Ecosistema de IA de Google</h3>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://cloud.google.com/tpu/" target="_blank">Cloud TPUs</a>
+<p>Hardware especializado para acelerar cargas de trabajo de IA.</p>
+</li>
+<li class="tool-card">
+<strong>Gems (en Gemini Advanced)</strong>
+<p>Permite crear versiones personalizadas de Gemini.</p>
+</li>
+<li class="tool-card">
+<a href="https://gemini.google.com/" target="_blank">Gemini</a>
+<p>El modelo multimodal más avanzado de Google.</p>
+</li>
+<li class="tool-card">
+<a href="https://ai.google/build/" target="_blank">Google AI Platform</a>
+<p>Herramientas para desarrolladores de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://colab.research.google.com/" target="_blank">Google Colab</a>
+<p>Entorno de programación en la nube con acceso a GPUs.</p>
+</li>
+<li class="tool-card">
+<a href="https://deepmind.google/technologies/" target="_blank">Google DeepMind</a>
+<p>Laboratorio de investigación líder en avances de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.kaggle.com/" target="_blank">Kaggle</a>
+<p>Comunidad para científicos de datos con datasets y competiciones.</p>
+</li>
+<li class="tool-card">
+<a href="https://notebooklm.google.com/" target="_blank">NotebookLM</a>
+<p>Asistente de investigación personal basado en tus fuentes.</p>
+</li>
+<li class="tool-card">
+<a href="https://tensorflow.org" target="_blank">TensorFlow</a>
+<p>La biblioteca de código abierto para ML y IA de Google.</p>
+</li>
+<li class="tool-card">
+<a href="https://cloud.google.com/vertex-ai" target="_blank">Vertex AI</a>
+<p>Plataforma para construir y desplegar modelos de ML.</p>
+</li>
+</ul>
+</div>
+<div class="category-section">
+<h3 id="tools-china" style="color: red;">IA Chinas</h3>
+<h4>LLMs generales (SaaS/API)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://intl.cloud.baidu.com/en/" style="color: red;" target="_blank">Baidu — ERNIE / Qianfan</a>
+<p>suite empresarial (incl. razón/multimodal).</p>
+</li>
+<li class="tool-card">
+<a href="https://seed.bytedance.com/en/" style="color: red;" target="_blank">ByteDance — Doubao (Volcano Engine)</a>
+<p>foco precio/volumen.</p>
+</li>
+<li class="tool-card">
+<a href="https://chat.deepseek.com/" style="color: red;" target="_blank">DeepSeek (R1 / V3)</a>
+<p>razonamiento y costo agresivo.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.huaweicloud.com/intl/en-us/" style="color: red;" target="_blank">Huawei — Pangu</a>
+<p>modelos por industria (cloud/on-prem).</p>
+</li>
+<li class="tool-card">
+<a href="https://www.iflytek.com/en/" style="color: red;" target="_blank">iFLYTEK — Spark</a>
+<p>LLM + voz (ecosistema hardware/software).</p>
+</li>
+<li class="tool-card">
+<a href="https://www.sensetime.com/en/" style="color: red;" target="_blank">SenseTime — SenseNova</a>
+<p>plataforma multimodal enterprise.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.tencent.com/en-us/" style="color: red;" target="_blank">Tencent — Hunyuan</a>
+<p>LLM corporativo + familia multimodal.</p>
+</li>
+</ul>
+<h4>Open-source / auto-hosting (pesos y docs en EN)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://01.ai" style="color: red;" target="_blank">01.AI — Yi</a>
+<p>(Yi-1.5, Yi-VL, Yi-Coder).</p>
+</li>
+<li class="tool-card">
+<a href="https://qwenlm.github.io/blog/qwen3/" style="color: red;" target="_blank">Alibaba — Qwen3</a>
+<p>(serie abierta + APIs).</p>
+</li>
+<li class="tool-card">
+<a href="https://bagel-ai.org/" style="color: red;" target="_blank">BAGEL</a>
+<p>El Modelo Multimodal Unificado de Código Abierto.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.baichuan-ai.com" style="color: red;" target="_blank">Baichuan — Baichuan2</a>
+<p>(base y chat).</p>
+</li>
+<li class="tool-card">
+<a href="https://www.openbmb.org" style="color: red;" target="_blank">OpenBMB — MiniCPM (V / o)</a>
+<p>(multimodal, edge).</p>
+</li>
+<li class="tool-card">
+<a href="https://www.shlab.org.cn/en" style="color: red;" target="_blank">Shanghai AI Lab — InternLM / InternVL</a>
+<p>(LLM + VLM).</p>
+</li>
+<li class="tool-card">
+<a href="https://www.xverse.cn/en" style="color: red;" target="_blank">XVERSE — XVERSE-LLM</a>
+<p>(7B–65B; multilingüe).</p>
+</li>
+<li class="tool-card">
+<a href="https://z.ai" style="color: red;" target="_blank">Zhipu (Z.ai) — GLM-4.5</a>
+<p>(open-source; foco “agents”).</p>
+</li>
+</ul>
+<h4>Video generativo (texto-a-video)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://klingai.com/" style="color: red;" target="_blank">Kuaishou — Kling</a>.
+                        </li>
+<li class="tool-card">
+<a href="https://hunyuan.tencent.com/bot/video" style="color: red;" target="_blank">Tencent — HunyuanVideo (13B)</a>.
+                        </li>
+</ul>
+<h4>Mixto (SaaS + OS)</h4>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://platform.moonshot.cn/" style="color: red;" target="_blank">Moonshot AI — Kimi / K2</a>
+<p>(app + modelo abierto K2).</p>
+</li>
+</ul>
+</div>
+<div class="category-section">
+<h3 id="tools-images">Generación de Imágenes</h3>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://firefly.adobe.com/" target="_blank">Adobe Firefly</a>
+<p>La IA generativa integrada en la suite de Adobe.</p>
+</li>
+<li class="tool-card">
+<a href="https://clipdrop.co/" target="_blank">Clipdrop (by Stability AI)</a>
+<p>Ecosistema de apps y herramientas de imagen.</p>
+</li>
+<li class="tool-card">
+<a href="https://openai.com/dall-e-3" target="_blank">DALL-E 3 (OpenAI)</a>
+<p>Integrado en herramientas como ChatGPT y Microsoft Copilot.</p>
+</li>
+<li class="tool-card">
+<a href="https://ideogram.ai/" target="_blank">Ideogram</a>
+<p>Destaca por su capacidad para generar texto coherente en las imágenes.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.krea.ai/" target="_blank">Krea AI</a>
+<p>Generación de imágenes y videos en tiempo real.</p>
+</li>
+<li class="tool-card">
+<a href="https://leonardo.ai/" target="_blank">Leonardo.Ai</a>
+<p>Plataforma para crear assets de videojuegos y arte conceptual.</p>
+</li>
+<li class="tool-card">
+<a href="https://magnific.ai/" target="_blank">Magnific AI</a>
+<p>Herramienta para mejorar la resolución y el detalle de las imágenes.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.midjourney.com/" target="_blank">Midjourney</a>
+<p>Famoso por sus imágenes de alta calidad y estilo artístico.</p>
+</li>
+<li class="tool-card">
+<a href="https://playground.com/" target="_blank">Playground AI</a>
+<p>Editor de imágenes online con generación de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://stability.ai/stable-diffusion" target="_blank">Stable Diffusion</a>
+<p>Modelo de código abierto con una gran comunidad de usuarios.</p>
+</li>
+</ul>
+</div>
+<div class="category-section">
+<h3 id="tools-programming">Asistentes de Programación</h3>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://aws.amazon.com/codewhisperer/" target="_blank">Amazon CodeWhisperer</a>
+<p>El asistente de código de AWS, gratuito para desarrolladores.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.askcodi.com/" target="_blank">AskCodi</a>
+<p>Asistente para desarrolladores con varias funcionalidades.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.bito.ai/" target="_blank">Bito AI</a>
+<p>Ayuda a generar código, tests y documentación.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.codeium.com/" target="_blank">Codeium</a>
+<p>Alternativa a Copilot con un generoso plan gratuito.</p>
+</li>
+<li class="tool-card">
+<a href="https://sourcegraph.com/cody" target="_blank">Cody (Sourcegraph)</a>
+<p>Asistente con conocimiento de toda tu base de código.</p>
+</li>
+<li class="tool-card">
+<a href="https://cursor.sh/" target="_blank">Cursor</a>
+<p>Un editor de código "AI-first" con múltiples asistentes integrados.</p>
+</li>
+<li class="tool-card">
+<a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a>
+<p>El "copiloto" de código más popular, integrado en el editor.</p>
+</li>
+<li class="tool-card">
+<a href="https://refact.ai/" target="_blank">Refact.ai</a>
+<p>Herramienta de IA para analizar, refactorizar y mejorar código.</p>
+</li>
+<li class="tool-card">
+<a href="https://replit.com/" target="_blank">Replit AI</a>
+<p>Ayuda a escribir y depurar código en su IDE online.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.tabnine.com/" target="_blank">Tabnine</a>
+<p>Asistente de código que se personaliza según tus patrones.</p>
+</li>
+</ul>
+</div>
+<div class="category-section">
+<h3 id="tools-video">Generación y Edición de Video</h3>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://descript.com/" target="_blank">Descript</a>
+<p>Edición de video y audio tan fácil como editar un documento.</p>
+</li>
+<li class="tool-card">
+<a href="https://fliki.ai/" target="_blank">Fliki</a>
+<p>Convierte texto en videos con voces de IA.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.heygen.com/" target="_blank">HeyGen</a>
+<p>Videos con avatares, traducción de video y clonación de voz.</p>
+</li>
+<li class="tool-card">
+<a href="https://invideo.io/" target="_blank">InVideo AI</a>
+<p>Crea videos a partir de un simple prompt de texto.</p>
+</li>
+<li class="tool-card">
+<a href="https://pictory.ai/" target="_blank">Pictory</a>
+<p>Crea videos cortos a partir de contenido de texto largo.</p>
+</li>
+<li class="tool-card">
+<a href="https://pika.art/" target="_blank">Pika</a>
+<p>Herramienta para generar y editar video a partir de texto e imágenes.</p>
+</li>
+<li class="tool-card">
+<a href="https://runwayml.com/" target="_blank">Runway</a>
+<p>Suite de edición de video con IA, incluyendo Texto-a-Video.</p>
+</li>
+<li class="tool-card">
+<a href="https://openai.com/sora" target="_blank">Sora (OpenAI)</a>
+<p>Modelo de texto-a-video de alta calidad (aún no público).</p>
+</li>
+<li class="tool-card">
+<a href="https://www.synthesia.io/" target="_blank">Synthesia</a>
+<p>Crea videos profesionales con avatares de IA realistas.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.veed.io/" target="_blank">Veed.io</a>
+<p>Editor de video online con un conjunto de herramientas de IA.</p>
+</li>
+</ul>
+</div>
+<div class="category-section">
+<h3 id="tools-voice">Generación y Clonación de Voz</h3>
+<ul class="tool-card-grid">
+<li class="tool-card">
+<a href="https://coqui.ai/" target="_blank">Coqui</a>
+<p>Voces emotivas y realistas con modelos de código abierto.</p>
+</li>
+<li class="tool-card">
+<a href="https://elevenlabs.io/" target="_blank">ElevenLabs</a>
+<p>Voces ultra realistas y clonación de voz de alta calidad.</p>
+</li>
+<li class="tool-card">
+<a href="https://lovo.ai/" target="_blank">Lovo.ai</a>
+<p>Generador de voz con más de 500 voces en 100 idiomas.</p>
+</li>
+<li class="tool-card">
+<a href="https://murf.ai/" target="_blank">Murf.ai</a>
+<p>Locuciones de calidad de estudio con un amplio catálogo de voces.</p>
+</li>
+<li class="tool-card">
+<a href="https://play.ht/" target="_blank">Play.ht</a>
+<p>Generador de voz con IA y clones de voz realistas.</p>
+</li>
+<li class="tool-card">
+<a href="https.replicastudios.com/" target="_blank">Replica Studios</a>
+<p>Voces de IA para personajes de videojuegos y animación.</p>
+</li>
+<li class="tool-card">
+<a href="https://www.resemble.ai/" target="_blank">Resemble.ai</a>
+<p>Plataforma completa para clonación y generación de voz.</p>
+</li>
+<li class="tool-card">
+<a href="https://speechify.com/" target="_blank">Speechify</a>
+<p>Lector de texto-a-voz con voces naturales.</p>
+</li>
+<li class="tool-card">
+<a href="https://elevenlabs.io/voice-cloning" target="_blank">Voice Cloning (ElevenLabs)</a>
+<p>Herramienta específica para clonar tu propia voz.</p>
+</li>
+<li class="tool-card">
+<a href="https://wellsaidlabs.com/" target="_blank">WellSaid Labs</a>
+<p>Voces de IA para producciones corporativas y creativas.</p>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<footer>
+</footer>
+</div>
+<script defer="" src="script.js"></script>
 </body>
 </html>

@@ -1,596 +1,513 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Módulo 2: ChatGPT</title>
-  <link rel="stylesheet" href="style.css" />
-
-    <style>
-      /* Highlight for Contenido dropdown */
-      .highlight-contenido > a,
-      .highlight-contenido .dropdown-toggle {
-        background-color: var(--primary-color);
-        color: var(--primary-text-color) !important;
-        border: 2px solid var(--primary-color);
-        padding: 10px 15px;
-        border-radius: 5px;
-      }
-    </style>
-    
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Módulo 2: ChatGPT</title>
+<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- Header consistente con Módulo 1 -->
-  <header>
-    <h1>Módulo 2: ChatGPT</h1>
-    <p>Guía de Inteligencia Artificial - Curso 2025</p>
-  </header>
-
-  <div class="container">
-    <!-- Nav idéntico en estructura al del Módulo 1 -->
-    <nav>
-      <ul id="main-nav-list">
-        <li><a href="index.html">Inicio</a></li>
-        <li class="dropdown highlight-contenido">
-          <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
-          <ul class="dropdown-menu">
-            <li><a href="#m2_p1">1. LLMs: nuestra interacción con la IA</a></li>
-            <li><a href="#m2_p2">2. Introducción a ChatGPT e interfaz</a></li>
-            <li><a href="#m2_p3">3. Usando ChatGPT</a></li>
-            <li><a href="#m2_p4">4. El Prompting</a></li>
-            <li><a href="#m2_p5">5. Otras herramientas de ChatGPT</a></li>
-            <li><a href="#m2_p6">6. Otras funciones avanzadas</a></li>
-            <li><a href="#m2_p7">7. Prompt Engineering</a></li>
-            <li><a href="#m2_p8">8. Ejemplos prácticos</a></li>
-            <li><a href="#m2_p9">9. Modelos de razonamiento</a></li>
-            <li><a href="#m2_p10">10. Los primeros agentes de IA</a></li>
-          </ul>
-        </li>
-        <li><a href="herramientas.html">Herramientas</a></li>
-        <li><a href="glosario.html">Glosario</a></li>
-      </ul>
-      <button id="theme-toggle">🌙</button>
-      <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
-    </nav>
-
-    <main>
-      <!-- Intro breve -->
-      <section class="module" id="intro">
-        <h2>Módulo 2 · ChatGPT</h2>
-        <p>Cómo conversar con modelos de lenguaje, sacarles provecho en tareas reales y entender sus límites y funciones avanzadas.</p>
-      </section>
-
-      
-      
-      <section id="m2_p1" class="module">
-        <h2>1. LLMs y nuestra interacción con la IA</h2>
-        <p>Un <strong>Modelo de Lenguaje Grande (LLM)</strong> predice el próximo token a partir de <em>contexto</em>. Con interfaces modernas podemos trabajar no solo con texto sino también con <strong>imágenes</strong>, <strong>audio/voz</strong> y, según el modelo, <strong>video</strong>.</p>
-
-        <ul class="chips">
-          <li class="chip">Texto</li>
-          <li class="chip">Imágenes</li>
-          <li class="chip">Audio / voz</li>
-          <li class="chip">Video (según modelo)</li>
-        </ul>
-
-        <h3>Cómo funciona (versión simple)</h3>
-        <div class="stepper" aria-label="Funcionamiento básico">
-          <div class="s-step"><span class="s-num">1</span><span class="s-label">Tokenización</span><p>Convierte la entrada (palabras, signos, partes de palabra) en <em>tokens</em>.</p></div>
-          <div class="s-step"><span class="s-num">2</span><span class="s-label">Contexto</span><p>Considera la <em>ventana de contexto</em>: historial, instrucciones y archivos adjuntos.</p></div>
-          <div class="s-step"><span class="s-num">3</span><span class="s-label">Predicción</span><p>Calcula probabilidades para el próximo token (Transformers).</p></div>
-          <div class="s-step"><span class="s-num">4</span><span class="s-label">Decodificación</span><p>Elige tokens (temperatura, top‑p, etc.) para formar frases.</p></div>
-          <div class="s-step"><span class="s-num">5</span><span class="s-label">Post‑proceso</span><p>Formatea, valida y—si hace falta—repite con nuevos prompts.</p></div>
-        </div>
-
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Qué puede hacer hoy</th><th>Ejemplos</th></tr></thead>
-            <tbody>
-              <tr><td>Escritura/Edición</td><td>Artículos, mails, informes, posts; revisar ortografía y estilo.</td></tr>
-              <tr><td>Análisis</td><td>Resumir PDFs, extraer tablas, explicar conceptos con analogías.</td></tr>
-              <tr><td>Programación</td><td>Generar código, explicar errores, migrar entre lenguajes.</td></tr>
-              <tr><td>Idiomas</td><td>Traducir con tono específico; practicar conversación.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Limitaciones típicas</h4>
-            <ul class="check">
-              <li><strong>Alucinaciones</strong> si falta contexto o no hay verificación.</li>
-              <li><strong>Ventana de contexto</strong> finita: resumir o dividir documentos.</li>
-              <li><strong>Sesgos</strong> heredados de datos de entrenamiento.</li>
-              <li><strong>Privacidad</strong>: controlá qué compartís y dónde lo guardás.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Buenas prácticas</h4>
-            <ul class="check">
-              <li>Definir <em>rol</em>, <em>audiencia</em> y <em>formato</em> de salida.</li>
-              <li>Dar <em>ejemplos</em> (few‑shot) y criterios de calidad.</li>
-              <li>Pedir <em>fuentes</em> o verificación cuando sea relevante.</li>
-              <li>Iterar: breve → revisar → profundizar por secciones.</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Prompt rápido (plantilla mínima)</h3>
+<!-- Header consistente con Módulo 1 -->
+<header>
+<h1>Módulo 2: ChatGPT</h1>
+<p>Guía de Inteligencia Artificial - Curso 2025</p>
+</header>
+<div class="container">
+<!-- Nav idéntico en estructura al del Módulo 1 -->
+<nav>
+<ul id="main-nav-list">
+<li><a href="index.html">Inicio</a></li>
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" href="#">Contenido ▾</a>
+<ul class="dropdown-menu">
+<li><a href="#m2_p1">1. LLMs: nuestra interacción con la IA</a></li>
+<li><a href="#m2_p2">2. Introducción a ChatGPT e interfaz</a></li>
+<li><a href="#m2_p3">3. Usando ChatGPT</a></li>
+<li><a href="#m2_p4">4. El Prompting</a></li>
+<li><a href="#m2_p5">5. Otras herramientas de ChatGPT</a></li>
+<li><a href="#m2_p6">6. Otras funciones avanzadas</a></li>
+<li><a href="#m2_p7">7. Prompt Engineering</a></li>
+<li><a href="#m2_p8">8. Ejemplos prácticos</a></li>
+<li><a href="#m2_p9">9. Modelos de razonamiento</a></li>
+<li><a href="#m2_p10">10. Los primeros agentes de IA</a></li>
+</ul>
+</li>
+<li><a href="herramientas.html">Herramientas</a></li>
+<li><a href="glosario.html">Glosario</a></li>
+</ul>
+<button id="theme-toggle">🌙</button>
+<button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
+</nav>
+<main>
+<!-- Intro breve -->
+<section class="module" id="intro">
+<h2>Módulo 2 · ChatGPT</h2>
+<p>Cómo conversar con modelos de lenguaje, sacarles provecho en tareas reales y entender sus límites y funciones avanzadas.</p>
+</section>
+<section class="module" id="m2_p1">
+<h2>1. LLMs y nuestra interacción con la IA</h2>
+<p>Un <strong>Modelo de Lenguaje Grande (LLM)</strong> predice el próximo token a partir de <em>contexto</em>. Con interfaces modernas podemos trabajar no solo con texto sino también con <strong>imágenes</strong>, <strong>audio/voz</strong> y, según el modelo, <strong>video</strong>.</p>
+<ul class="chips">
+<li class="chip">Texto</li>
+<li class="chip">Imágenes</li>
+<li class="chip">Audio / voz</li>
+<li class="chip">Video (según modelo)</li>
+</ul>
+<h3>Cómo funciona (versión simple)</h3>
+<div aria-label="Funcionamiento básico" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Tokenización</span><p>Convierte la entrada (palabras, signos, partes de palabra) en <em>tokens</em>.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Contexto</span><p>Considera la <em>ventana de contexto</em>: historial, instrucciones y archivos adjuntos.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Predicción</span><p>Calcula probabilidades para el próximo token (Transformers).</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Decodificación</span><p>Elige tokens (temperatura, top‑p, etc.) para formar frases.</p></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Post‑proceso</span><p>Formatea, valida y—si hace falta—repite con nuevos prompts.</p></div>
+</div>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Qué puede hacer hoy</th><th>Ejemplos</th></tr></thead>
+<tbody>
+<tr><td>Escritura/Edición</td><td>Artículos, mails, informes, posts; revisar ortografía y estilo.</td></tr>
+<tr><td>Análisis</td><td>Resumir PDFs, extraer tablas, explicar conceptos con analogías.</td></tr>
+<tr><td>Programación</td><td>Generar código, explicar errores, migrar entre lenguajes.</td></tr>
+<tr><td>Idiomas</td><td>Traducir con tono específico; practicar conversación.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="k-cards">
+<article class="k-card">
+<h4>Limitaciones típicas</h4>
+<ul class="check">
+<li><strong>Alucinaciones</strong> si falta contexto o no hay verificación.</li>
+<li><strong>Ventana de contexto</strong> finita: resumir o dividir documentos.</li>
+<li><strong>Sesgos</strong> heredados de datos de entrenamiento.</li>
+<li><strong>Privacidad</strong>: controlá qué compartís y dónde lo guardás.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Buenas prácticas</h4>
+<ul class="check">
+<li>Definir <em>rol</em>, <em>audiencia</em> y <em>formato</em> de salida.</li>
+<li>Dar <em>ejemplos</em> (few‑shot) y criterios de calidad.</li>
+<li>Pedir <em>fuentes</em> o verificación cuando sea relevante.</li>
+<li>Iterar: breve → revisar → profundizar por secciones.</li>
+</ul>
+</article>
+</div>
+<h3>Prompt rápido (plantilla mínima)</h3>
 <pre><code>Rol: [experto/a].
 Contexto: [qué, para quién, límites].
 Tarea: [lo que debe entregar].
 Formato: [bullets / tabla / pasos].
 Verificación: [chequeos, fuentes, etc.].</code></pre>
-      </section>
-
-
-
-      
-      
-      <section id="m2_p2" class="module">
-        <h2>2. Introducción a ChatGPT e Interfaz</h2>
-        <p><strong>ChatGPT</strong> es la interfaz de OpenAI para conversar con modelos, gestionar archivos y proyectos y—según plan—usar herramientas como navegación web, intérprete de código y generación de imágenes.</p>
-
-        <h3>Registro y primeros pasos</h3>
-        <div class="stepper" aria-label="Registro">
-          <div class="s-step"><span class="s-num">1</span><span class="s-label">Acceso</span><p>Web o app; iniciar sesión o crear cuenta.</p></div>
-          <div class="s-step"><span class="s-num">2</span><span class="s-label">Preferencias</span><p>Idioma, tema (oscuro) y notificaciones.</p></div>
-          <div class="s-step"><span class="s-num">3</span><span class="s-label">Instrucciones personalizadas</span><p>Decí quién sos y cómo querés que te responda.</p></div>
-          <div class="s-step"><span class="s-num">4</span><span class="s-label">Adjuntos</span><p>Activar archivos y elegir permisos.</p></div>
-          <div class="s-step"><span class="s-num">5</span><span class="s-label">Listo</span><p>Crear tu primer proyecto/chat.</p></div>
-        </div>
-
-        <h3>Interfaz</h3>
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Panel izquierdo</h4>
-            <ul class="check">
-              <li><strong>Proyectos</strong> y chats recientes.</li>
-              <li>Buscar conversaciones.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Área principal</h4>
-            <ul class="check">
-              <li>Mensajes, adjuntos e historial.</li>
-              <li>Botón <em>Lienzo</em> para documentos largos.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Preferencias</h4>
-            <ul class="check">
-              <li>Modelos disponibles y herramientas.</li>
-              <li>Privacidad de datos y control de uso.</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Planes (visión general)</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Plan</th><th>Incluye</th><th>Uso recomendado</th></tr></thead>
-            <tbody>
-              <tr><td>Gratis</td><td>Básico, límites diarios.</td><td>Pruebas y aprendizaje.</td></tr>
-              <tr><td>Plus/Pro</td><td>Modelos y funciones avanzadas.</td><td>Trabajo cotidiano y estudio intenso.</td></tr>
-              <tr><td>Enterprise</td><td>Privacidad reforzada y administración.</td><td>Equipos y datos sensibles.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout"><strong>Consejo:</strong> un objetivo por chat. Nombrá bien cada conversación y guardá prompts útiles como plantillas.</div>
-      </section>
-
-
-
-      
-      
-      <section id="m2_p3" class="module">
-        <h2>3. Usando ChatGPT</h2>
-        <p>Estrategias para sacar valor según la <em>tarea</em>: pregunta concreta, consulta con navegación, opinión argumentada, razonamiento paso a paso y personalización con instrucciones.</p>
-
-        <h3>Flujo recomendado</h3>
-        <div class="stepper" aria-label="Flujo">
-          <div class="s-step"><span class="s-num">1</span><span class="s-label">Identificar</span><p>¿Consulta estática, actualizada o razonamiento?</p></div>
-          <div class="s-step"><span class="s-num">2</span><span class="s-label">Contexto</span><p>Fechas, alcance, destinatario y formato.</p></div>
-          <div class="s-step"><span class="s-num">3</span><span class="s-label">Calidad</span><p>Pedí fuentes, criterios y verificación.</p></div>
-          <div class="s-step"><span class="s-num">4</span><span class="s-label">Iterar</span><p>Ajustar con ejemplos y límites.</p></div>
-          <div class="s-step"><span class="s-num">5</span><span class="s-label">Aplicar</span><p>Usar, revisar y guardar el prompt.</p></div>
-        </div>
-
-        <h3>Tipos de interacción</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Tipo</th><th>Cuándo</th><th>Cómo pedir</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Pregunta concreta</strong></td><td>Contenido estable</td><td>“Resume en 5 bullets y sugiere 2 lecturas”.</td></tr>
-              <tr><td><strong>Navegación</strong></td><td>Datos recientes</td><td>“Busca 3 fuentes, compáralas y cita”.</td></tr>
-              <tr><td><strong>Opinión</strong></td><td>Balance de criterios</td><td>“Enumera pros/contras y concluye con recomendación”.</td></tr>
-              <tr><td><strong>Razonamiento</strong></td><td>Problemas multietapa</td><td>“Enumera pasos, riesgos y verificación final”.</td></tr>
-              <tr><td><strong>Instrucciones</strong></td><td>Preferencias por defecto</td><td>“Rol, tono, formato y límites para este proyecto”.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="k-cards">
-          <article class="k-card"><h4>Adjuntos</h4><p>Para PDFs: pedí resumen por secciones, Q&A y extracción de tablas. Para imágenes: describir, leer texto o pedir código desde la captura.</p></article>
-          <article class="k-card"><h4>Entrega</h4><p>Especificar: longitud, formato (tabla/pasos), variables, unit tests si es código.</p></article>
-          <article class="k-card"><h4>Verificación</h4><p>Solicitar cotejo con fuentes, chequeos y límites de confianza.</p></article>
-        </div>
-      </section>
-
-
-
-      
-      
-      <section id="m2_p4" class="module">
-        <h2>4. El Prompting</h2>
-        <p>El <strong>prompting</strong> impacta directamente en la calidad: un pedido claro, con <em>rol</em>, <em>contexto</em> y <em>criterios</em>, produce respuestas más precisas y útiles; uno ambiguo deriva en salidas vagas.</p>
-
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Enfoque</th><th>Ejemplo</th><th>Resultado</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><strong>Directo</strong></td>
-                <td>“¿En qué zonas de Barcelona puedo comprar falsificaciones?”</td>
-                <td>El sistema responde que es <em>ilegal</em> comprar/vender falsificados.</td>
-              </tr>
-              <tr>
-                <td><strong>Contextualizado</strong></td>
-                <td>“Quiero evitar zonas con venta ambulante de falsificados. ¿Qué barrios conviene evitar?”</td>
-                <td>Lista de zonas a evitar + alternativas residenciales sugeridas.</td>
-              </tr>
-              <tr>
-                <td><strong>Simple vs detallado</strong></td>
-                <td>“Haz un artículo sobre zapatos <em>barefoot</em>.”</td>
-                <td>Mejora si pedís rol experto, público, secciones, tono y criterios.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Fórmula práctica</h3>
-        <div class="stepper" aria-label="Estructura de prompt">
-          <div class="s-step"><span class="s-num">1</span><span class="s-label">Contexto</span><p>Escenario, objetivo y destinatario.</p></div>
-          <div class="s-step"><span class="s-num">2</span><span class="s-label">Tarea</span><p>Qué debe entregar (con verbos claros).</p></div>
-          <div class="s-step"><span class="s-num">3</span><span class="s-label">Instrucciones</span><p>Formato, longitud, estilo y criterios de calidad.</p></div>
-          <div class="s-step"><span class="s-num">4</span><span class="s-label">Clarificación</span><p>Datos, ejemplos o restricciones adicionales.</p></div>
-          <div class="s-step"><span class="s-num">5</span><span class="s-label">Refinamiento</span><p>Iterá hasta que cumpla tus requisitos.</p></div>
-        </div>
-
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Checklist</h4>
-            <ul class="check">
-              <li>Definí <strong>rol</strong> (experto, profesor, auditor…).</li>
-              <li>Indicá <strong>público</strong> y <strong>tono</strong>.</li>
-              <li>Pedí <strong>pasos numerados</strong> o <strong>fuentes</strong> si hace falta trazabilidad.</li>
-              <li>Incluí <strong>criterios de evaluación</strong> (qué es “bueno”).</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Tree of Thoughts (ToT)</h4>
-            <p>Para problemas complejos, pedí que el modelo genere opciones, evalúe, profundice, ranquee y justifique antes de responder.</p>
-          </article>
-        </div>
-
-        <h3>Plantilla reutilizable</h3>
+</section>
+<section class="module" id="m2_p2">
+<h2>2. Introducción a ChatGPT e Interfaz</h2>
+<p><strong>ChatGPT</strong> es la interfaz de OpenAI para conversar con modelos, gestionar archivos y proyectos y—según plan—usar herramientas como navegación web, intérprete de código y generación de imágenes.</p>
+<h3>Registro y primeros pasos</h3>
+<div aria-label="Registro" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Acceso</span><p>Web o app; iniciar sesión o crear cuenta.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Preferencias</span><p>Idioma, tema (oscuro) y notificaciones.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Instrucciones personalizadas</span><p>Decí quién sos y cómo querés que te responda.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Adjuntos</span><p>Activar archivos y elegir permisos.</p></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Listo</span><p>Crear tu primer proyecto/chat.</p></div>
+</div>
+<h3>Interfaz</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Panel izquierdo</h4>
+<ul class="check">
+<li><strong>Proyectos</strong> y chats recientes.</li>
+<li>Buscar conversaciones.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Área principal</h4>
+<ul class="check">
+<li>Mensajes, adjuntos e historial.</li>
+<li>Botón <em>Lienzo</em> para documentos largos.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Preferencias</h4>
+<ul class="check">
+<li>Modelos disponibles y herramientas.</li>
+<li>Privacidad de datos y control de uso.</li>
+</ul>
+</article>
+</div>
+<h3>Planes (visión general)</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Plan</th><th>Incluye</th><th>Uso recomendado</th></tr></thead>
+<tbody>
+<tr><td>Gratis</td><td>Básico, límites diarios.</td><td>Pruebas y aprendizaje.</td></tr>
+<tr><td>Plus/Pro</td><td>Modelos y funciones avanzadas.</td><td>Trabajo cotidiano y estudio intenso.</td></tr>
+<tr><td>Enterprise</td><td>Privacidad reforzada y administración.</td><td>Equipos y datos sensibles.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout"><strong>Consejo:</strong> un objetivo por chat. Nombrá bien cada conversación y guardá prompts útiles como plantillas.</div>
+</section>
+<section class="module" id="m2_p3">
+<h2>3. Usando ChatGPT</h2>
+<p>Estrategias para sacar valor según la <em>tarea</em>: pregunta concreta, consulta con navegación, opinión argumentada, razonamiento paso a paso y personalización con instrucciones.</p>
+<h3>Flujo recomendado</h3>
+<div aria-label="Flujo" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Identificar</span><p>¿Consulta estática, actualizada o razonamiento?</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Contexto</span><p>Fechas, alcance, destinatario y formato.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Calidad</span><p>Pedí fuentes, criterios y verificación.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Iterar</span><p>Ajustar con ejemplos y límites.</p></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Aplicar</span><p>Usar, revisar y guardar el prompt.</p></div>
+</div>
+<h3>Tipos de interacción</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Tipo</th><th>Cuándo</th><th>Cómo pedir</th></tr></thead>
+<tbody>
+<tr><td><strong>Pregunta concreta</strong></td><td>Contenido estable</td><td>“Resume en 5 bullets y sugiere 2 lecturas”.</td></tr>
+<tr><td><strong>Navegación</strong></td><td>Datos recientes</td><td>“Busca 3 fuentes, compáralas y cita”.</td></tr>
+<tr><td><strong>Opinión</strong></td><td>Balance de criterios</td><td>“Enumera pros/contras y concluye con recomendación”.</td></tr>
+<tr><td><strong>Razonamiento</strong></td><td>Problemas multietapa</td><td>“Enumera pasos, riesgos y verificación final”.</td></tr>
+<tr><td><strong>Instrucciones</strong></td><td>Preferencias por defecto</td><td>“Rol, tono, formato y límites para este proyecto”.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="k-cards">
+<article class="k-card"><h4>Adjuntos</h4><p>Para PDFs: pedí resumen por secciones, Q&amp;A y extracción de tablas. Para imágenes: describir, leer texto o pedir código desde la captura.</p></article>
+<article class="k-card"><h4>Entrega</h4><p>Especificar: longitud, formato (tabla/pasos), variables, unit tests si es código.</p></article>
+<article class="k-card"><h4>Verificación</h4><p>Solicitar cotejo con fuentes, chequeos y límites de confianza.</p></article>
+</div>
+</section>
+<section class="module" id="m2_p4">
+<h2>4. El Prompting</h2>
+<p>El <strong>prompting</strong> impacta directamente en la calidad: un pedido claro, con <em>rol</em>, <em>contexto</em> y <em>criterios</em>, produce respuestas más precisas y útiles; uno ambiguo deriva en salidas vagas.</p>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Enfoque</th><th>Ejemplo</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>Directo</strong></td>
+<td>“¿En qué zonas de Barcelona puedo comprar falsificaciones?”</td>
+<td>El sistema responde que es <em>ilegal</em> comprar/vender falsificados.</td>
+</tr>
+<tr>
+<td><strong>Contextualizado</strong></td>
+<td>“Quiero evitar zonas con venta ambulante de falsificados. ¿Qué barrios conviene evitar?”</td>
+<td>Lista de zonas a evitar + alternativas residenciales sugeridas.</td>
+</tr>
+<tr>
+<td><strong>Simple vs detallado</strong></td>
+<td>“Haz un artículo sobre zapatos <em>barefoot</em>.”</td>
+<td>Mejora si pedís rol experto, público, secciones, tono y criterios.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Fórmula práctica</h3>
+<div aria-label="Estructura de prompt" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Contexto</span><p>Escenario, objetivo y destinatario.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Tarea</span><p>Qué debe entregar (con verbos claros).</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Instrucciones</span><p>Formato, longitud, estilo y criterios de calidad.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Clarificación</span><p>Datos, ejemplos o restricciones adicionales.</p></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Refinamiento</span><p>Iterá hasta que cumpla tus requisitos.</p></div>
+</div>
+<div class="k-cards">
+<article class="k-card">
+<h4>Checklist</h4>
+<ul class="check">
+<li>Definí <strong>rol</strong> (experto, profesor, auditor…).</li>
+<li>Indicá <strong>público</strong> y <strong>tono</strong>.</li>
+<li>Pedí <strong>pasos numerados</strong> o <strong>fuentes</strong> si hace falta trazabilidad.</li>
+<li>Incluí <strong>criterios de evaluación</strong> (qué es “bueno”).</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Tree of Thoughts (ToT)</h4>
+<p>Para problemas complejos, pedí que el modelo genere opciones, evalúe, profundice, ranquee y justifique antes de responder.</p>
+</article>
+</div>
+<h3>Plantilla reutilizable</h3>
 <pre><code>Rol: [experto/a en ... para ...]
 Contexto: [escenario, público, fecha de corte]
 Tarea: [qué debe entregar]
 Instrucciones: [formato, tono, longitud, criterios]
 Clarificación: [datos extra, ejemplos, restricciones]
 Refinamiento: [“si falta X, pedime” / “valida con fuentes y cita”]</code></pre>
-      </section>
-
-
-
-      
-      
-      <section id="m2_p5" class="module">
-        <h2>5. Otras herramientas de ChatGPT</h2>
-        <p><strong>Canva (Lienzo)</strong> es ideal para documentos extensos y código: edición directa, control por secciones y vista clara de cambios.</p>
-
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Propósito</h4>
-            <ul class="check">
-              <li>Ensayos, informes y guías largas.</li>
-              <li>Generar y refactorizar <strong>código</strong> con secciones editables.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Activación</h4>
-            <ul class="chips">
-              <li class="chip">Automática</li>
-              <li class="chip">Manual (botón “Lienzo”)</li>
-              <li class="chip">Pausar generación</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Interfaz</h4>
-            <ul class="check">
-              <li>Panel izquierdo: chat/instrucciones.</li>
-              <li>Panel derecho: editor de texto/código con formato.</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Edición en Canva</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Función</th><th>Descripción</th></tr></thead>
-            <tbody>
-              <tr><td>Edición directa</td><td>Modificar cualquier párrafo sin pedir nueva respuesta.</td></tr>
-              <tr><td>Expandir/Reformular</td><td>Ampliar o reescribir una selección manteniendo el resto.</td></tr>
-              <tr><td>Formato</td><td>Títulos, listas, negrita/cursiva y bloques de código.</td></tr>
-              <tr><td>Mostrar cambios</td><td>Ver/aceptar/descartar modificaciones propuestas.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Canva para Programación</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Tema</th><th>Detalle</th></tr></thead>
-            <tbody>
-              <tr><td>Compatibilidad</td><td>Modelos actuales: <strong>GPT‑5</strong> (incl. <strong>GPT‑5 Thinking</strong>) y familia <strong>o‑series</strong> (<em>o3</em>, <em>o4‑mini</em>). Modelos previos (p. ej. GPT‑4) pueden estar disponibles con funciones reducidas.</td></tr>
-              <tr><td>Generación</td><td>Python, JS, C/C++, etc., con explicaciones.</td></tr>
-              <tr><td>Ejecución</td><td>Probar fragmentos, depurar, exportar CSV/gráficos.</td></tr>
-              <tr><td>Migración</td><td>Convertir entre lenguajes o frameworks.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Proyectos</h3>
-        <div class="k-cards">
-          <article class="k-card"><h4>Organización</h4><p>Crear proyectos, personalizarlos y agrupar chats/archivos.</p></article>
-          <article class="k-card"><h4>Adjuntos</h4><p>Agregar PDFs, imágenes o instrucciones base por proyecto.</p></article>
-        </div>
-
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Ventajas</th><th>Limitaciones</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><ul><li>Edición por secciones y trazabilidad.</li><li>Interfaz intuitiva y enfoque en calidad.</li><li>Soporte claro para código.</li></ul></td>
-                <td><ul><li>Compatibilidad y funciones dependen del modelo/plan.</li><li>La ejecución puede estar limitada por entorno.</li></ul></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-
-
-      
-      
-      
-      <section id="m2_p6" class="module">
-        <h2>6. Otras funciones avanzadas</h2>
-        <p>Además del chat básico, los modelos actuales incorporan <strong>herramientas</strong> que amplían mucho lo que podés hacer. Acá va un mapa completo y práctico.</p>
-
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Intérprete de Código</h4>
-            <ul class="chips">
-              <li class="chip">Análisis de datos</li>
-              <li class="chip">Gráficos</li>
-              <li class="chip">Archivos</li>
-              <li class="chip">Automatización</li>
-            </ul>
-            <p class="muted">Ideal para CSV/Excel, limpieza, cálculos y visualizaciones; también para prototipos de código (Python/JS).</p>
-          </article>
-          <article class="k-card">
-            <h4>Navegación (web)</h4>
-            <ul class="chips">
-              <li class="chip">Buscar y comparar</li>
-              <li class="chip">Citas</li>
-              <li class="chip">Lectura de URL</li>
-            </ul>
-            <p class="muted">Úsalo cuando la información <em>pueda haber cambiado</em> o necesites verificar datos en fuentes confiables.</p>
-          </article>
-          <article class="k-card">
-            <h4>Visión multimodal</h4>
-            <ul class="chips">
-              <li class="chip">Analizar imágenes</li>
-              <li class="chip">Leer texto en fotos</li>
-              <li class="chip">UI desde screenshot</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>DALL·E / Imágenes</h4>
-            <ul class="chips">
-              <li class="chip">Generación</li>
-              <li class="chip">Variantes</li>
-              <li class="chip">Edición</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Audio y voz</h4>
-            <ul class="chips">
-              <li class="chip">Transcripción</li>
-              <li class="chip">Traducción</li>
-              <li class="chip">Lectura en voz</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Intérprete de Código · flujo completo</h3>
-        <div class="stepper" aria-label="Intérprete de Código">
-          <div class="s-step"><span class="s-num">1</span><span class="s-label">Cargar datos</span><p>Subí CSV/XLSX/ZIP o pegá tablas. Explicá columnas y objetivo.</p></div>
-          <div class="s-step"><span class="s-num">2</span><span class="s-label">Explorar</span><p>Descriptivos, valores faltantes, outliers; pedí tablas y gráficos.</p></div>
-          <div class="s-step"><span class="s-num">3</span><span class="s-label">Transformar</span><p>Limpieza, joins, filtros, nuevas columnas, agregaciones.</p></div>
-          <div class="s-step"><span class="s-num">4</span><span class="s-label">Analizar</span><p>KPIs, cohortes, correlaciones, pruebas simples.</p></div>
-          <div class="s-step"><span class="s-num">5</span><span class="s-label">Exportar</span><p>Descargar CSV/Excel, imagen del gráfico o reporte.</p></div>
-        </div>
-
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Acción</th><th>Cómo pedirlo</th><th>Salida típica</th></tr></thead>
-            <tbody>
-              <tr><td>Limpieza</td><td>“Quita duplicados, trata nulos, normaliza categorías.”</td><td>Dataset limpio + explicación.</td></tr>
-              <tr><td>Gráfico</td><td>“Grafica ventas por mes y marca; agrega línea objetivo.”</td><td>PNG/SVG con leyenda y breve análisis.</td></tr>
-              <tr><td>Automatización</td><td>“Generá un script que repita este proceso con nuevos archivos.”</td><td>Script comentado listo para descargar.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Navegación · buenas prácticas</h3>
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Cuándo usarla</h4>
-            <ul class="check">
-              <li>Tendencias/noticias, precios, reglamentos, bibliografía reciente.</li>
-              <li>Cuando necesitás <strong>citas</strong> y enlaces verificables.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Cómo pedir</h4>
-            <ul class="check">
-              <li>Define alcance, <em>criterios</em> y fecha de corte.</li>
-              <li>Pedí 2–3 fuentes de calidad y un cuadro comparativo.</li>
-              <li>Solicitá un <strong>resumen con conclusiones</strong> y dudas abiertas.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Salida esperada</h4>
-            <ul class="check">
-              <li>Extractos clave + enlace.</li>
-              <li>Tabla de coincidencias/discrepancias.</li>
-              <li>Recomendación final y próximos pasos.</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Visión · casos útiles</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Caso</th><th>Cómo pedir</th><th>Resultado</th></tr></thead>
-            <tbody>
-              <tr><td>Texto en imagen</td><td>“Extrae el texto y reescríbelo como pasos.”</td><td>Texto limpio + lista.</td></tr>
-              <tr><td>UI desde screenshot</td><td>“Genera HTML/CSS para replicar este formulario.”</td><td>Bloque de código editable.</td></tr>
-              <tr><td>Diagnóstico visual</td><td>“Describe lo que ves y lista posibles problemas.”</td><td>Bullets + sugerencias.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>DALL·E · guía rápida</h3>
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Prompt de imagen</h4>
+</section>
+<section class="module" id="m2_p5">
+<h2>5. Otras herramientas de ChatGPT</h2>
+<p><strong>Canva (Lienzo)</strong> es ideal para documentos extensos y código: edición directa, control por secciones y vista clara de cambios.</p>
+<div class="k-cards">
+<article class="k-card">
+<h4>Propósito</h4>
+<ul class="check">
+<li>Ensayos, informes y guías largas.</li>
+<li>Generar y refactorizar <strong>código</strong> con secciones editables.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Activación</h4>
+<ul class="chips">
+<li class="chip">Automática</li>
+<li class="chip">Manual (botón “Lienzo”)</li>
+<li class="chip">Pausar generación</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Interfaz</h4>
+<ul class="check">
+<li>Panel izquierdo: chat/instrucciones.</li>
+<li>Panel derecho: editor de texto/código con formato.</li>
+</ul>
+</article>
+</div>
+<h3>Edición en Canva</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Función</th><th>Descripción</th></tr></thead>
+<tbody>
+<tr><td>Edición directa</td><td>Modificar cualquier párrafo sin pedir nueva respuesta.</td></tr>
+<tr><td>Expandir/Reformular</td><td>Ampliar o reescribir una selección manteniendo el resto.</td></tr>
+<tr><td>Formato</td><td>Títulos, listas, negrita/cursiva y bloques de código.</td></tr>
+<tr><td>Mostrar cambios</td><td>Ver/aceptar/descartar modificaciones propuestas.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Canva para Programación</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Tema</th><th>Detalle</th></tr></thead>
+<tbody>
+<tr><td>Compatibilidad</td><td>Modelos actuales: <strong>GPT‑5</strong> (incl. <strong>GPT‑5 Thinking</strong>) y familia <strong>o‑series</strong> (<em>o3</em>, <em>o4‑mini</em>). Modelos previos (p. ej. GPT‑4) pueden estar disponibles con funciones reducidas.</td></tr>
+<tr><td>Generación</td><td>Python, JS, C/C++, etc., con explicaciones.</td></tr>
+<tr><td>Ejecución</td><td>Probar fragmentos, depurar, exportar CSV/gráficos.</td></tr>
+<tr><td>Migración</td><td>Convertir entre lenguajes o frameworks.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Proyectos</h3>
+<div class="k-cards">
+<article class="k-card"><h4>Organización</h4><p>Crear proyectos, personalizarlos y agrupar chats/archivos.</p></article>
+<article class="k-card"><h4>Adjuntos</h4><p>Agregar PDFs, imágenes o instrucciones base por proyecto.</p></article>
+</div>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Ventajas</th><th>Limitaciones</th></tr></thead>
+<tbody>
+<tr>
+<td><ul><li>Edición por secciones y trazabilidad.</li><li>Interfaz intuitiva y enfoque en calidad.</li><li>Soporte claro para código.</li></ul></td>
+<td><ul><li>Compatibilidad y funciones dependen del modelo/plan.</li><li>La ejecución puede estar limitada por entorno.</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="module" id="m2_p6">
+<h2>6. Otras funciones avanzadas</h2>
+<p>Además del chat básico, los modelos actuales incorporan <strong>herramientas</strong> que amplían mucho lo que podés hacer. Acá va un mapa completo y práctico.</p>
+<div class="k-cards">
+<article class="k-card">
+<h4>Intérprete de Código</h4>
+<ul class="chips">
+<li class="chip">Análisis de datos</li>
+<li class="chip">Gráficos</li>
+<li class="chip">Archivos</li>
+<li class="chip">Automatización</li>
+</ul>
+<p class="muted">Ideal para CSV/Excel, limpieza, cálculos y visualizaciones; también para prototipos de código (Python/JS).</p>
+</article>
+<article class="k-card">
+<h4>Navegación (web)</h4>
+<ul class="chips">
+<li class="chip">Buscar y comparar</li>
+<li class="chip">Citas</li>
+<li class="chip">Lectura de URL</li>
+</ul>
+<p class="muted">Úsalo cuando la información <em>pueda haber cambiado</em> o necesites verificar datos en fuentes confiables.</p>
+</article>
+<article class="k-card">
+<h4>Visión multimodal</h4>
+<ul class="chips">
+<li class="chip">Analizar imágenes</li>
+<li class="chip">Leer texto en fotos</li>
+<li class="chip">UI desde screenshot</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>DALL·E / Imágenes</h4>
+<ul class="chips">
+<li class="chip">Generación</li>
+<li class="chip">Variantes</li>
+<li class="chip">Edición</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Audio y voz</h4>
+<ul class="chips">
+<li class="chip">Transcripción</li>
+<li class="chip">Traducción</li>
+<li class="chip">Lectura en voz</li>
+</ul>
+</article>
+</div>
+<h3>Intérprete de Código · flujo completo</h3>
+<div aria-label="Intérprete de Código" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Cargar datos</span><p>Subí CSV/XLSX/ZIP o pegá tablas. Explicá columnas y objetivo.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Explorar</span><p>Descriptivos, valores faltantes, outliers; pedí tablas y gráficos.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Transformar</span><p>Limpieza, joins, filtros, nuevas columnas, agregaciones.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Analizar</span><p>KPIs, cohortes, correlaciones, pruebas simples.</p></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Exportar</span><p>Descargar CSV/Excel, imagen del gráfico o reporte.</p></div>
+</div>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Acción</th><th>Cómo pedirlo</th><th>Salida típica</th></tr></thead>
+<tbody>
+<tr><td>Limpieza</td><td>“Quita duplicados, trata nulos, normaliza categorías.”</td><td>Dataset limpio + explicación.</td></tr>
+<tr><td>Gráfico</td><td>“Grafica ventas por mes y marca; agrega línea objetivo.”</td><td>PNG/SVG con leyenda y breve análisis.</td></tr>
+<tr><td>Automatización</td><td>“Generá un script que repita este proceso con nuevos archivos.”</td><td>Script comentado listo para descargar.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Navegación · buenas prácticas</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Cuándo usarla</h4>
+<ul class="check">
+<li>Tendencias/noticias, precios, reglamentos, bibliografía reciente.</li>
+<li>Cuando necesitás <strong>citas</strong> y enlaces verificables.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Cómo pedir</h4>
+<ul class="check">
+<li>Define alcance, <em>criterios</em> y fecha de corte.</li>
+<li>Pedí 2–3 fuentes de calidad y un cuadro comparativo.</li>
+<li>Solicitá un <strong>resumen con conclusiones</strong> y dudas abiertas.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Salida esperada</h4>
+<ul class="check">
+<li>Extractos clave + enlace.</li>
+<li>Tabla de coincidencias/discrepancias.</li>
+<li>Recomendación final y próximos pasos.</li>
+</ul>
+</article>
+</div>
+<h3>Visión · casos útiles</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Caso</th><th>Cómo pedir</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td>Texto en imagen</td><td>“Extrae el texto y reescríbelo como pasos.”</td><td>Texto limpio + lista.</td></tr>
+<tr><td>UI desde screenshot</td><td>“Genera HTML/CSS para replicar este formulario.”</td><td>Bloque de código editable.</td></tr>
+<tr><td>Diagnóstico visual</td><td>“Describe lo que ves y lista posibles problemas.”</td><td>Bullets + sugerencias.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>DALL·E · guía rápida</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Prompt de imagen</h4>
 <pre><code>Estilo: [realista / ilustración / 3D / flat].
 Sujeto: [qué se ve].
 Composición: [ángulo, encuadre, fondo].
 Color/Iluminación: [paleta, luz].
 Detalles: [texturas, elementos clave].</code></pre>
-          </article>
-          <article class="k-card">
-            <h4>Edición</h4>
-            <ul class="check">
-              <li>Subí la imagen base y marcá el área a cambiar.</li>
-              <li>Especificá <em>sustituciones</em> (colores, objetos, texto).</li>
-              <li>Pedí 2–3 variantes y refiná.</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Audio/Voz</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Función</th><th>Cómo pedir</th><th>Salida</th></tr></thead>
-            <tbody>
-              <tr><td>Transcribir</td><td>“Transcribe y separa por hablante; saca acuerdos.”</td><td>Texto estructurado + resumen.</td></tr>
-              <tr><td>Traducir</td><td>“Traduce al español y aclara tecnicismos.”</td><td>Versión en español con glosario.</td></tr>
-              <tr><td>Leer en voz</td><td>“Lee este texto con voz natural, pausas y énfasis.”</td><td>Audio sintetizado (según plan).</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-
-
-
-      
-      
-      
-      <section id="m2_p7" class="module">
-        <h2>7. Prompt Engineering (avanzado)</h2>
-        <p>El objetivo es <strong>control</strong> y <strong>calidad</strong>: guiar al modelo con estructura, ejemplos, criterios y verificación. A continuación, tácticas probadas.</p>
-
-        <h3>Patrones clave</h3>
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Rol + Audiencia + Formato</h4>
-            <ul class="check">
-              <li>Declarar <em>rol experto</em> y <em>público</em> (nivel/tono).</li>
-              <li>Fijar <em>formato</em>: pasos, tabla, JSON, plantilla.</li>
-              <li>Listar <em>criterios de evaluación</em> (qué es “bueno”).</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Delimitadores y secciones</h4>
-            <ul class="check">
-              <li>Separar <code>&lt;contexto&gt;</code>, <code>&lt;instrucciones&gt;</code>, <code>&lt;ejemplos&gt;</code>.</li>
-              <li>Usar bloques triple backtick (```) para datos largos.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Few‑shot y estilo</h4>
-            <ul class="check">
-              <li>Dar 1–2 ejemplos “buenos” (y, si sirve, un “malo”).</li>
-              <li>Pedir que <em>imite el patrón</em>, no el contenido literal.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Iteración guiada</h4>
-            <ul class="check">
-              <li>Primero <strong>plan</strong> (índice o pasos), luego contenido.</li>
-              <li>Permitir preguntas: “si falta algo, consultá”.</li>
-              <li>Revisión final contra los criterios.</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Árbol de Pensamientos (ToT)</h3>
-        <div class="stepper" aria-label="ToT">
-          <div class="s-step"><span class="s-num">1</span><span class="s-label">Generar</span><p>2–3 vías de solución breves.</p></div>
-          <div class="s-step"><span class="s-num">2</span><span class="s-label">Evaluar</span><p>Pros/contras, tiempo, riesgos.</p></div>
-          <div class="s-step"><span class="s-num">3</span><span class="s-label">Profundizar</span><p>Requisitos, supuestos y obstáculos.</p></div>
-          <div class="s-step"><span class="s-num">4</span><span class="s-label">Rankear</span><p>Ordenar opciones con justificación.</p></div>
-          <div class="s-step"><span class="s-num">5</span><span class="s-label">Ejecutar</span><p>Desarrollar la mejor vía y validar salida.</p></div>
-        </div>
-
-        <h3>Técnicas avanzadas</h3>
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Self‑consistency</h4>
-            <p>Pedir varias soluciones independientes y elegir la más consistente.</p>
-          </article>
-          <article class="k-card">
-            <h4>Generate‑then‑Critique</h4>
-            <p>Primero generar, luego pedir una <em>crítica</em> y <em>revisión</em> contra criterios.</p>
-          </article>
-          <article class="k-card">
-            <h4>Program‑Aided (PAL)</h4>
-            <p>Hacer que el modelo proponga funciones/step‑by‑step y ejecute con Intérprete.</p>
-          </article>
-        </div>
-
-        <h3>Errores comunes (y arreglo)</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Error</th><th>Qué hacer</th></tr></thead>
-            <tbody>
-              <tr><td>Pedido vago</td><td>Definir rol, audiencia, formato, criterios.</td></tr>
-              <tr><td>Demasiado largo</td><td>Dividir en secciones y confirmar el plan.</td></tr>
-              <tr><td>Sin verificación</td><td>Pedir fuentes, tests, o “checks” al final.</td></tr>
-              <tr><td>Un solo intento</td><td>Iterar: plan → borrador → revisión.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Plantilla PRO reutilizable</h3>
+</article>
+<article class="k-card">
+<h4>Edición</h4>
+<ul class="check">
+<li>Subí la imagen base y marcá el área a cambiar.</li>
+<li>Especificá <em>sustituciones</em> (colores, objetos, texto).</li>
+<li>Pedí 2–3 variantes y refiná.</li>
+</ul>
+</article>
+</div>
+<h3>Audio/Voz</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Función</th><th>Cómo pedir</th><th>Salida</th></tr></thead>
+<tbody>
+<tr><td>Transcribir</td><td>“Transcribe y separa por hablante; saca acuerdos.”</td><td>Texto estructurado + resumen.</td></tr>
+<tr><td>Traducir</td><td>“Traduce al español y aclara tecnicismos.”</td><td>Versión en español con glosario.</td></tr>
+<tr><td>Leer en voz</td><td>“Lee este texto con voz natural, pausas y énfasis.”</td><td>Audio sintetizado (según plan).</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="module" id="m2_p7">
+<h2>7. Prompt Engineering (avanzado)</h2>
+<p>El objetivo es <strong>control</strong> y <strong>calidad</strong>: guiar al modelo con estructura, ejemplos, criterios y verificación. A continuación, tácticas probadas.</p>
+<h3>Patrones clave</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Rol + Audiencia + Formato</h4>
+<ul class="check">
+<li>Declarar <em>rol experto</em> y <em>público</em> (nivel/tono).</li>
+<li>Fijar <em>formato</em>: pasos, tabla, JSON, plantilla.</li>
+<li>Listar <em>criterios de evaluación</em> (qué es “bueno”).</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Delimitadores y secciones</h4>
+<ul class="check">
+<li>Separar <code>&lt;contexto&gt;</code>, <code>&lt;instrucciones&gt;</code>, <code>&lt;ejemplos&gt;</code>.</li>
+<li>Usar bloques triple backtick (```) para datos largos.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Few‑shot y estilo</h4>
+<ul class="check">
+<li>Dar 1–2 ejemplos “buenos” (y, si sirve, un “malo”).</li>
+<li>Pedir que <em>imite el patrón</em>, no el contenido literal.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Iteración guiada</h4>
+<ul class="check">
+<li>Primero <strong>plan</strong> (índice o pasos), luego contenido.</li>
+<li>Permitir preguntas: “si falta algo, consultá”.</li>
+<li>Revisión final contra los criterios.</li>
+</ul>
+</article>
+</div>
+<h3>Árbol de Pensamientos (ToT)</h3>
+<div aria-label="ToT" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Generar</span><p>2–3 vías de solución breves.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Evaluar</span><p>Pros/contras, tiempo, riesgos.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Profundizar</span><p>Requisitos, supuestos y obstáculos.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Rankear</span><p>Ordenar opciones con justificación.</p></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Ejecutar</span><p>Desarrollar la mejor vía y validar salida.</p></div>
+</div>
+<h3>Técnicas avanzadas</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Self‑consistency</h4>
+<p>Pedir varias soluciones independientes y elegir la más consistente.</p>
+</article>
+<article class="k-card">
+<h4>Generate‑then‑Critique</h4>
+<p>Primero generar, luego pedir una <em>crítica</em> y <em>revisión</em> contra criterios.</p>
+</article>
+<article class="k-card">
+<h4>Program‑Aided (PAL)</h4>
+<p>Hacer que el modelo proponga funciones/step‑by‑step y ejecute con Intérprete.</p>
+</article>
+</div>
+<h3>Errores comunes (y arreglo)</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Error</th><th>Qué hacer</th></tr></thead>
+<tbody>
+<tr><td>Pedido vago</td><td>Definir rol, audiencia, formato, criterios.</td></tr>
+<tr><td>Demasiado largo</td><td>Dividir en secciones y confirmar el plan.</td></tr>
+<tr><td>Sin verificación</td><td>Pedir fuentes, tests, o “checks” al final.</td></tr>
+<tr><td>Un solo intento</td><td>Iterar: plan → borrador → revisión.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Plantilla PRO reutilizable</h3>
 <pre><code>Rol: [experto/a].
 Audiencia: [nivel/tono].
 Objetivo: [qué debe lograr].
@@ -600,133 +517,114 @@ Criterios de calidad: [1..n].
 Proceso: primero &lt;plan&gt;, después &lt;contenido&gt;.
 Verificación: &lt;checks&gt; con supuestos y límites.
 Si falta algo, pregúntame antes de responder.</code></pre>
-      </section>
-
-
-
-
-      
-      <section id="m2_p8" class="module">
-        <h2>8. Ejemplos prácticos</h2>
-        <div class="btn-list">
-          <a class="btn-long" href="#ej1">1. Escribir un libro con ChatGPT</a>
-          <a class="btn-long" href="#ej2">2. Productividad (emails, PDFs, CV)</a>
-          <a class="btn-long" href="#ej3">3. Reuniones, código desde imagen y usos personales</a>
-        </div>
-        <hr>
-
-        <div id="ej1"></div>
-        <h3>Ejemplo 1 · Escribir un libro con ChatGPT</h3>
-        <div class="k-cards">
-          <article class="k-card"><h4>¿Para qué?</h4><ul class="check"><li>Ideas y premisas</li><li>Personajes y escenas</li><li>Estructura y coherencia</li></ul></article>
-          <article class="k-card"><h4>Proceso</h4>
-            <div class="stepper" aria-label="Proceso creativo">
-              <div class="s-step"><span class="s-num">1</span><span class="s-label">Premisa</span><p>Género, tema y conflicto.</p></div>
-              <div class="s-step"><span class="s-num">2</span><span class="s-label">Índice</span><p>Capítulos tentativos.</p></div>
-              <div class="s-step"><span class="s-num">3</span><span class="s-label">Secciones</span><p>Escenario, personajes, trama.</p></div>
-              <div class="s-step"><span class="s-num">4</span><span class="s-label">Capítulos</span><p>Iteración y feedback.</p></div>
-              <div class="s-step"><span class="s-num">5</span><span class="s-label">Revisión</span><p>Coherencia y estilo.</p></div>
-            </div>
-          </article>
-        </div>
-        <p class="m2-back"><a class="btn-long ghost xsmall" href="#m2_p8">Volver a “Ejemplos prácticos”</a></p>
-
-        <hr>
-
-        <div id="ej2"></div>
-        <h3>Ejemplo 2 · Productividad (emails, PDFs, CV)</h3>
-        <div class="tabla tabla-compacta"><table>
-          <thead><tr><th>Tarea</th><th>Cómo pedirlo</th><th>Salida</th></tr></thead>
-          <tbody>
-            <tr><td>Contestar e‑mails</td><td>“Genera una respuesta formal para X con precio y características…”</td><td>Correo profesional.</td></tr>
-            <tr><td>Entender PDFs</td><td>“Resume en 5 puntos / Explica objetivos / Aclara concepto técnico”.</td><td>Resumen y Q&A.</td></tr>
-            <tr><td>Adaptar CV</td><td>“Extrae keywords de la oferta / Dame mejoras / Redacta resumen”.</td><td>CV alineado a la vacante.</td></tr>
-          </tbody></table></div>
-        <p class="m2-back"><a class="btn-long ghost xsmall" href="#m2_p8">Volver a “Ejemplos prácticos”</a></p>
-
-        <hr>
-
-        <div id="ej3"></div>
-        <h3>Ejemplo 3 · Reuniones, código desde screenshot e imagen → receta</h3>
-        <div class="k-cards">
-          <article class="k-card"><h4>Reuniones</h4>
-            <div class="stepper" aria-label="Resumen de reuniones">
-              <div class="s-step"><span class="s-num">1</span><span class="s-label">Transcribir</span><p>Audio → texto.</p></div>
-              <div class="s-step"><span class="s-num">2</span><span class="s-label">Resumir</span><p>Conclusiones y próximos pasos.</p></div>
-              <div class="s-step"><span class="s-num">3</span><span class="s-label">Seguimiento</span><p>Centralizar resúmenes.</p></div>
-            </div>
-          </article>
-          <article class="k-card"><h4>Código desde pantalla</h4><ul class="check"><li>“Genera HTML/CSS para replicar este formulario”.</li><li>Editar por lenguaje natural.</li></ul></article>
-          <article class="k-card"><h4>Usos personales</h4><ul><li>Receta desde imagen (ingredientes + pasos).</li></ul></article>
-        </div>
-        <p class="m2-back"><a class="btn-long ghost xsmall" href="#m2_p8">Volver a “Ejemplos prácticos”</a></p>
-      </section>
-
-
-      
-      
-      <section id="m2_p9" class="module">
-        <h2>9. Modelos de razonamiento</h2>
-        <p>Los <strong>Modelos O (o‑series)</strong> agregan una fase explícita de <em>planificación</em> antes de producir la respuesta. Esto mejora coherencia y precisión en problemas complejos, aunque aumenta latencia y consumo.</p>
-
-        <h3>Comparativa rápida</h3>
-        <div class="stepper" aria-label="LLM tradicional vs. Modelo O">
-          <div class="s-step"><span class="s-num">A</span><span class="s-label">LLM tradicional</span><p>Entrada → generación secuencial → salida.</p></div>
-          <div class="s-step"><span class="s-num">B</span><span class="s-label">Modelo O</span><p>Entrada → <strong>plan</strong> → generación alineada al plan → salida.</p></div>
-        </div>
-
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Ventajas</th><th>Desventajas</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><ul><li>Más precisión en tareas con pasos.</li><li>Mejor cohesión de estructura.</li><li>Útil para análisis y verificación.</li></ul></td>
-                <td><ul><li>Mayor tiempo de respuesta.</li><li>Más tokens (costo).</li><li>Modelos top con disponibilidad/coste acotados.</li></ul></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Variantes (resumen)</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Modelo</th><th>Uso típico</th></tr></thead>
-            <tbody>
-              <tr><td>o1 mini</td><td>Coste bajo, prototipado rápido.</td></tr>
-              <tr><td>o1</td><td>Equilibrio entre precisión y costo.</td></tr>
-              <tr><td>o3 mini</td><td>Eficiencia para tareas medianas.</td></tr>
-              <tr><td>o3</td><td>Máximo rendimiento en razonamiento.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Buenas prácticas</h4>
-            <ul class="check">
-              <li><strong>Prompts simples</strong> y directos.</li>
-              <li>Separar <em>contexto</em>, <em>ejemplos</em> e <em>instrucciones</em> con etiquetas.</li>
-              <li>Cuando la precisión sea crítica, razonar en inglés y dar salida en español.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Cuándo elegirlos</h4>
-            <ul class="chips">
-              <li class="chip">Problemas multietapa</li>
-              <li class="chip">Planificación/estrategia</li>
-              <li class="chip">Análisis técnico</li>
-              <li class="chip">Revisión/verificación</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3>Plantillas de prompts</h3>
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Plantilla sugerida (segura)</th><th>Con etiquetas</th></tr></thead>
-            <tbody>
-              <tr>
-                <td>
+</section>
+<section class="module" id="m2_p8">
+<h2>8. Ejemplos prácticos</h2>
+<div class="btn-list">
+<a class="btn-long" href="#ej1">1. Escribir un libro con ChatGPT</a>
+<a class="btn-long" href="#ej2">2. Productividad (emails, PDFs, CV)</a>
+<a class="btn-long" href="#ej3">3. Reuniones, código desde imagen y usos personales</a>
+</div>
+<hr/>
+<div id="ej1"></div>
+<h3>Ejemplo 1 · Escribir un libro con ChatGPT</h3>
+<div class="k-cards">
+<article class="k-card"><h4>¿Para qué?</h4><ul class="check"><li>Ideas y premisas</li><li>Personajes y escenas</li><li>Estructura y coherencia</li></ul></article>
+<article class="k-card"><h4>Proceso</h4>
+<div aria-label="Proceso creativo" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Premisa</span><p>Género, tema y conflicto.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Índice</span><p>Capítulos tentativos.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Secciones</span><p>Escenario, personajes, trama.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Capítulos</span><p>Iteración y feedback.</p></div>
+<div class="s-step"><span class="s-num">5</span><span class="s-label">Revisión</span><p>Coherencia y estilo.</p></div>
+</div>
+</article>
+</div>
+<p class="m2-back"><a class="btn-long ghost xsmall" href="#m2_p8">Volver a “Ejemplos prácticos”</a></p>
+<hr/>
+<div id="ej2"></div>
+<h3>Ejemplo 2 · Productividad (emails, PDFs, CV)</h3>
+<div class="tabla tabla-compacta"><table>
+<thead><tr><th>Tarea</th><th>Cómo pedirlo</th><th>Salida</th></tr></thead>
+<tbody>
+<tr><td>Contestar e‑mails</td><td>“Genera una respuesta formal para X con precio y características…”</td><td>Correo profesional.</td></tr>
+<tr><td>Entender PDFs</td><td>“Resume en 5 puntos / Explica objetivos / Aclara concepto técnico”.</td><td>Resumen y Q&amp;A.</td></tr>
+<tr><td>Adaptar CV</td><td>“Extrae keywords de la oferta / Dame mejoras / Redacta resumen”.</td><td>CV alineado a la vacante.</td></tr>
+</tbody></table></div>
+<p class="m2-back"><a class="btn-long ghost xsmall" href="#m2_p8">Volver a “Ejemplos prácticos”</a></p>
+<hr/>
+<div id="ej3"></div>
+<h3>Ejemplo 3 · Reuniones, código desde screenshot e imagen → receta</h3>
+<div class="k-cards">
+<article class="k-card"><h4>Reuniones</h4>
+<div aria-label="Resumen de reuniones" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Transcribir</span><p>Audio → texto.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Resumir</span><p>Conclusiones y próximos pasos.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Seguimiento</span><p>Centralizar resúmenes.</p></div>
+</div>
+</article>
+<article class="k-card"><h4>Código desde pantalla</h4><ul class="check"><li>“Genera HTML/CSS para replicar este formulario”.</li><li>Editar por lenguaje natural.</li></ul></article>
+<article class="k-card"><h4>Usos personales</h4><ul><li>Receta desde imagen (ingredientes + pasos).</li></ul></article>
+</div>
+<p class="m2-back"><a class="btn-long ghost xsmall" href="#m2_p8">Volver a “Ejemplos prácticos”</a></p>
+</section>
+<section class="module" id="m2_p9">
+<h2>9. Modelos de razonamiento</h2>
+<p>Los <strong>Modelos O (o‑series)</strong> agregan una fase explícita de <em>planificación</em> antes de producir la respuesta. Esto mejora coherencia y precisión en problemas complejos, aunque aumenta latencia y consumo.</p>
+<h3>Comparativa rápida</h3>
+<div aria-label="LLM tradicional vs. Modelo O" class="stepper">
+<div class="s-step"><span class="s-num">A</span><span class="s-label">LLM tradicional</span><p>Entrada → generación secuencial → salida.</p></div>
+<div class="s-step"><span class="s-num">B</span><span class="s-label">Modelo O</span><p>Entrada → <strong>plan</strong> → generación alineada al plan → salida.</p></div>
+</div>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Ventajas</th><th>Desventajas</th></tr></thead>
+<tbody>
+<tr>
+<td><ul><li>Más precisión en tareas con pasos.</li><li>Mejor cohesión de estructura.</li><li>Útil para análisis y verificación.</li></ul></td>
+<td><ul><li>Mayor tiempo de respuesta.</li><li>Más tokens (costo).</li><li>Modelos top con disponibilidad/coste acotados.</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Variantes (resumen)</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Modelo</th><th>Uso típico</th></tr></thead>
+<tbody>
+<tr><td>o1 mini</td><td>Coste bajo, prototipado rápido.</td></tr>
+<tr><td>o1</td><td>Equilibrio entre precisión y costo.</td></tr>
+<tr><td>o3 mini</td><td>Eficiencia para tareas medianas.</td></tr>
+<tr><td>o3</td><td>Máximo rendimiento en razonamiento.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="k-cards">
+<article class="k-card">
+<h4>Buenas prácticas</h4>
+<ul class="check">
+<li><strong>Prompts simples</strong> y directos.</li>
+<li>Separar <em>contexto</em>, <em>ejemplos</em> e <em>instrucciones</em> con etiquetas.</li>
+<li>Cuando la precisión sea crítica, razonar en inglés y dar salida en español.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Cuándo elegirlos</h4>
+<ul class="chips">
+<li class="chip">Problemas multietapa</li>
+<li class="chip">Planificación/estrategia</li>
+<li class="chip">Análisis técnico</li>
+<li class="chip">Revisión/verificación</li>
+</ul>
+</article>
+</div>
+<h3>Plantillas de prompts</h3>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Plantilla sugerida (segura)</th><th>Con etiquetas</th></tr></thead>
+<tbody>
+<tr>
+<td>
 <pre><code>Rol: Analista.
 Objetivo: [problema].
 Contexto: [datos, fecha de corte].
@@ -734,103 +632,88 @@ Entrega:
 &lt;plan&gt; pasos de alto nivel (breve) &lt;/plan&gt;
 &lt;checks&gt; verificaciones clave (breve) &lt;/checks&gt;
 &lt;output&gt; respuesta final estructurada &lt;/output&gt;</code></pre>
-                </td>
-                <td>
+</td>
+<td>
 <pre><code>&lt;thinking&gt; análisis + plan + pasos &lt;/thinking&gt;
 &lt;reflection&gt; revisión y errores posibles &lt;/reflection&gt;
 &lt;output&gt; respuesta final &lt;/output&gt;</code></pre>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout"><strong>Nota:</strong> según la plataforma, la fase de razonamiento puede mostrarse resumida o no ser visible. Lo clave es estructurar <em>plan</em>, <em>verificaciones</em> y <em>salida</em>.</div>
-      </section>
-
-
-
-      
-      
-      <section id="m2_p10" class="module">
-        <h2>10. Primeros agentes de IA</h2>
-        <p>Los primeros <strong>agentes</strong> para usuarios finales muestran el salto de “charlar” a <em>delegar</em> tareas reales. Dos referencias: <strong>DeepResearch</strong> (investiga y sintetiza) y <strong>Operator</strong> (navega y ejecuta en la web).</p>
-
-        <h3>DeepResearch · investigador virtual</h3>
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>¿Qué hace?</h4>
-            <ul class="check">
-              <li>Busca, recopila y filtra fuentes.</li>
-              <li>Organiza hallazgos por temas.</li>
-              <li>Entrega informes con conclusiones.</li>
-            </ul>
-          </article>
-          <article class="k-card">
-            <h4>Flujo</h4>
-            <div class="stepper" aria-label="Fases DeepResearch">
-              <div class="s-step"><span class="s-num">1</span><span class="s-label">Solicitud</span><p>Definir el alcance.</p></div>
-              <div class="s-step"><span class="s-num">2</span><span class="s-label">Búsqueda</span><p>Explorar múltiples fuentes.</p></div>
-              <div class="s-step"><span class="s-num">3</span><span class="s-label">Análisis</span><p>Filtrar lo confiable y detectar discrepancias.</p></div>
-              <div class="s-step"><span class="s-num">4</span><span class="s-label">Informe</span><p>Entregar síntesis y próximos pasos.</p></div>
-            </div>
-          </article>
-        </div>
-
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Ventajas</th><th>Limitaciones</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><ul><li>Ahorra tiempo en investigación.</li><li>Informes estructurados.</li><li>Alta autonomía con un buen encargo.</li></ul></td>
-                <td><ul><li>Costo según plan.</li><li>Límites mensuales de uso.</li><li>Depende de modelos avanzados para la calidad.</li></ul></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Operator · asistente que actúa en la web</h3>
-        <div class="k-cards">
-          <article class="k-card">
-            <h4>Cómo funciona</h4>
-            <div class="stepper" aria-label="Flujo Operator">
-              <div class="s-step"><span class="s-num">1</span><span class="s-label">Pedido</span><p>Definir la tarea (reservar, comprar, etc.).</p></div>
-              <div class="s-step"><span class="s-num">2</span><span class="s-label">Navegación</span><p>Navega sitios y compara opciones.</p></div>
-              <div class="s-step"><span class="s-num">3</span><span class="s-label">Interacción</span><p>Pide datos faltantes y confirma acciones.</p></div>
-              <div class="s-step"><span class="s-num">4</span><span class="s-label">Finalización</span><p>Completa formularios y presenta resultados.</p></div>
-            </div>
-          </article>
-          <article class="k-card">
-            <h4>Arquitectura (alto nivel)</h4>
-            <ul>
-              <li><strong>Visión</strong> para interpretar la UI.</li>
-              <li><strong>LLM</strong> para decidir acciones.</li>
-              <li><strong>Orquestación</strong> para clics, formularios y flujos.</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="tabla tabla-compacta">
-          <table>
-            <thead><tr><th>Ventajas</th><th>Limitaciones</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><ul><li>Automatiza tareas repetitivas.</li><li>Interfaz dialogada.</li><li>Integración directa en sitios.</li></ul></td>
-                <td><ul><li>Disponibilidad por país/plan.</li><li>Coste variable por uso.</li><li>Velocidad según la web.</li></ul></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout"><strong>Cierre:</strong> elegí el agente según tu objetivo (investigar vs ejecutar en web), coste/latencia y disponibilidad.</div>
-      </section>
-
-
-    </main>
-
-    </div>
-
-  <!-- JS de la guía (modo oscuro, hamburguesa, dropdown) -->
-  <script src="script.js"></script>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout"><strong>Nota:</strong> según la plataforma, la fase de razonamiento puede mostrarse resumida o no ser visible. Lo clave es estructurar <em>plan</em>, <em>verificaciones</em> y <em>salida</em>.</div>
+</section>
+<section class="module" id="m2_p10">
+<h2>10. Primeros agentes de IA</h2>
+<p>Los primeros <strong>agentes</strong> para usuarios finales muestran el salto de “charlar” a <em>delegar</em> tareas reales. Dos referencias: <strong>DeepResearch</strong> (investiga y sintetiza) y <strong>Operator</strong> (navega y ejecuta en la web).</p>
+<h3>DeepResearch · investigador virtual</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>¿Qué hace?</h4>
+<ul class="check">
+<li>Busca, recopila y filtra fuentes.</li>
+<li>Organiza hallazgos por temas.</li>
+<li>Entrega informes con conclusiones.</li>
+</ul>
+</article>
+<article class="k-card">
+<h4>Flujo</h4>
+<div aria-label="Fases DeepResearch" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Solicitud</span><p>Definir el alcance.</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Búsqueda</span><p>Explorar múltiples fuentes.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Análisis</span><p>Filtrar lo confiable y detectar discrepancias.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Informe</span><p>Entregar síntesis y próximos pasos.</p></div>
+</div>
+</article>
+</div>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Ventajas</th><th>Limitaciones</th></tr></thead>
+<tbody>
+<tr>
+<td><ul><li>Ahorra tiempo en investigación.</li><li>Informes estructurados.</li><li>Alta autonomía con un buen encargo.</li></ul></td>
+<td><ul><li>Costo según plan.</li><li>Límites mensuales de uso.</li><li>Depende de modelos avanzados para la calidad.</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>Operator · asistente que actúa en la web</h3>
+<div class="k-cards">
+<article class="k-card">
+<h4>Cómo funciona</h4>
+<div aria-label="Flujo Operator" class="stepper">
+<div class="s-step"><span class="s-num">1</span><span class="s-label">Pedido</span><p>Definir la tarea (reservar, comprar, etc.).</p></div>
+<div class="s-step"><span class="s-num">2</span><span class="s-label">Navegación</span><p>Navega sitios y compara opciones.</p></div>
+<div class="s-step"><span class="s-num">3</span><span class="s-label">Interacción</span><p>Pide datos faltantes y confirma acciones.</p></div>
+<div class="s-step"><span class="s-num">4</span><span class="s-label">Finalización</span><p>Completa formularios y presenta resultados.</p></div>
+</div>
+</article>
+<article class="k-card">
+<h4>Arquitectura (alto nivel)</h4>
+<ul>
+<li><strong>Visión</strong> para interpretar la UI.</li>
+<li><strong>LLM</strong> para decidir acciones.</li>
+<li><strong>Orquestación</strong> para clics, formularios y flujos.</li>
+</ul>
+</article>
+</div>
+<div class="tabla tabla-compacta">
+<table>
+<thead><tr><th>Ventajas</th><th>Limitaciones</th></tr></thead>
+<tbody>
+<tr>
+<td><ul><li>Automatiza tareas repetitivas.</li><li>Interfaz dialogada.</li><li>Integración directa en sitios.</li></ul></td>
+<td><ul><li>Disponibilidad por país/plan.</li><li>Coste variable por uso.</li><li>Velocidad según la web.</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout"><strong>Cierre:</strong> elegí el agente según tu objetivo (investigar vs ejecutar en web), coste/latencia y disponibilidad.</div>
+</section>
+</main>
+</div>
+<!-- JS de la guía (modo oscuro, hamburguesa, dropdown) -->
+<script src="script.js"></script>
 </body>
 </html>
