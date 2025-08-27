@@ -16,7 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const isDark = body.classList.toggle('dark-mode');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       themeToggle.textContent = isDark ? '☀️' : '🌙';
-    });
+    
+  /* set current nav item and Contenido highlight for modules */
+  try {
+    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const nav = document.querySelector('nav');
+    if (nav) {
+      // Marcar link actual por coincidencia directa
+      const currentLink = nav.querySelector(`a[href="${current}"]`);
+      if (currentLink) {
+        currentLink.classList.add('current');
+        currentLink.setAttribute('aria-current', 'page');
+      }
+      // Si es una página de módulo, resaltar 'Contenido' (dropdown)
+      if (current.startsWith('modulo')) {
+        const dd = nav.querySelector('li.dropdown');
+        if (dd) dd.classList.add('is-current');
+      }
+    }
+  } catch(e) { /* noop */ }
+
+});
   }
 
   // === Menú hamburguesa ===

@@ -1078,3 +1078,21 @@ a:focus-visible { outline: 2px dashed var(--link-hover-color); outline-offset: 2
 .tabla th, .tabla td { vertical-align: top; }
 .tabla td pre, .tabla td code { white-space: pre-wrap; word-break: break-word; max-width: 100%; display: block; }
 pre { overflow-x: auto; max-width: 100%; box-sizing: border-box; }
+
+
+/* === Resaltar "Contenido" sólo en páginas de Módulos ===
+   Detecta el dropdown de módulos por la presencia de <ul class="dropdown-menu">
+   y pinta el botón ".dropdown-toggle" como en Herramientas/Glosario.
+   (No afecta a index/herramientas/glosario/noticias)
+*/
+nav ul li.dropdown:has(> ul.dropdown-menu) > .dropdown-toggle {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color) !important;
+  border: 2px solid var(--primary-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+nav ul li.dropdown:has(> ul.dropdown-menu) > .dropdown-toggle:hover {
+  background-color: var(--primary-color);
+  opacity: 0.9;
+}
