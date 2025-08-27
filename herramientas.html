@@ -21,7 +21,10 @@
             background-color: var(--primary-color); /* Keep the same background on hover */
             opacity: 0.9;
         }
-    </style>
+    
+/* FIX dropdown above searchbar */
+nav .dropdown .dropdown-content { position: absolute; z-index: 1200; }
+</style>
 <style id="tools-search-style">
 /* === Buscador de Herramientas === */
 #tools-searchbar { display:flex; gap:.5rem; align-items:center; margin: 8px 0 14px; padding: 0 12px; }
@@ -42,7 +45,7 @@
 #tools-searchbar{
   position: sticky;
   top: var(--nav-h, 0px);
-  z-index: 1000;
+  z-index: 900;
   background: var(--bg-secondary-color, #fff);
   border-bottom: 1px solid var(--border-color, #e0e0e0);
 }
@@ -52,6 +55,10 @@
     border-bottom-color: rgba(255,255,255,.15);
   }
 }
+
+
+/* === Anchor offset so category titles remain visible === */
+h3[id^="tools-"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px); }
 </style></head>
 <body id="top">
 <header>
