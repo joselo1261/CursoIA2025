@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Módulo 4: GPTs Avanzados</title>
-<link href="style.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
 <style id="module-search-style">
 /* === Buscador de Módulo (sticky + paridad de estilos) === */
 #module-searchbar { 
@@ -37,39 +36,282 @@
 nav .dropdown .dropdown-menu, nav .dropdown .dropdown-content { position: absolute; z-index: 1200; }
 
 /* Keep module4 titles visible */
-section{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px); }
-</style></head>
+section[id^="m4_"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px); }
+</style>
+</head>
 <body>
 <header>
-<h1>Módulo 4: GPTs Avanzados</h1>
-<p>Guía de Inteligencia Artificial - Curso 2025</p>
+  <h1>Módulo 4: GPTs Avanzados</h1>
+  <p>Guía de Inteligencia Artificial - Curso 2025</p>
 </header>
+
 <div class="container">
-<nav>
-<ul id="main-nav-list">
-<li><a href="index.html">Inicio</a></li>
-<li class="dropdown">
-<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" href="#">Contenido ▾</a>
-<ul class="dropdown-menu">
-<li class="disabled"><a href="#">(Contenido próximamente)</a></li>
-</ul>
-</li>
-<li><a href="herramientas.html">Herramientas</a></li>
-<li><a href="glosario.html">Glosario</a></li>
-</ul>
-<button id="theme-toggle">🌙</button>
-<button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
-</nav><div id="module-searchbar"><input aria-label="Buscar en este módulo" id="module-search" placeholder="Buscar en este módulo…" type="search"/><button id="module-clear" type="button">Limpiar</button></div><div aria-live="polite" id="module-stats"></div>
-<main id="module-container">
-<section class="module">
-<h2>Módulo 4: GPTs Avanzados</h2>
-<p><em>Contenido en preparación. Aquí se incluirán las lecciones resumidas del curso.</em></p>
-<ul>
-<li>Lección 1</li>
-<li>Lección 2</li>
-<li>Lección 3</li>
-</ul>
-</section>
+  <!-- NAV consistente con los otros módulos -->
+  <nav>
+    <ul id="main-nav-list">
+      <li><a href="index.html">Inicio</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Contenido ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="#m4_p1">1. Acciones y APIs</a></li>
+          <li><a href="#m4_p2">2. Conexión a base de datos</a></li>
+          <li><a href="#m4_p3">3. Tree of Thoughts (TOT)</a></li>
+          <li><a href="#m4_p4">4. Asistente de Estudios</a></li>
+          <li><a href="#m4_p5">5. Entrevista desde Biografía</a></li>
+          <li><a href="#m4_p6">6. Descripción a partir de Fichas Técnicas</a></li>
+          <li><a href="#m4_p7">7. Identificación visual de una imagen</a></li>
+          <li><a href="#m4_p8">8. Preguntas Frecuentes</a></li>
+          <li><a href="#m4_p9">9. Asistente de Código</a></li>
+          <li><a href="#m4_p10">10. Historias Narrativas Infinitas</a></li>
+          <li><a href="#m4_p11">11. News Letters</a></li>
+          <li><a href="#m4_p12">12. Redactor Pro</a></li>
+          <li><a href="#m4_p13">13. Soporte Técnico sobre Documentación</a></li>
+          <li><a href="#m4_p14">14. Propuesta Comercial</a></li>
+          <li><a href="#m4_p15">15. Resumen de Informes</a></li>
+        </ul>
+      </li>
+      <li><a href="herramientas.html">Herramientas</a></li>
+      <li><a href="glosario.html">Glosario</a></li>
+    </ul>
+    <button id="theme-toggle">🌙</button>
+    <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
+  </nav>
+
+  <!-- Buscador del módulo -->
+  <div id="module-searchbar">
+    <input id="module-search" type="search" aria-label="Buscar en este módulo" placeholder="Buscar en este módulo…"/>
+    <button id="module-clear" type="button">Limpiar</button>
+  </div>
+  <div id="module-stats" aria-live="polite"></div>
+
+  <main id="module-container">
+
+    <section class="module" id="m4_p1">
+      <h2>1. Acciones y APIs</h2>
+      <p>Conectá tu GPT con servicios externos: enviá mails, creá tickets o actualizá planillas vía <strong>Acciones</strong> y <strong>APIs</strong> del Builder. Definís endpoints, auth y el esquema de request/response.</p>
+      <div class="chips"><span class="chip">REST</span><span class="chip">OAuth / Keys</span><span class="chip">Validación</span><span class="chip">Logs</span></div>
+      <div class="k-cards">
+        <article class="k-card"><h4>Buenas prácticas</h4>
+          <ul class="check">
+            <li>Definí <em>inputs</em> estrictos y validá tipos.</li>
+            <li>Sanitizá prompts antes de llamar APIs.</li>
+            <li>Limitá el alcance: solo los endpoints necesarios.</li>
+          </ul>
+        </article>
+        <article class="k-card"><h4>Plantilla mínima</h4>
+<pre><code>// request
+{ "cliente_id": &lt;string&gt;, "monto": &lt;number&gt; }
+// response esperado
+{ "ok": true, "id": "OP-123" }</code></pre>
+        </article>
+      </div>
+      <div class="callout"><strong>Tip:</strong> registrá errores y tiempos de respuesta; devolvé mensajes claros al usuario.</div>
+    </section>
+
+    <section class="module" id="m4_p2">
+      <h2>2. Conexión a base de datos</h2>
+      <p>Accedé a datos estructurados (consultas de lectura y acciones controladas) usando una capa API o un conector seguro. Evitá exponer credenciales en instrucciones.</p>
+      <div class="table-responsive">
+        <table class="tabla tabla-compacta">
+          <thead><tr><th>Estrategia</th><th>Cuándo</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>API intermedia</td><td>La más segura</td><td>Control de permisos y auditoría.</td></tr>
+            <tr><td>Read-only</td><td>Consultas</td><td>Evita escrituras salvo casos justificados.</td></tr>
+            <tr><td>Parametrización</td><td>SQL seguro</td><td>Evita inyección; limita OFFSET/LIMIT.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>Checklist:</strong> roles mínimos, rotación de claves, logs y tope de filas.</div>
+    </section>
+
+    <section class="module" id="m4_p3">
+      <h2>3. Tree of Thoughts (TOT)</h2>
+      <p>Estrategia de razonamiento por <em>ramas</em>: el GPT genera múltiples ideas, evalúa y elige la mejor. Útil en planificación, código y resolución de problemas complejos.</p>
+      <div class="k-cards">
+        <article class="k-card"><h4>Protocolo express</h4>
+          <ol>
+            <li>Generar 3–5 alternativas.</li>
+            <li>Evaluar con criterios (costo/beneficio, riesgo).</li>
+            <li>Seleccionar y sintetizar el plan final.</li>
+          </ol>
+        </article>
+        <article class="k-card"><h4>Prompt sugerido</h4>
+<pre><code>Producí 4 rutas posibles. Evaluá cada una (pros/contras).
+Elegí la mejor y armá un plan de acción en 5 pasos.</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p4">
+      <h2>4. Asistente de Estudios</h2>
+      <p>Un GPT académico que crea resúmenes, guías y preguntas tipo examen. Puede referenciar PDFs cargados o links (si navegación está activa).</p>
+      <div class="chips"><span class="chip">Síntesis</span><span class="chip">Preguntas</span><span class="chip">Flashcards</span></div>
+      <div class="table-responsive">
+        <table class="tabla tabla-compacta">
+          <thead><tr><th>Función</th><th>Salida</th></tr></thead>
+          <tbody>
+            <tr><td>Resumen</td><td>TL;DR + secciones clave</td></tr>
+            <tr><td>Banco de preguntas</td><td>10–20 preguntas con respuesta</td></tr>
+            <tr><td>Plan de estudio</td><td>Semanal con hitos</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p5">
+      <h2>5. Entrevista desde Biografía</h2>
+      <p>Entrená al GPT con una biografía (propia o de un personaje) para generar <em>entrevistas coherentes</em>, ampliando detalles con preguntas de seguimiento.</p>
+      <div class="k-cards">
+        <article class="k-card"><h4>Estructura</h4>
+          <ul class="check">
+            <li>Introducción empática</li>
+            <li>Bloques temáticos (infancia, logros, desafíos)</li>
+            <li>Cierre con síntesis y próximos pasos</li>
+          </ul>
+        </article>
+        <article class="k-card"><h4>Salidas</h4>
+          <p>Transcripción, highlights y <em>perfil</em> narrativo de la persona.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p6">
+      <h2>6. Descripción a partir de Fichas Técnicas</h2>
+      <p>A partir de una ficha técnica, el GPT genera descripciones comerciales consistentes (web, catálogo, e‑commerce) manteniendo especificaciones.</p>
+      <div class="chips"><span class="chip">E‑commerce</span><span class="chip">Consistencia</span><span class="chip">Variantes</span></div>
+      <div class="callout"><strong>Tip:</strong> pedile tono y longitud estándar; ejemplo: “3 párrafos + bullets técnicos”.</div>
+    </section>
+
+    <section class="module" id="m4_p7">
+      <h2>7. Identificación visual de una imagen</h2>
+      <p>Con visión activada, el GPT describe e identifica elementos en imágenes: objetos, texto embebido, diagramas o piezas.</p>
+      <div class="table-responsive">
+        <table class="tabla tabla-compacta">
+          <thead><tr><th>Uso</th><th>Ejemplo</th><th>Salida</th></tr></thead>
+          <tbody>
+            <tr><td>Inventario</td><td>Foto de repuesto</td><td>Nombre, categoría, posibles equivalentes</td></tr>
+            <tr><td>OCR liviano</td><td>Etiqueta o factura</td><td>Texto + campos clave</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><strong>Privacidad:</strong> evitá subir datos sensibles; anonimizá antes.</div>
+    </section>
+
+    <section class="module" id="m4_p8">
+      <h2>8. Preguntas Frecuentes</h2>
+      <p>Construí un FAQ dinámico con respuestas consistentes desde documentación base. Ideal para soporte y onboarding.</p>
+      <div class="k-cards">
+        <article class="k-card"><h4>Fuente</h4><p>TXT/MD curados por tema; ejemplos de buenas respuestas.</p></article>
+        <article class="k-card"><h4>Formato de salida</h4>
+<pre><code>Q: &lt;pregunta&gt;
+A: &lt;respuesta breve&gt;
++ Enlace a detalle</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p9">
+      <h2>9. Asistente de Código</h2>
+      <p>Un GPT técnico para explicar errores, proponer tests y refactorizar. Activá Intérprete para ejecutar snippets aislados.</p>
+      <div class="chips"><span class="chip">Tests</span><span class="chip">Refactor</span><span class="chip">Revisiones</span></div>
+      <div class="callout"><strong>Reglas:</strong> citar versión/entorno, explicar trade‑offs y sugerir pruebas.</div>
+    </section>
+
+    <section class="module" id="m4_p10">
+      <h2>10. Historias Narrativas Infinitas</h2>
+      <p>Motor narrativo que continúa historias con consistencia de personajes y trama. Útil para guion, juegos o creatividad.</p>
+      <div class="k-cards">
+        <article class="k-card"><h4>Controles</h4>
+          <ul class="check">
+            <li>Estado de mundo (JSON simple)</li>
+            <li>Longitud por entrega</li>
+            <li>Resumen de capítulo previo</li>
+          </ul>
+        </article>
+        <article class="k-card"><h4>Salida sugerida</h4>
+<pre><code># Resumen previo
+# Capítulo N
+# Ganchos para el siguiente</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p11">
+      <h2>11. News Letters</h2>
+      <p>Redacción de newsletters con curaduría, enfoque editorial y llamados a la acción. Puede integrar enlaces y UTM.</p>
+      <div class="table-responsive">
+        <table class="tabla tabla-compacta">
+          <thead><tr><th>Bloque</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td>Subject + preheader</td><td>A/B testing de 2–3 variantes</td></tr>
+            <tr><td>Cuerpo</td><td>Notas cortas + enlaces</td></tr>
+            <tr><td>CTA</td><td>Claro y medible</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p12">
+      <h2>12. Redactor Pro</h2>
+      <p>Asistente de copy para titulares, descripciones y anuncios. Ajusta tono y voz de marca.</p>
+      <div class="chips"><span class="chip">Tono</span><span class="chip">Estilo</span><span class="chip">Consistencia</span></div>
+      <div class="callout"><strong>Plantilla:</strong> objetivo, público, 3 variantes y recomendación.</div>
+    </section>
+
+    <section class="module" id="m4_p13">
+      <h2>13. Soporte Técnico sobre Documentación</h2>
+      <p>GPT entrenado con manuales y guías técnicas para responder dudas y proponer pasos de solución.</p>
+      <div class="k-cards">
+        <article class="k-card"><h4>Fuentes</h4><p>TXT limpios + índices por tema; evita PDFs ruidosos.</p></article>
+        <article class="k-card"><h4>Salida</h4>
+<pre><code>## Diagnóstico
+## Pasos sugeridos (1–5)
+## Advertencias
+## Cuándo escalar</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p14">
+      <h2>14. Propuesta Comercial</h2>
+      <p>Generá propuestas claras y consistentes a partir de brief y plantillas: alcance, entregables, plazos y costos.</p>
+      <div class="table-responsive">
+        <table class="tabla tabla-compacta">
+          <thead><tr><th>Sección</th><th>Contenido</th></tr></thead>
+          <tbody>
+            <tr><td>Resumen ejecutivo</td><td>1–2 párrafos</td></tr>
+            <tr><td>Alcance y entregables</td><td>Bullets medibles</td></tr>
+            <tr><td>Cronograma</td><td>Hitos por semana</td></tr>
+            <tr><td>Inversión</td><td>Tabla + condiciones</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="module" id="m4_p15">
+      <h2>15. Resumen de Informes</h2>
+      <p>Automatizá resúmenes ejecutivos de informes largos (PDF/Word/TXT) con tablas de hallazgos y recomendaciones priorizadas.</p>
+      <div class="k-cards">
+        <article class="k-card"><h4>Formato sugerido</h4>
+<pre><code>## Resumen (5–7 líneas)
+## Hallazgos clave (bullets)
+## Recomendaciones (priorizadas)
+## Próximos pasos</code></pre>
+        </article>
+        <article class="k-card"><h4>Validación</h4>
+          <ul class="check">
+            <li>Chequear fuentes citadas</li>
+            <li>Evitar redundancias</li>
+            <li>Incluir métricas si hay</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- JS (modo oscuro, hamburguesa, footer dinámico) -->
 <script id="module-search-script">
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('module-search');
@@ -134,8 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
   clearBtn.addEventListener('click', () => { input.value=''; input.focus(); apply(true); });
   apply(false);
 });
-</script></main>
-</div>
+</script>
 <script src="script.js"></script>
 </body>
 </html>
