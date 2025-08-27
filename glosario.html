@@ -22,7 +22,38 @@
             opacity: 0.9;
         }
     </style>
-</head>
+<style id="glossary-search-style">
+/* === Buscador del Glosario + anclas === */
+#glossary-searchbar { display:flex; gap:.5rem; align-items:center; margin: 12px 0 20px; }
+#glossary-searchbar input[type="search"]{
+  flex:1; max-width: 640px; padding:10px 12px; border:1.5px solid #000;
+  border-radius:8px; font-size:1rem; background: transparent; color: inherit;
+}
+#glossary-clear{ padding:8px 10px; border:1.5px solid #000; border-radius:8px; cursor:pointer; background: var(--bg-secondary-color, #fff); color: var(--text-color, #111); }
+#glossary-clear:hover{ filter: brightness(0.97); }
+#glossary-stats{ margin-top:4px; font-size:.9rem; color: var(--muted-color, #6b7280); }
+#glosario-content mark { background:#fff2ac; color:inherit; padding:0 .1em; border-radius:2px; }
+#glosario-content .letter-section { scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 8px); } /* evita que el header tape el título */
+@media (prefers-color-scheme: dark){
+  #glossary-searchbar input[type="search"]{ border-color:#fff; }
+  #glossary-clear{ background: var(--primary-color, #8b5cf6); color: var(--primary-text-color, #fff); border-color: var(--primary-color, #8b5cf6); }
+}
+
+/* === Sticky searchbar under nav (glosario) === */
+#glossary-searchbar{
+  position: sticky;
+  top: var(--nav-h, 0px);
+  z-index: 1000;
+  background: var(--bg-secondary-color, #fff);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+@media (prefers-color-scheme: dark){
+  #glossary-searchbar{
+    background: var(--bg-color, #0f1218);
+    border-bottom-color: rgba(255,255,255,.15);
+  }
+}
+</style></head>
 <body id="top">
 <header>
 <h1>Glosario de Inteligencia Artificial</h1>
@@ -41,9 +72,7 @@
 <main>
 <section class="module" id="glosario-content">
 <h2>Glosario de Términos Clave</h2>
-<div class="alphabet-nav">
-<a href="#A">A</a> <a href="#B">B</a> <a href="#C">C</a> <a href="#D">D</a> <a href="#E">E</a> <a href="#F">F</a> <a href="#G">G</a> <a href="#H">H</a> <a href="#I">I</a> <a href="#J">J</a> <a href="#K">K</a> <a href="#L">L</a> <a href="#M">M</a> <a href="#N">N</a> <a href="#O">O</a> <a href="#P">P</a> <a href="#Q">Q</a> <a href="#R">R</a> <a href="#S">S</a> <a href="#T">T</a> <a href="#U">U</a> <a href="#V">V</a> <a href="#W">W</a> <a href="#X">X</a> <a href="#Y">Y</a> <a href="#Z">Z</a>
-</div>
+<div class="alphabet-nav"><a href="#A">A</a><a href="#B">B</a><a href="#C">C</a><a href="#D">D</a><a href="#E">E</a><a href="#F">F</a><a href="#G">G</a><a href="#H">H</a><a href="#I">I</a><a href="#J">J</a><a href="#K">K</a><a href="#L">L</a><a href="#M">M</a><a href="#N">N</a><a href="#O">O</a><a href="#P">P</a><a href="#Q">Q</a><a href="#R">R</a><a href="#S">S</a><a href="#T">T</a><a href="#U">U</a><a href="#V">V</a><a href="#W">W</a><a href="#X">X</a><a href="#Y">Y</a><a href="#Z">Z</a></div><div id="glossary-searchbar"><input aria-label="Buscar término o definición" id="glossary-search" placeholder="Buscar término o definición…" type="search"/><button id="glossary-clear" type="button">Limpiar</button></div><div aria-live="polite" id="glossary-stats"></div>
 <div class="letter-section" id="A">
 <h3>A</h3>
 <ul><li><dt style="color: blue; font-weight: bold;">A/B Testing</dt>
@@ -51,7 +80,7 @@
 <dd>Proceso de optimización de los parámetros que controlan el comportamiento de un modelo de aprendizaje automático.</dd></li><li><dt style="color: blue; font-weight: bold;">Algorithm (Algoritmo)</dt>
 <dd>Un conjunto de reglas o instrucciones paso a paso que una computadora sigue para realizar una tarea o resolver un problema.</dd></li><li><dt style="color: blue; font-weight: bold;">Algoritmo</dt>
 <dd>Conjunto de reglas o instrucciones que un sistema sigue para realizar una tarea o resolver un problema específico.</dd></li><li><dt style="color: blue; font-weight: bold;">Alucinaciones</dt><dd>Respuestas inventadas o incorrectas que un modelo genera con mucha seguridad.</dd></li><li><dt style="color: blue; font-weight: bold;">Análisis de Componentes Principales (PCA)</dt>
-<dd>Técnica de reducción de dimensionalidad que transforma los datos a un conjunto de variables no correlacionadas, llamadas componentes principales.</dd></li><li><dt style="color: blue; font-weight: bold;">API</dt><dd>Puerta de acceso para que dos programas se hablen entre sí de forma controlada.</dd></li><li><dt style="color: blue; font-weight: bold;">API Key (Clave API)</dt><dd>Código secreto que te identifica cuando usás una API.</dd></li><li><dt style="color: blue; font-weight: bold;">Aprendizaje Automático (Machine Learning)</dt>
+<dd>Técnica de reducción de dimensionalidad que transforma los datos a un conjunto de variables no correlacionadas, llamadas componentes principales.</dd></li><li><dt style="color: blue; font-weight: bold;">API</dt><dd>Puerta de acceso para que dos programas se hablen entre sí de forma controlada.</dd></li><li><dt style="color: blue; font-weight: bold;">Aprendizaje Automático (Machine Learning)</dt>
 <dd>Subcampo de la IA que permite a los sistemas aprender y mejorar automáticamente a partir de la experiencia sin ser programados explícitamente para ello.</dd></li><li><dt style="color: blue; font-weight: bold;">Aprendizaje No Supervisado (Unsupervised Learning)</dt>
 <dd>Tipo de aprendizaje automático en el que el modelo busca patrones en datos sin etiquetas predefinidas.</dd></li><li><dt style="color: blue; font-weight: bold;">Aprendizaje por Refuerzo (Reinforcement Learning)</dt>
 <dd>Técnica donde un agente aprende a tomar decisiones mediante prueba y error, recibiendo recompensas o castigos.</dd></li><li><dt style="color: blue; font-weight: bold;">Aprendizaje Supervisado (Supervised Learning)</dt>
@@ -91,7 +120,7 @@
 <dd>Un algoritmo de aprendizaje supervisado que utiliza una estructura similar a un árbol para tomar decisiones basadas en las características de los datos.</dd></li><li><dt style="color: blue; font-weight: bold;">Deep Learning (Aprendizaje Profundo)</dt>
 <dd>Rama del aprendizaje automático que utiliza redes neuronales profundas para modelar datos complejos.</dd></li><li><dt style="color: blue; font-weight: bold;">Desbalance de Clases (Class Imbalance)</dt>
 <dd>Situación en la que una clase está representada mucho más que otras en un conjunto de datos, lo que puede afectar el rendimiento del modelo.</dd></li><li><dt style="color: blue; font-weight: bold;">Determinismo</dt><dd>Que una misma entrada siempre produce la misma salida (cuando no hay azar).</dd></li><li><dt style="color: blue; font-weight: bold;">Diffusion Models (Modelos de Difusión)</dt>
-<dd>Una clase de modelos generativos que crean datos, como imágenes, añadiendo y luego eliminando progresivamente "ruido" de una muestra inicial.</dd></li><li><dt style="color: blue; font-weight: bold;">Difusión</dt><dd>Definición pendiente.</dd></li><li><dt style="color: blue; font-weight: bold;">Dimensionality Reduction (Reducción de Dimensionalidad)</dt>
+<dd>Una clase de modelos generativos que crean datos, como imágenes, añadiendo y luego eliminando progresivamente "ruido" de una muestra inicial.</dd></li><li><dt style="color: blue; font-weight: bold;">Difusión</dt><dd>En IA generativa, familia de modelos que crean imágenes u otros datos agregando y quitando “ruido”.</dd></li><li><dt style="color: blue; font-weight: bold;">Dimensionality Reduction (Reducción de Dimensionalidad)</dt>
 <dd>El proceso de reducir el número de variables de entrada en un conjunto de datos, para simplificar el modelo y mejorar su rendimiento.</dd></li></ul>
 </div>
 <div class="letter-section" id="E">
@@ -106,7 +135,7 @@
 <h3>F</h3>
 <ul><li><dt style="color: blue; font-weight: bold;">Feature (Característica)</dt>
 <dd>Una variable o atributo individual y medible de los datos que se utiliza como entrada para un modelo de Machine Learning.</dd></li><li><dt style="color: blue; font-weight: bold;">Feature Engineering (Ingeniería de Características)</dt>
-<dd>Proceso de seleccionar, modificar o crear variables que representen mejor los datos para mejorar el rendimiento de un modelo.</dd></li><li><dt style="color: blue; font-weight: bold;">Few‑shot</dt><dd>Dar pocos ejemplos en el prompt para que el modelo copie el estilo o el formato.</dd></li><li><dt style="color: blue; font-weight: bold;">Fine-Tuning</dt>
+<dd>Proceso de seleccionar, modificar o crear variables que representen mejor los datos para mejorar el rendimiento de un modelo.</dd></li><li><dt style="color: blue; font-weight: bold;">Few-shot</dt><dd>Dar pocos ejemplos en el prompt para que el modelo copie el estilo o el formato.</dd></li><li><dt style="color: blue; font-weight: bold;">Fine-Tuning</dt>
 <dd>Proceso de ajustar un modelo preentrenado en una tarea específica con un nuevo conjunto de datos.</dd></li><li><dt style="color: blue; font-weight: bold;">Fine‑tuning (Ajuste fino)</dt><dd>Entrenar el modelo con tus propios ejemplos para que se adapte mejor a tu uso.</dd></li><li><dt style="color: blue; font-weight: bold;">Framework</dt>
 <dd>Una plataforma o biblioteca de software que proporciona una base para desarrollar aplicaciones de software, como los frameworks de Deep Learning (TensorFlow, PyTorch).</dd></li><li><dt style="color: blue; font-weight: bold;">Función de Activación</dt>
 <dd>Función matemática utilizada en una red neuronal para decidir si una neurona debe activarse o no.</dd></li></ul>
@@ -135,12 +164,11 @@
 <dd>Proceso de usar un modelo entrenado para hacer predicciones sobre nuevos datos.</dd></li>
 <li><dt style="color: blue; font-weight: bold;">Inteligencia Artificial (IA)</dt>
 <dd>Campo de la informática que se dedica a crear sistemas capaces de realizar tareas que normalmente requieren inteligencia humana.</dd></li>
-<li><dt style="color: blue; font-weight: bold;">Interfaz</dt><dd>Forma en que te comunicás con una herramienta o sistema.</dd></li><li><dt style="color: blue; font-weight: bold;">Índice</dt><dd>Lista ordenada para ubicar contenidos de una guía o documento.</dd></li></ul>
+<li><dt style="color: blue; font-weight: bold;">Interfaz</dt><dd>Forma en que te comunicás con una herramienta o sistema.</dd></li><li><dt style="color: blue; font-weight: bold;">Inyección de prompts (Prompt Injection)</dt><dd>Texto malicioso que busca cambiar las instrucciones del asistente para que haga algo no esperado.</dd></li></ul>
 </div>
 <div class="letter-section" id="J">
 <h3>J</h3>
-<ul>
-<li><dt style="color: blue; font-weight: bold;">Jailbreak</dt><dd>Truco de mensajes para saltar o engañar las protecciones del modelo y lograr respuestas que no debería dar.</dd></li><li><dt style="color: blue; font-weight: bold;">JSON</dt><dd>Formato de texto para intercambiar datos de manera simple y legible.</dd></li><li><dt style="color: blue; font-weight: bold;">JSONL</dt><dd>Formato donde cada línea es un objeto JSON; muy usado para entrenar modelos con muchos ejemplos.</dd></li></ul>
+<ul><li><dt style="color: blue; font-weight: bold;">Jailbreak</dt><dd>Truco de mensajes para saltar o engañar las protecciones del modelo y lograr respuestas que no debería dar.</dd></li><li><dt style="color: blue; font-weight: bold;">JSON</dt><dd>Formato de texto para intercambiar datos: usa pares clave–valor y listas, fácil de leer por personas y programas.</dd></li><li><dt style="color: blue; font-weight: bold;">JSONL</dt><dd>Formato donde cada línea es un objeto JSON; muy usado para entrenar modelos con muchos ejemplos.</dd></li></ul>
 </div>
 <div class="letter-section" id="K">
 <h3>K</h3>
@@ -189,18 +217,18 @@
 </div>
 <div class="letter-section" id="P">
 <h3>P</h3>
-<ul><li><dt style="color: blue; font-weight: bold;">Inyección de prompts (Prompt Injection)</dt><dd>Texto malicioso que busca cambiar las instrucciones del asistente para que haga algo no esperado.</dd></li><li><dt style="color: blue; font-weight: bold;">Pandas</dt>
+<ul><li><dt style="color: blue; font-weight: bold;">API Key (Clave API)</dt><dd>Código secreto que te identifica cuando usás una API.</dd></li><li><dt style="color: blue; font-weight: bold;">Pandas</dt>
 <dd>Biblioteca de Python utilizada para manipulación y análisis de datos.</dd></li><li><dt style="color: blue; font-weight: bold;">Parámetro</dt>
 <dd>Valores internos de un modelo que se ajustan durante el entrenamiento para minimizar el error en las predicciones.</dd></li><li><dt style="color: blue; font-weight: bold;">PDF</dt><dd>Formato de documento que conserva el diseño al compartirlo.</dd></li><li><dt style="color: blue; font-weight: bold;">Penalización de frecuencia</dt><dd>Ajuste que reduce repeticiones cuando el modelo insiste con las mismas palabras.</dd></li><li><dt style="color: blue; font-weight: bold;">Penalización de presencia</dt><dd>Ajuste que empuja al modelo a mencionar ideas nuevas en lugar de repetir.</dd></li><li><dt style="color: blue; font-weight: bold;">Perceptrón</dt>
 <dd>Modelo de neurona artificial que es la base de las redes neuronales.</dd></li><li><dt style="color: blue; font-weight: bold;">PHI (Información de salud protegida)</dt><dd>Datos de salud personales que deben tratarse con especial cuidado.</dd></li><li><dt style="color: blue; font-weight: bold;">PII (Datos personales identificables)</dt><dd>Información que puede identificar a una persona: nombre, DNI, email, teléfono, etc.</dd></li><li><dt style="color: blue; font-weight: bold;">Pipeline</dt>
 <dd>Serie de pasos o procesos por los que pasan los datos desde su entrada hasta la salida del modelo.</dd></li><li><dt style="color: blue; font-weight: bold;">Plataforma de Código Abierto (Open Source)</dt>
 <dd>Software cuyo código fuente está disponible para que cualquiera lo use, modifique y distribuya.</dd></li><li><dt style="color: blue; font-weight: bold;">Plataforma de Código Cerrado (Closed Source)</dt>
-<dd>Software cuyo código fuente no está disponible públicamente y suele ser propiedad de una empresa.</dd></li><li><dt style="color: blue; font-weight: bold;">PNG</dt><dd>Formato de imagen de buena calidad y fondo transparente.</dd></li><li><dt style="color: blue; font-weight: bold;">Políticas de contenido</dt><dd>Reglas claras sobre qué se puede y no se puede pedir o publicar.</dd></li><li><dt style="color: blue; font-weight: bold;">Ponderación</dt>
+<dd>Software cuyo código fuente no está disponible públicamente y suele ser propiedad de una empresa.</dd></li><li><dt style="color: blue; font-weight: bold;">PNG</dt><dd>Formato de imagen de buena calidad y fondo transparente.</dd></li><li><dt style="color: blue; font-weight: bold;">Ponderación</dt>
 <dd>Asignación de importancia relativa a diferentes características o entradas en un modelo de IA.</dd></li><li><dt style="color: blue; font-weight: bold;">Precisión</dt>
 <dd>Medida que indica el porcentaje de predicciones correctas realizadas por un modelo.</dd></li><li><dt style="color: blue; font-weight: bold;">Preferencias</dt><dd>Configuración elegida por el usuario para personalizar la experiencia.</dd></li><li><dt style="color: blue; font-weight: bold;">Preprocesamiento</dt>
 <dd>Conjunto de técnicas para preparar los datos antes de ser utilizados en un modelo de IA.</dd></li><li><dt style="color: blue; font-weight: bold;">Principal Component Analysis (PCA) (Análisis de Componentes Principales)</dt>
 <dd>Una técnica de reducción de dimensionalidad que transforma los datos en un nuevo conjunto de variables (componentes principales) no correlacionadas.</dd></li><li><dt style="color: blue; font-weight: bold;">Privacidad</dt><dd>Protección de tus datos personales y de cómo se usan.</dd></li><li><dt style="color: blue; font-weight: bold;">Prompt</dt>
-<dd>Entrada de texto que se da a un modelo de lenguaje, como GPT, para que genere una respuesta o complete una tarea.</dd></li><li><dt style="color: blue; font-weight: bold;">Prompt Engineering</dt><dd>Práctica de diseñar instrucciones claras y ejemplos para obtener mejores resultados.</dd></li><li><dt style="color: blue; font-weight: bold;">Prompting</dt>
+<dd>Entrada de texto que se da a un modelo de lenguaje, como GPT, para que genere una respuesta o complete una tarea.</dd></li><li><dt style="color: blue; font-weight: bold;">Prompt Engineering</dt><dd>Diseñar instrucciones claras y ejemplos para obtener mejores resultados.</dd></li><li><dt style="color: blue; font-weight: bold;">Prompting</dt>
 <dd>El proceso de diseñar y refinar las instrucciones (prompts) que se le dan a un modelo de IA generativa para obtener los resultados deseados.</dd></li><li><dt style="color: blue; font-weight: bold;">Propagación hacia Atrás (Backpropagation)</dt>
 <dd>Algoritmo utilizado en el entrenamiento de redes neuronales para ajustar los pesos en función del error de las predicciones.</dd></li><li><dt style="color: blue; font-weight: bold;">PyTorch</dt>
 <dd>Un popular framework de Deep Learning de código abierto, conocido por su flexibilidad y facilidad de uso en la investigación.</dd></li></ul>
@@ -242,7 +270,7 @@
 <ul><li><dt style="color: blue; font-weight: bold;">Temperatura</dt><dd>Ajuste que controla cuán creativas o conservadoras son las respuestas.</dd></li><li><dt style="color: blue; font-weight: bold;">Tensor</dt>
 <dd>Estructura de datos multidimensional utilizada en el procesamiento y el modelado de datos.</dd></li><li><dt style="color: blue; font-weight: bold;">TensorFlow</dt>
 <dd>Framework de código abierto para construir y entrenar modelos de aprendizaje automático y aprendizaje profundo.</dd></li><li><dt style="color: blue; font-weight: bold;">Token</dt>
-<dd>Unidad básica de texto, como una palabra o carácter, que se utiliza en modelos de lenguaje.</dd></li><li><dt style="color: blue; font-weight: bold;">Tokenización</dt><dd>Proceso de convertir un texto en tokens.</dd></li><li><dt style="color: blue; font-weight: bold;">Traducción</dt><dd>Paso de un idioma a otro manteniendo el sentido del texto.</dd></li><li><dt style="color: blue; font-weight: bold;">Training (Entrenamiento)</dt>
+<dd>Unidad básica de texto, como una palabra o carácter, que se utiliza en modelos de lenguaje.</dd></li><li><dt style="color: blue; font-weight: bold;">Tokenización</dt><dd>Proceso de convertir un texto en unidades mínimas (tokens).</dd></li><li><dt style="color: blue; font-weight: bold;">Traducción</dt><dd>Pasar de un idioma a otro manteniendo el sentido.</dd></li><li><dt style="color: blue; font-weight: bold;">Training (Entrenamiento)</dt>
 <dd>El proceso de enseñar a un modelo de Machine Learning a realizar una tarea dándole ejemplos de datos.</dd></li><li><dt style="color: blue; font-weight: bold;">Transfer Learning (Aprendizaje por Transferencia)</dt>
 <dd>Técnica donde un modelo preentrenado en una tarea se adapta a otra tarea relacionada.</dd></li><li><dt style="color: blue; font-weight: bold;">Transformers</dt>
 <dd>Una arquitectura de red neuronal que se ha convertido en el estándar para tareas de NLP, utilizando un mecanismo de "atención" para procesar secuencias de datos.</dd></li></ul>
@@ -287,7 +315,95 @@
 <dd>Técnica en la que un modelo es capaz de reconocer y clasificar datos de clases que no ha visto durante el entrenamiento.</dd></li>
 </ul>
 </div>
-</section>
+<script id="glossary-search-script">
+document.addEventListener('DOMContentLoaded', () => {
+  const navEl = document.querySelector('nav');
+  function updateOffsets(){
+    const navH = navEl ? navEl.offsetHeight : 0;
+    const sb = document.getElementById('glossary-searchbar');
+    const sbH = sb ? sb.offsetHeight : 0;
+    document.documentElement.style.setProperty('--nav-h', navH + 'px');
+    document.documentElement.style.setProperty('--searchbar-h', sbH + 'px');
+  }
+  updateOffsets();
+  window.addEventListener('resize', updateOffsets);
+
+  const input = document.getElementById('glossary-search');
+  const clearBtn = document.getElementById('glossary-clear');
+  const stats = document.getElementById('glossary-stats');
+  const items = Array.from(document.querySelectorAll('#glosario-content .letter-section ul > li'));
+  const letterSections = Array.from(document.querySelectorAll('#glosario-content .letter-section'));
+  const alphaLinks = Array.from(document.querySelectorAll('#glosario-content .alphabet-nav a'));
+  const total = items.length;
+  const strip = s => (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+  function buildMap(s){
+    const map = []; const norm=[]; let i=0; for (const ch of s){ const st=strip(ch); norm.push(st); for(let k=0;k<st.length;k++) map.push(i); i+=ch.length; }
+    return { norm:norm.join(''), map };
+  }
+  function hi(el,q){
+    if(!el) return;
+    if(!el.dataset.orig) el.dataset.orig = el.textContent;
+    const orig = el.dataset.orig;
+    if(!q){ el.innerHTML = orig; return; }
+    const {norm,map} = buildMap(orig);
+    const qn = strip(q).toLowerCase();
+    let from=0, out='', last=0;
+    while(true){
+      const idx = norm.toLowerCase().indexOf(qn, from);
+      if(idx === -1) break;
+      const start = map[idx];
+      const end = (idx+qn.length < map.length) ? map[idx+qn.length] : orig.length;
+      out += orig.slice(last, start) + '<mark>' + orig.slice(start, end) + '</mark>';
+      last = end; from = idx + qn.length;
+    }
+    out += orig.slice(last);
+    el.innerHTML = out;
+  }
+  function scrollToFirstMatch(){
+    const first = document.querySelector('#glosario-content .letter-section li mark');
+    if(first){
+      first.scrollIntoView({behavior:'smooth', block:'start'});
+      const cs = getComputedStyle(document.documentElement);
+      const navH = parseInt(cs.getPropertyValue('--nav-h'))||0;
+      const sbH = parseInt(cs.getPropertyValue('--searchbar-h'))||0;
+      window.scrollBy({ top: -(navH + sbH + 8), left: 0, behavior: 'smooth' });
+    }
+  }
+  function applyFilter(scroll){
+    const q = input.value.trim();
+    let visible = 0;
+    items.forEach(li => {
+      const dt = li.querySelector('dt'); const dd = li.querySelector('dd');
+      const hay = strip((dt && dt.textContent) + ' ' + (dd && dd.textContent)).toLowerCase();
+      const ok = !q || hay.includes(strip(q).toLowerCase());
+      li.style.display = ok ? '' : 'none';
+      hi(dt, ok ? q : '');
+      hi(dd, ok ? q : '');
+      if (ok) visible++;
+    });
+    letterSections.forEach(sec => {
+      const any = Array.from(sec.querySelectorAll('ul > li')).some(li => li.style.display !== 'none');
+      sec.style.display = any ? '' : 'none';
+    });
+    stats.textContent = `Mostrando ${visible} de ${total} términos`;
+    if (scroll && q) scrollToFirstMatch();
+  }
+
+  // Clear filter before jumping by letter to ensure section is visible
+  alphaLinks.forEach(a => {
+    a.addEventListener('click', () => {
+      input.value = '';
+      applyFilter(false); // muestra todo
+      // dejamos que el ancla haga el scroll nativo
+    });
+  });
+
+  input.addEventListener('input', () => applyFilter(true));
+  clearBtn.addEventListener('click', () => { input.value=''; input.focus(); applyFilter(true); });
+  applyFilter(false);
+});
+</script></section>
 </main>
 <footer>
 </footer>

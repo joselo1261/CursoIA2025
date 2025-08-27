@@ -22,7 +22,37 @@
             opacity: 0.9;
         }
     </style>
-</head>
+<style id="tools-search-style">
+/* === Buscador de Herramientas === */
+#tools-searchbar { display:flex; gap:.5rem; align-items:center; margin: 8px 0 14px; padding: 0 12px; }
+#tools-searchbar input[type="search"]{
+  flex:1; min-width: 260px; max-width: 720px; padding:10px 12px; border:1.5px solid #000; /* negro en claro */
+  border-radius:8px; font-size:1rem; background: transparent; color: inherit;
+}
+#tools-clear{ padding:8px 10px; border:1.5px solid #000; border-radius:8px; cursor:pointer; background: var(--bg-secondary-color, #fff); color: var(--text-color, #111); }
+#tools-clear:hover{ filter: brightness(0.97); }
+#tools-stats{ margin: 0 12px 8px; font-size:.9rem; color: var(--muted-color, #6b7280); }
+#tools-container mark { background:#fff2ac; color:inherit; padding:0 .1em; border-radius:2px; }
+@media (prefers-color-scheme: dark){
+  #tools-searchbar input[type="search"]{ border-color:#fff; }
+  #tools-clear{ background: var(--primary-color, #8b5cf6); color: var(--primary-text-color, #fff); border-color: var(--primary-color, #8b5cf6); }
+}
+
+/* === Sticky searchbar under nav === */
+#tools-searchbar{
+  position: sticky;
+  top: var(--nav-h, 0px);
+  z-index: 1000;
+  background: var(--bg-secondary-color, #fff);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+@media (prefers-color-scheme: dark){
+  #tools-searchbar{
+    background: var(--bg-color, #0f1218);
+    border-bottom-color: rgba(255,255,255,.15);
+  }
+}
+</style></head>
 <body id="top">
 <header>
 <h1>Herramientas de Inteligencia Artificial</h1>
@@ -50,8 +80,8 @@
 </ul>
 <button id="theme-toggle">🌙</button>
 <button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
-</nav>
-<main>
+</nav><div id="tools-searchbar"><input aria-label="Buscar herramienta o descripción" id="tools-search" placeholder="Buscar herramienta o descripción…" type="search"/><button id="tools-clear" type="button">Limpiar</button></div><div aria-live="polite" id="tools-stats"></div>
+<main id="tools-container">
 <section class="module" id="herramientas-content">
 <!-- Content from index.html#m5 will go here -->
 <div class="category-section">
@@ -539,7 +569,61 @@
 </ul>
 </div>
 </section>
-</main>
+<script id="tools-search-script">
+document.addEventListener('DOMContentLoaded', () => {
+  const navEl = document.querySelector('nav');
+  function updateOffsets(){
+    const navH = navEl ? navEl.offsetHeight : 0;
+    const sb = document.getElementById('tools-searchbar');
+    const sbH = sb ? sb.offsetHeight : 0;
+    document.documentElement.style.setProperty('--nav-h', navH + 'px');
+    document.documentElement.style.setProperty('--searchbar-h', sbH + 'px');
+  }
+  updateOffsets();
+  window.addEventListener('resize', updateOffsets);
+
+  const input = document.getElementById('tools-search');
+  const clearBtn = document.getElementById('tools-clear');
+  const stats = document.getElementById('tools-stats');
+  const container = document.getElementById('tools-container') || document;
+  const cards = Array.from(container.querySelectorAll('li.tool-card'));
+  const sections = Array.from(container.querySelectorAll('section[id^="tools-"], div[id^="tools-"]'));
+
+  const total = cards.length;
+  const strip = s => (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+  function buildMap(s){ const map=[]; const norm=[]; let i=0; for (const ch of s){ const st=strip(ch); norm.push(st); for(let k=0;k<st.length;k++) map.push(i); i+=ch.length; } return { norm:norm.join(''), map }; }
+  function hi(el,q){ if(!el) return; if(!el.dataset.orig) el.dataset.orig = el.textContent; const orig=el.dataset.orig; if(!q){ el.innerHTML=orig; return; }
+    const {norm,map}=buildMap(orig); const qn=strip(q).toLowerCase(); let from=0,out='',last=0;
+    while(true){ const idx=norm.toLowerCase().indexOf(qn,from); if(idx===-1) break; const start=map[idx]; const end=(idx+qn.length<map.length)?map[idx+qn.length]:orig.length;
+      out += orig.slice(last,start) + '<mark>' + orig.slice(start,end) + '</mark>'; last=end; from=idx+qn.length; } out+=orig.slice(last); el.innerHTML=out; }
+
+  function scrollToFirstMatch(){ const first = document.querySelector('#tools-container li.tool-card mark'); if(first){ first.scrollIntoView({behavior:'smooth', block:'start'}); const cs = getComputedStyle(document.documentElement); const navH = parseInt(cs.getPropertyValue('--nav-h'))||0; const sbH = parseInt(cs.getPropertyValue('--searchbar-h'))||0; window.scrollBy({ top: -(navH + sbH + 8), left: 0, behavior: 'smooth' }); } }
+
+  function apply(scroll){
+    const q = input.value.trim();
+    let visible = 0;
+    cards.forEach(li => {
+      const name = li.querySelector('a'); const desc = li.querySelector('p');
+      const hay = strip((name&&name.textContent)+' '+(desc&&desc.textContent)).toLowerCase();
+      const ok = !q || hay.includes(strip(q).toLowerCase());
+      li.style.display = ok ? '' : 'none';
+      hi(name, ok ? q : ''); hi(desc, ok ? q : '');
+      if (ok) visible++;
+    });
+    sections.forEach(sec => {
+      const any = Array.from(sec.querySelectorAll('li.tool-card')).some(li => li.style.display !== 'none');
+      sec.style.display = any ? '' : 'none';
+    });
+    stats.textContent = `Mostrando ${visible} de ${total} herramientas`;
+    if (scroll && q) scrollToFirstMatch();
+  }
+
+  input.addEventListener('input', () => apply(true));
+  clearBtn.addEventListener('click', () => { input.value=''; input.focus(); apply(true); });
+  apply(false);
+});
+</script></main>
 <footer>
 </footer>
 </div>
