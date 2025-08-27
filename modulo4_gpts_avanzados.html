@@ -6,7 +6,33 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Módulo 4: GPTs Avanzados</title>
 <link href="style.css" rel="stylesheet"/>
-</head>
+<style id="module-search-style">
+/* === Buscador de Módulo (sticky + paridad de estilos) === */
+#module-searchbar { 
+  display:flex; gap:.5rem; align-items:center; margin: 8px 0 14px; padding: 0 12px; 
+  position: sticky; top: var(--nav-h, 0px); z-index: 1000;
+  background: var(--bg-secondary-color, #fff);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+#module-searchbar input[type="search"]{
+  flex:1; min-width: 280px; max-width: 820px; padding:10px 12px; border:1.5px solid #000; /* negro en claro */
+  border-radius:8px; font-size:1rem; background: transparent; color: inherit;
+}
+#module-clear{ padding:8px 10px; border:1.5px solid #000; border-radius:8px; cursor:pointer; background: var(--bg-secondary-color, #fff); color: var(--text-color, #111); }
+#module-clear:hover{ filter: brightness(0.97); }
+#module-stats{ margin: 0 12px 8px; font-size:.9rem; color: var(--muted-color, #6b7280); }
+#module-container mark { background:#fff2ac; color:inherit; padding:0 .1em; border-radius:2px; }
+/* Evitar que el header tape títulos al saltar */
+#module-container h1, 
+#module-container h2, 
+#module-container h3, 
+#module-container h4 { scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 8px); }
+@media (prefers-color-scheme: dark){
+  #module-searchbar{ background: var(--bg-color, #0f1218); border-bottom-color: rgba(255,255,255,.15); }
+  #module-searchbar input[type="search"]{ border-color:#fff; }
+  #module-clear{ background: var(--primary-color, #8b5cf6); color: var(--primary-text-color, #fff); border-color: var(--primary-color, #8b5cf6); }
+}
+</style></head>
 <body>
 <header>
 <h1>Módulo 4: GPTs Avanzados</h1>
@@ -27,8 +53,8 @@
 </ul>
 <button id="theme-toggle">🌙</button>
 <button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
-</nav>
-<main>
+</nav><div id="module-searchbar"><input aria-label="Buscar en este módulo" id="module-search" placeholder="Buscar en este módulo…" type="search"/><button id="module-clear" type="button">Limpiar</button></div><div aria-live="polite" id="module-stats"></div>
+<main id="module-container">
 <section class="module">
 <h2>Módulo 4: GPTs Avanzados</h2>
 <p><em>Contenido en preparación. Aquí se incluirán las lecciones resumidas del curso.</em></p>
@@ -38,7 +64,71 @@
 <li>Lección 3</li>
 </ul>
 </section>
-</main>
+<script id="module-search-script">
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('module-search');
+  const clearBtn = document.getElementById('module-clear');
+  const stats = document.getElementById('module-stats');
+  const container = document.getElementById('module-container') || document.querySelector('main') || document.body;
+  const navEl = document.querySelector('nav');
+
+  function updateOffsets(){
+    const navH = navEl ? navEl.offsetHeight : 0;
+    const sb = document.getElementById('module-searchbar');
+    const sbH = sb ? sb.offsetHeight : 0;
+    document.documentElement.style.setProperty('--nav-h', navH + 'px');
+    document.documentElement.style.setProperty('--searchbar-h', sbH + 'px');
+  }
+  updateOffsets();
+  window.addEventListener('resize', updateOffsets);
+
+  // Target: whole module content (sections + known blocks)
+  let blocks = Array.from(new Set([
+    ...container.querySelectorAll('section'),
+    ...container.querySelectorAll('article, .card, .module-block, .content-block')
+  ]));
+  if (blocks.length === 0) blocks = [container]; // fallback
+
+  const total = blocks.length;
+  const strip = s => (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+  function buildMap(s){ const map=[]; const norm=[]; let i=0; for (const ch of s){ const st=strip(ch); norm.push(st); for(let k=0;k<st.length;k++) map.push(i); i+=ch.length; } return { norm:norm.join(''), map }; }
+  function hi(el,q){ if(!el) return; if(!el.dataset.orig) el.dataset.orig = el.textContent; const orig=el.dataset.orig; if(!q){ el.innerHTML=orig; return; }
+    const {norm,map}=buildMap(orig); const qn=strip(q).toLowerCase(); let from=0,out='',last=0;
+    while(true){ const idx=norm.toLowerCase().indexOf(qn,from); if(idx===-1) break; const start=map[idx]; const end=(idx+qn.length<map.length)?map[idx+qn.length]:orig.length;
+      out += orig.slice(last,start) + '<mark>' + orig.slice(start,end) + '</mark>'; last=end; from=idx+qn.length; } out+=orig.slice(last); el.innerHTML=out; }
+
+  function scrollToFirstMatch(){
+    const first = document.querySelector('#module-container mark');
+    if(first){
+      first.scrollIntoView({behavior:'smooth', block:'start'});
+      const cs = getComputedStyle(document.documentElement);
+      const navH = parseInt(cs.getPropertyValue('--nav-h'))||0;
+      const sbH = parseInt(cs.getPropertyValue('--searchbar-h'))||0;
+      window.scrollBy({ top: -(navH + sbH + 8), left: 0, behavior: 'smooth' });
+    }
+  }
+
+  function apply(scroll){
+    const q = input.value.trim();
+    let visible = 0;
+    blocks.forEach(b => {
+      const hay = strip(b.textContent).toLowerCase();
+      const ok = !q || hay.includes(strip(q).toLowerCase());
+      // highlight titles and paragraphs
+      b.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li').forEach(el => hi(el, ok ? q : ''));
+      if (blocks.length > 1) b.style.display = ok ? '' : 'none';
+      if (ok) visible++;
+    });
+    stats.textContent = `Mostrando ${visible} de ${total} secciones`;
+    if (scroll && q) scrollToFirstMatch();
+  }
+
+  input.addEventListener('input', () => apply(true));
+  clearBtn.addEventListener('click', () => { input.value=''; input.focus(); apply(true); });
+  apply(false);
+});
+</script></main>
 </div>
 <script src="script.js"></script>
 </body>
