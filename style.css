@@ -402,11 +402,7 @@ nav ul li .dropdown-menu li a:hover {
     background: var(--nav-hover-bg-color);
 }
 /* Show on hover for desktop */
-@media (hover:hover) {
-    nav ul li.dropdown:hover > /* removed: global dropdown always-open */
-}
 /* Mobile: show when parent has .open */
-nav ul li.dropdown.open > /* removed: global dropdown always-open */
 /* Ensure dropdown works within hamburger expanded list */
 #main-nav-list.active li .dropdown-menu { position: static; box-shadow: none; border: none; }
 
@@ -1115,3 +1111,101 @@ button.download-txt {
 button.download-txt:hover {
   background-color: #162d63;
 }
+
+/* Compensación barra sticky solo en Módulo 4 */
+Zpx; }
+
+
+/* Apariencia de botón para enlaces/botones de descarga */
+a.download-txt, button.download-txt {
+  background-color: #1E3A89 !important;
+  color: #fff !important;
+  padding: 8px 16px !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 0.95rem !important;
+  margin-top: 12px !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  line-height: 1.2 !important;
+}
+a.download-txt:hover, a.download-txt:focus,
+button.download-txt:hover, button.download-txt:focus {
+  background-color: #162d63 !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+
+/* === FIX DEFINITIVO OVERLAY DROPDOWN === */
+nav ul li .dropdown-menu {
+  display: none;             /* oculto por defecto */
+  pointer-events: none;      /* que NO capture clics cuando está oculto */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  max-height: 70vh;          /* evitar que cubra toda la pantalla */
+  overflow: auto;
+  z-index: 1200;             /* sobre el buscador (900) y nav (1000) */
+  background: var(--bg-secondary-color);
+  box-shadow: 0 8px 16px rgba(0,0,0,.15);
+}
+@media (hover:hover){
+  nav ul li.dropdown:hover > .dropdown-menu {
+    display: block;
+    pointer-events: auto;
+  }
+}
+nav ul li.dropdown.open > .dropdown-menu {
+  display: block;
+  pointer-events: auto;
+}
+/* Fin FIX dropdown */
+
+
+
+/* Contenedor separado para descarga del prompt (no se mezcla con el texto) */
+.download-panel{
+  display:flex;
+  justify-content:flex-start;
+  gap: 8px;
+  margin: 8px 0 16px;
+  position: relative;
+  z-index: 20; /* por encima de decoraciones internas del bloque */
+}
+/* Apariencia de botón */
+a.download-txt, button.download-txt{
+  background-color:#1E3A89 !important;
+  color:#fff !important;
+  padding:8px 16px !important;
+  border:0 !important;
+  border-radius:6px !important;
+  cursor:pointer !important;
+  font-size:0.95rem !important;
+  display:inline-block !important;
+  text-decoration:none !important;
+  line-height:1.2 !important;
+}
+a.download-txt:hover, button.download-txt:hover{
+  background-color:#162d63 !important;
+}
+
+
+
+/* Ajuste de espaciado: Módulo 4 con mismo margen superior que Módulo 3 */
+.page-modulo4 .module { margin-top: 0 !important; }
+.page-modulo4 .module h2 { margin-top: 0 !important; }
+
+
+
+/* === Espaciado Módulo 4 alineado con Módulo 3 === */
+.page-modulo4 .module{
+  padding-top: 8px !important;   /* antes era mayor y daba 'aire' extra */
+  margin-top: 8px !important;    /* margen exterior superior reducido */
+}
+.page-modulo4 .module > *:first-child{
+  margin-top: 0 !important;      /* el h2 no suma margen extra arriba */
+}
+

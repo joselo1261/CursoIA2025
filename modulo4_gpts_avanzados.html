@@ -39,7 +39,7 @@ nav .dropdown .dropdown-menu, nav .dropdown .dropdown-content { position: absolu
 section[id^="m4_"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px); }
 </style>
 </head>
-<body>
+<body class="page-modulo4">
 <header>
   <h1>Módulo 4: GPTs Avanzados</h1>
   <p>Guía de Inteligencia Artificial - Curso 2025</p>
@@ -185,8 +185,8 @@ paths:
 </section>
 
     <section class="module" id="m4_p2">
-<h2>2. Conexión a base de datos</h2>
-  <p>Conectá el asistente a tu <strong>Data Warehouse</strong> para convertir preguntas en consultas <strong>SQL</strong>. Ejemplo con <strong>BigQuery</strong>.</p>
+
+<h2>2. Conexión a base de datos</h2><p>Conectá el asistente a tu <strong>Data Warehouse</strong> para convertir preguntas en consultas <strong>SQL</strong>. Ejemplo con <strong>BigQuery</strong>.</p>
 
   <h3>Visión general</h3>
   <ul>
@@ -275,7 +275,7 @@ paths:
   </ul>
 
   <h3>Plantilla de Instrucciones (para el GPT)</h3>
-  <pre><code>Contexto:
+  <pre id="p2_prompt"><code>Contexto:
 Eres un experto en escribir consultas SQL en BigQuery. Un usuario te hará una pregunta en lenguaje natural.
 
 Instrucciones:
@@ -294,8 +294,7 @@ Notas:
 - Si el usuario dice "Empecemos", aclara que puede indicar proyecto/dataset o usar un dataset de ejemplo.
 - Si no sabe qué preguntar, sugiere un dataset de vuelos de muestra.
 </code></pre>
-
-  <p><button class="download-txt" data-filename="P2_Plantilla_Instrucciones.txt">Descargar plantilla (.txt)</button></p>
+<div class="download-panel"><button class="download-txt" data-filename="P2_Plantilla_Instrucciones.txt" data-target="#p2_prompt">Descargar plantilla (.txt)</button></div>
 </section>
 
     <section class="module" id="m4_p3">

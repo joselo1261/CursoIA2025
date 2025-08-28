@@ -140,3 +140,51 @@ document.addEventListener('DOMContentLoaded', () => {
     URL.revokeObjectURL(url);
   });
 })();
+
+
+
+// Refuerzo: captura en fase 'capture' para no perder el click si hay overlays transparentes.
+window.addEventListener('click', function(e){
+  var btn = e.target.closest && e.target.closest('.download-txt');
+  if(!btn) return;
+  // Si algún overlay intercepta, evitamos propagación temprana
+  e.stopPropagation();
+}, true);
+
+
+
+
+// Si el botón trae data-target, usar ese selector para obtener el <pre><code> objetivo
+(function(){
+  function getTargetText(btn){
+    var sel = btn.getAttribute('data-target');
+    if(!sel) return '';
+    try{
+      var node = document.querySelector(sel);
+      if(!node) return '';
+      var code = node.querySelector && node.querySelector('code');
+      return code ? (code.innerText || code.textContent || '') : (node.innerText || node.textContent || '');
+    }catch(e){
+      return '';
+    }
+  }
+  window.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.download-txt');
+    if(!btn) return;
+    // Si hay data-target, úsalo; si no, caé al mecanismo existente del archivo
+    var content = getTargetText(btn);
+    if(content){
+      e.preventDefault();
+      var blob = new Blob([content], { type: 'text/plain' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = btn.dataset.filename || 'prompt.txt';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  }, true); // capture temprano para evitar overlays
+})();
+
