@@ -49,6 +49,57 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // === Dropdowns ===
+  // Auto-fit & auto-scroll for long dropdowns
+  (function(){
+    const EDGE = 24;   // px from top/bottom to start autoscroll
+    const SPEED = 16;  // px/frame
+    function enhance(dd){
+      const menu = dd.querySelector('.dropdown-menu');
+      if (!menu) return;
+      // compute available height from bottom of toggle to viewport
+      const rect = menu.getBoundingClientRect();
+      const top = rect.top;
+      const avail = Math.max(240, window.innerHeight - top - 12);
+      menu.style.maxHeight = avail + 'px';
+      menu.style.overflowY = 'auto';
+      menu.style.webkitOverflowScrolling = 'touch';
+      // autoscroll by mouse position
+      if (menu.dataset._enhanced === '1') return;
+      menu.dataset._enhanced = '1';
+      let dir = 0, raf = 0;
+      function step(){ if (!dir) { raf = 0; return; } menu.scrollTop += dir; raf = requestAnimationFrame(step); }
+      menu.addEventListener('mousemove', (e)=>{
+        const r = menu.getBoundingClientRect();
+        const y = e.clientY - r.top;
+        dir = y < EDGE ? -SPEED : (y > r.height - EDGE ? SPEED : 0);
+        if (dir && !raf) raf = requestAnimationFrame(step);
+      });
+      ['mouseleave','blur','mouseout'].forEach(ev => menu.addEventListener(ev, ()=>{ dir = 0; }));
+      // wheel support
+      menu.addEventListener('wheel', (e)=>{ 
+        // prevent page from scrolling when wheel on menu
+        if (menu.scrollHeight > menu.clientHeight) { 
+          e.preventDefault(); 
+          menu.scrollTop += e.deltaY; 
+        }
+      }, { passive:false });
+    }
+    // when opening a dropdown, enhance it
+    document.querySelectorAll('li.dropdown').forEach((dd)=>{
+      const toggle = dd.querySelector('.dropbtn, .dropdown-toggle, a');
+      if (!toggle) return;
+      toggle.addEventListener('click', ()=>{ setTimeout(()=>{ enhance(dd); }, 0); });
+      toggle.addEventListener('mouseover', ()=>{ setTimeout(()=>{ enhance(dd); }, 0); });
+      dd.addEventListener('mouseenter', ()=>{ enhance(dd); });
+    });
+    window.addEventListener('resize', ()=>{
+      document.querySelectorAll('li.dropdown.open').forEach((dd)=>{
+        const m = dd.querySelector('.dropdown-menu');
+        if (m) { const r = m.getBoundingClientRect(); const avail = Math.max(240, window.innerHeight - r.top - 12); m.style.maxHeight = avail + 'px'; }
+      });
+    });
+  })();
+
   document.querySelectorAll('li.dropdown').forEach((dd) => {
     const toggle = dd.querySelector('.dropbtn, .dropdown-toggle, a');
     if (!toggle) return;

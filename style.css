@@ -1133,3 +1133,17 @@ main:not(#module-container) h2:first-child { margin-top: 0 !important; padding-t
 .tool-categories:first-child,
 .sections-grid:first-child { margin-top: 0 !important; padding-top: 0 !important; }
 
+
+
+/* --- Dynamic dropdown sizing & scroll --- */
+nav ul li .dropdown-menu {
+  max-height: calc(100vh - var(--nav-h, 56px) - 16px); /* fits viewport */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optional: slimmer scrollbar (kept visible for usability) */
+nav ul li .dropdown-menu::-webkit-scrollbar { width: 8px; }
+nav ul li .dropdown-menu::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); border-radius: 4px; }
+nav ul li .dropdown-menu { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,.15) transparent; }
