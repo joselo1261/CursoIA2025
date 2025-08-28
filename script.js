@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
   footer.className = 'site-footer';
 
   const p = document.createElement('p');
-  p.innerHTML = '2025 - Realizado por Ing. Jose Luis Elisseche ';
+  p.innerHTML = '2025 - Realizado por Ing. Jose Luis Elisseche (InoTech) - ';
 
   // Enlace LinkedIn justo después del nombre
   const a = document.createElement('a');

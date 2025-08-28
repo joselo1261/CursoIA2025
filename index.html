@@ -6,14 +6,36 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Guía Completa de Inteligencia Artificial</title>
 <link href="style.css" rel="stylesheet"/>
+<style>header { border-radius: 0 !important; }</style>
 </head>
 <body>
 <header>
 <h1>Guía de Inteligencia Artificial</h1>
 <p>Una guía actualizada para 2025</p>
 </header>
-<div class="container">
-<nav>
+
+<section class="hero-img" style="margin:0; padding:0; text-align:center;">
+  <div class="container" style="margin:0 auto; padding:0;">
+    <img src="Portada_IA.png" alt="Portada IA - equipo colaborando con IA"
+         style="width: 100%; height: auto; display: block; margin: 0 auto;
+                border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.2);">
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" style="margin-top:0;padding-top:0;">
+<nav style="margin-top:0;padding-top:0;">
 <ul id="main-nav-list">
 <li class="dropdown">
 <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" href="#">Contenido ▾</a>
@@ -30,43 +52,76 @@
 <button id="theme-toggle">🌙</button>
 <button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
 </nav>
+
+<section class="module">
+  <h2>Bienvenido a la Guía de Inteligencia Artificial</h2>
+  <p>Esta guía te acompaña paso a paso para entender la IA desde cero y usarla con confianza en el trabajo de todos los días.</p>
+  <p>No necesitás experiencia previa. Vamos de lo simple a lo avanzado.</p>
+</section>
+
+
+<style>
+  .home-cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; margin: 1rem 0 1.5rem; }
+  .home-card  { background: rgba(0,0,0,0.15); padding:16px 18px; border-radius:12px; 
+                box-shadow: 0 8px 20px rgba(0,0,0,0.15); transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+  .home-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.25); background: rgba(0,0,0,0.22); }
+  .home-card h3 { margin-top:0; }
+  .home-card ul { padding-left:1.1rem; margin:0.4rem 0 0; }
+</style>
+
+<section class="module">
+  <div class="home-cards">
+    <div class="home-card">
+      <h3>¿Qué vas a encontrar?</h3>
+      <ul class="check">
+        <li><strong>Contenido guiado</strong> para aprender y aplicar IA con foco práctico.</li>
+        <li><strong>Noticias</strong> para conectarte con lo último en IA.</li>
+        <li><strong>Herramientas</strong> organizadas por <em>categoría</em> (texto, imágenes, audio, datos, automatización, etc.).</li>
+        <li><strong>Glosario</strong> de términos clave, con definiciones claras.</li>
+        <li><strong>Buscadores inteligentes</strong> para investigar dentro del texto que elijas.</li>
+      </ul>
+    </div>
+    <div class="home-card">
+      <h3>¿Qué podés hacer hoy con IA?</h3>
+      <ul class="check">
+        <li>Resumir PDFs, mails o chats largos.</li>
+        <li>Redactar, reescribir y traducir con tu tono.</li>
+        <li>Generar imágenes y mejorar fotos para piezas.</li>
+        <li>Asistir en código: ideas, snippets y tests.</li>
+        <li>Analizar datos en Excel/CSV y sugerir visualizaciones.</li>
+        <li>Crear flujos automáticos (resumir → enviar → archivar).</li>
+        <li>Armar campañas con copys, segmentación y A/B ideas.</li>
+        <li>Transcribir audios y convertirlos en tareas.</li>
+        <li>Responder clientes con asistentes guiados por tus docs.</li>
+        <li>Idear productos y documentos internos (briefs, SOPs).</li>
+      </ul>
+    </div>
+    <div class="home-card">
+      <h3>Cómo empezar</h3>
+      <p style="margin:0.4rem 0 0;">
+        Empezá por el <strong>Contenido</strong> para ver lo esencial y ejemplos aplicados. 
+        Seguí en <strong>Noticias</strong> para mantenerte al día. 
+        En <strong>Herramientas</strong> vas a encontrar los principales links por categoría. 
+        Consultá el <strong>Glosario</strong> cuando aparezcan términos nuevos. 
+        Y, cuando necesites ir a fondo, usá los <strong>buscadores inteligentes</strong> para investigar dentro del texto que elijas. 
+        Con eso ya podés <em>probar</em>, <em>iterar</em> y <em>automatizar</em> tareas que te ahorren tiempo.
+      </p>
+    </div>
+  </div>
+</section>
+
 <main>
-<section class="module" style="text-align:center">
-<h2>Bienvenido a la Guía de Inteligencia Artificial</h2>
-<p>Esta guía te acompaña paso a paso para entender la IA desde cero y usarla con confianza en el trabajo de todos los días.</p>
-<p class="muted">No necesitás experiencia previa. Vamos de lo simple a lo avanzado.</p>
-</section>
-<section class="module">
-<h3>¿Qué vas a encontrar?</h3>
-<ul class="check">
-<li>Explicaciones claras, sin tecnicismos innecesarios.</li>
-<li>Ejemplos prácticos para tareas reales.</li>
-<li>Buenas prácticas para trabajar de forma responsable.</li>
-<li>Un glosario para consultar términos cuando lo necesites.</li>
-</ul>
-</section>
-<section class="module">
-<h3>¿Qué podés hacer hoy con IA?</h3>
-<ul class="check">
-<li>Ahorrar tiempo con resúmenes y borradores de textos.</li>
-<li>Ordenar información y obtener ideas para mejorar documentos.</li>
-<li>Preparar materiales de comunicación o capacitación.</li>
-<li>Crear asistentes simples que sigan tus indicaciones.</li>
-</ul>
-</section>
-<section class="module">
-<h3>Cómo empezar</h3>
-<ol>
-<li><strong>Módulo 1</strong>: una mirada general para entender qué es y qué no es la IA.</li>
-<li><strong>Módulo 2</strong>: cómo conversar con ChatGPT y obtener buenos resultados.</li>
-<li><strong>Módulo 3</strong>: crear asistentes a medida que sigan tus instrucciones.</li>
-<li><strong>Módulo 4</strong>: ideas avanzadas para casos de uso más exigentes.</li>
-</ol>
-<p class="muted">Podés avanzar en orden o ir directo al tema que te interese desde la barra superior.</p>
-</section>
-<section class="module" style="text-align:center">
-<p>Listo para empezar. Usá el menú superior para navegar por los módulos, herramientas y glosario.</p>
-</section>
+
+
+
+
+
+
+
+
+
+
+
 </main>
 </div>
 <script src="script.js"></script>

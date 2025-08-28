@@ -1096,3 +1096,7 @@ nav ul li.dropdown:has(> ul.dropdown-menu) > .dropdown-toggle:hover {
   background-color: var(--primary-color);
   opacity: 0.9;
 }
+
+
+/* Fix: ensure header has no rounded corners across all pages */
+header { border-radius: 0 !important; }
