@@ -87,42 +87,216 @@ section[id^="m4_"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-
   <main id="module-container">
 
     <section class="module" id="m4_p1">
-      <h2>1. Acciones y APIs</h2>
-      <p>Conectá tu GPT con servicios externos: enviá mails, creá tickets o actualizá planillas vía <strong>Acciones</strong> y <strong>APIs</strong> del Builder. Definís endpoints, auth y el esquema de request/response.</p>
-      <div class="chips"><span class="chip">REST</span><span class="chip">OAuth / Keys</span><span class="chip">Validación</span><span class="chip">Logs</span></div>
-      <div class="k-cards">
-        <article class="k-card"><h4>Buenas prácticas</h4>
-          <ul class="check">
-            <li>Definí <em>inputs</em> estrictos y validá tipos.</li>
-            <li>Sanitizá prompts antes de llamar APIs.</li>
-            <li>Limitá el alcance: solo los endpoints necesarios.</li>
-          </ul>
-        </article>
-        <article class="k-card"><h4>Plantilla mínima</h4>
-<pre><code>// request
-{ "cliente_id": &lt;string&gt;, "monto": &lt;number&gt; }
-// response esperado
-{ "ok": true, "id": "OP-123" }</code></pre>
-        </article>
-      </div>
-      <div class="callout"><strong>Tip:</strong> registrá errores y tiempos de respuesta; devolvé mensajes claros al usuario.</div>
-    </section>
+<h2>1. Acciones y APIs</h2>
+  <p>Las <strong>acciones</strong> permiten que el asistente interactúe con otros sistemas mediante <strong>APIs</strong>. Con esto puede consultar datos en tiempo real, automatizar tareas y operar servicios externos sin salir de la conversación.</p>
+
+  <h3>¿Qué es una API?</h3>
+  <p>Es una interfaz para que dos aplicaciones se comuniquen. Expone <em>endpoints</em> (URLs) que reciben parámetros y devuelven datos —por lo general en <code>JSON</code>— a través de métodos como <code>GET</code> o <code>POST</code>.</p>
+
+  <h3>APIs en asistentes</h3>
+  <p>Conectar acciones habilita casos como: obtener el clima de una ciudad, leer cotizaciones, programar reuniones en un calendario, consultar una base de datos o controlar una app. El asistente deja de “sólo responder” y pasa a <em>hacer</em>.</p>
+
+  <h3>Seguridad y limitaciones</h3>
+  <ul>
+    <li><strong>Autenticación y cifrado:</strong> usar claves/tokens y <code>HTTPS</code>.</li>
+    <li><strong>Manejo de errores:</strong> contemplar respuestas 4xx/5xx, latencia y fallos de red.</li>
+    <li><strong>Datos sensibles:</strong> evitar exponer secretos; minimizar y enmascarar información.</li>
+    <li><strong>Límites/cuotas:</strong> prever tasas, retries y timeouts razonables.</li>
+  </ul>
+
+  <h3>Flujo paso a paso</h3>
+  <ol>
+    <li><strong>Definir el caso de uso</strong> (qué datos/tarea y para quién).</li>
+    <li><strong>Describir la API</strong> (endpoints, parámetros y respuestas esperadas).</li>
+    <li><strong>Conectar la acción</strong> en el asistente.</li>
+    <li><strong>Probar</strong> con ejemplos reales y validar el JSON de respuesta.</li>
+    <li><strong>Documentar</strong> límites, mensajes de error y consideraciones de seguridad.</li>
+  </ol>
+
+  <h3>Ejemplo 1: Cat Facts (llamada simple)</h3>
+  <p>Demuestra una llamada <code>GET</code> sin parámetros para obtener un dato aleatorio.</p>
+  <pre><code>openapi: 3.1.0
+info:
+  title: Cat Facts API
+  version: 1.0.0
+servers:
+  - url: https://catfact.ninja
+paths:
+  /fact:
+    get:
+      operationId: getCatFact
+      summary: Obtiene un dato de gatos
+      responses:
+        "200":
+          description: Objeto con el dato
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fact: { type: string }
+                  length: { type: integer }
+</code></pre>
+
+  <h3>Ejemplo 2: Nationalize (parámetros y probabilidades)</h3>
+  <p>Consulta la probabilidad de nacionalidades para un nombre. El flujo recomendado es ordenar por probabilidad y explicar las limitaciones del modelo.</p>
+  <pre><code>openapi: 3.1.0
+info:
+  title: Nationalize API
+  version: 1.0.0
+servers:
+  - url: https://api.nationalize.io
+paths:
+  /:
+    get:
+      operationId: getNationality
+      summary: Nacionalidades probables para un nombre
+      parameters:
+        - name: name
+          in: query
+          required: true
+          description: Nombre a consultar
+          schema: { type: string }
+      responses:
+        "200":
+          description: Probabilidades por país
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name: { type: string }
+                  country:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        country_id: { type: string }
+                        probability: { type: number, format: float }
+</code></pre>
+
+  <h3>Checklist de publicación</h3>
+  <ul>
+    <li>Endpoints mínimos y validados.</li>
+    <li>Mensajes de error claros y localizados.</li>
+    <li>Timeouts y reintentos definidos.</li>
+    <li>Política de datos y privacidad documentada.</li>
+  </ul>
+</section>
 
     <section class="module" id="m4_p2">
-      <h2>2. Conexión a base de datos</h2>
-      <p>Accedé a datos estructurados (consultas de lectura y acciones controladas) usando una capa API o un conector seguro. Evitá exponer credenciales en instrucciones.</p>
-      <div class="table-responsive">
-        <table class="tabla tabla-compacta">
-          <thead><tr><th>Estrategia</th><th>Cuándo</th><th>Notas</th></tr></thead>
-          <tbody>
-            <tr><td>API intermedia</td><td>La más segura</td><td>Control de permisos y auditoría.</td></tr>
-            <tr><td>Read-only</td><td>Consultas</td><td>Evita escrituras salvo casos justificados.</td></tr>
-            <tr><td>Parametrización</td><td>SQL seguro</td><td>Evita inyección; limita OFFSET/LIMIT.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="callout"><strong>Checklist:</strong> roles mínimos, rotación de claves, logs y tope de filas.</div>
-    </section>
+<h2>2. Conexión a base de datos</h2>
+  <p>Conectá el asistente a tu <strong>Data Warehouse</strong> para convertir preguntas en consultas <strong>SQL</strong>. Ejemplo con <strong>BigQuery</strong>.</p>
+
+  <h3>Visión general</h3>
+  <ul>
+    <li><strong>Objetivo:</strong> traducir lenguaje natural a SQL usando el esquema real de tus tablas.</li>
+    <li><strong>Estrategia:</strong> 1) descubrir el esquema, 2) generar y validar la consulta, 3) devolver el SQL final.</li>
+    <li><strong>Resultado:</strong> el asistente entrega la <em>sentencia SQL</em> lista para ejecutar.</li>
+  </ul>
+
+  <h3>Requisitos previos (GCP)</h3>
+  <ul>
+    <li>Proyecto en Google Cloud con <strong>BigQuery</strong> habilitado y dataset/tablas cargadas.</li>
+    <li>Usuario con permisos de lectura sobre el dataset.</li>
+  </ul>
+
+  <h3>Pasos en ChatGPT</h3>
+  <ol>
+    <li><strong>Crear el GPT</strong> y, en <em>Instrucciones</em>, establecer el rol: experto en SQL para BigQuery.</li>
+    <li><strong>Guía de trabajo</strong> (resumen):<br>
+      1) Ejecutar primero <code>SELECT column_name, table_name, data_type, description FROM &#123;project&#125;.&#123;dataset&#125;.INFORMATION_SCHEMA.COLUMN_FIELD_PATHS</code> (usar <code>useLegacySql=false</code>).<br>
+      2) Convertir la pregunta en SQL usando ese esquema y <strong>validar</strong> con <code>LIMIT 100</code>.<br>
+      3) Si es correcto, <strong>remover</strong> el límite y <strong>devolver</strong> la consulta final.
+    </li>
+    <li><strong>Acciones</strong>: pegar el esquema OpenAPI de BigQuery (endpoint <code>POST /projects/{projectId}/queries</code>).</li>
+    <li><strong>Autenticación</strong>: configurar <em>OAuth</em> y guardar (Client ID/Secret, Authorization URL, Token URL, Scope).</li>
+    <li><strong>Probar</strong> la acción con una pregunta ejemplo y revisar la respuesta JSON.</li>
+  </ol>
+
+  <h3>Esquema OpenAPI (resumen)</h3>
+  <pre><code>openapi: 3.1.0
+info:
+  title: BigQuery API
+  version: 1.0.0
+servers:
+  - url: https://bigquery.googleapis.com/bigquery/v2
+paths:
+  /projects/{{projectId}}/queries:
+    post:
+      operationId: runQuery
+      summary: Ejecuta una consulta SQL
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query: { type: string }
+                useLegacySql: { type: boolean, default: false }
+      responses:
+        "200": { description: Resultado de la consulta }
+        "400": { description: Solicitud inválida }
+        "401": { description: No autorizado }
+        "403": { description: Prohibido }
+        "404": { description: No encontrado }
+        "500": { description: Error interno }
+</code></pre>
+
+  <h3>Autenticación OAuth</h3>
+  <h4>En Google Cloud</h4>
+  <ul>
+    <li>Consola → <em>API y servicios &gt; Credenciales</em>.</li>
+    <li>Crear <strong>credenciales OAuth</strong> (o usar una existente) y guardar Client ID/Secret.</li>
+  </ul>
+  <h4>En ChatGPT</h4>
+  <ul>
+    <li>En <em>Autenticación</em>, elegir <strong>OAuth</strong> y completar Client ID/Secret.</li>
+    <li><strong>Authorization URL</strong>: <code>https://accounts.google.com/o/oauth2/auth</code></li>
+    <li><strong>Token URL</strong>: <code>https://oauth2.googleapis.com/token</code></li>
+    <li><strong>Scope</strong>: <code>https://www.googleapis.com/auth/bigquery</code></li>
+  </ul>
+  <h4>Después de guardar</h4>
+  <ul>
+    <li>Copiar la <strong>URL de callback</strong> de la Acción y registrarla en GCP (URI de redireccionamiento autorizados).</li>
+  </ul>
+
+  <h3>Notas y solución de problemas</h3>
+  <ul>
+    <li><strong>Error de callback</strong>: falta registrar la URL en GCP.</li>
+    <li><strong>Proyecto/dataset incorrecto</strong>: definir por defecto en las instrucciones o solicitarlos al usuario.</li>
+    <li><strong>Resultados grandes</strong>: validar primero con <code>LIMIT 100</code>.</li>
+  </ul>
+
+  <h3>Plantilla de Instrucciones (para el GPT)</h3>
+  <pre><code>Contexto:
+Eres un experto en escribir consultas SQL en BigQuery. Un usuario te hará una pregunta en lenguaje natural.
+
+Instrucciones:
+1) Ejecuta SIEMPRE primero:
+   SELECT column_name, table_name, data_type, description
+   FROM {project}.{dataset}.INFORMATION_SCHEMA.COLUMN_FIELD_PATHS
+   usando useLegacySql=false.
+   - Si el usuario no da proyecto/dataset, usa los predeterminados.
+
+2) Convierte la pregunta del usuario en una declaración SQL apoyándote en el esquema anterior.
+   Ejecuta con LIMIT 100 para validar que funciona.
+
+3) Si es válida, elimina el LIMIT 100 y devuelve la sentencia final al usuario.
+
+Notas:
+- Si el usuario dice "Empecemos", aclara que puede indicar proyecto/dataset o usar un dataset de ejemplo.
+- Si no sabe qué preguntar, sugiere un dataset de vuelos de muestra.
+</code></pre>
+
+  <p><button class="download-txt" data-filename="P2_Plantilla_Instrucciones.txt">Descargar plantilla (.txt)</button></p>
+</section>
 
     <section class="module" id="m4_p3">
       <h2>3. Tree of Thoughts (TOT)</h2>

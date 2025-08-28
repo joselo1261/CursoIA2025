@@ -1100,3 +1100,18 @@ nav ul li.dropdown:has(> ul.dropdown-menu) > .dropdown-toggle:hover {
 
 /* Fix: ensure header has no rounded corners across all pages */
 header { border-radius: 0 !important; }
+
+/* Botón de descarga de prompts */
+button.download-txt {
+  background-color: #1E3A89; /* azul institucional */
+  color: #fff;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+button.download-txt:hover {
+  background-color: #162d63;
+}

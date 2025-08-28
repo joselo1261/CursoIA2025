@@ -109,3 +109,34 @@ document.addEventListener('DOMContentLoaded', () => {
   footer.appendChild(p);
   document.body.appendChild(footer);
 });
+
+// Descarga el contenido del <pre><code> anterior al botón.
+// Uso: <button class="download-txt" data-filename="Nombre.txt">Descargar</button>
+(function(){
+  function findPrevCode(el){
+    var p = el.previousElementSibling;
+    while(p){
+      if (p.tagName && p.tagName.toLowerCase() === 'pre'){
+        var code = p.querySelector('code');
+        if (code) return code.innerText || code.textContent || '';
+      }
+      p = p.previousElementSibling;
+    }
+    return '';
+  }
+  window.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.download-txt');
+    if(!btn) return;
+    e.preventDefault();
+    var content = findPrevCode(btn);
+    var blob = new Blob([content], { type: 'text/plain' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = btn.dataset.filename || 'prompt.txt';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+})();
