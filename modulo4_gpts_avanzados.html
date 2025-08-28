@@ -297,23 +297,162 @@ Notas:
 <div class="download-panel"><button class="download-txt" data-filename="P2_Plantilla_Instrucciones.txt" data-target="#p2_prompt">Descargar plantilla (.txt)</button></div>
 </section>
 
-    <section class="module" id="m4_p3">
-      <h2>3. Tree of Thoughts (TOT)</h2>
-      <p>Estrategia de razonamiento por <em>ramas</em>: el GPT genera múltiples ideas, evalúa y elige la mejor. Útil en planificación, código y resolución de problemas complejos.</p>
-      <div class="k-cards">
-        <article class="k-card"><h4>Protocolo express</h4>
-          <ol>
-            <li>Generar 3–5 alternativas.</li>
-            <li>Evaluar con criterios (costo/beneficio, riesgo).</li>
-            <li>Seleccionar y sintetizar el plan final.</li>
-          </ol>
-        </article>
-        <article class="k-card"><h4>Prompt sugerido</h4>
-<pre><code>Producí 4 rutas posibles. Evaluá cada una (pros/contras).
-Elegí la mejor y armá un plan de acción en 5 pasos.</code></pre>
-        </article>
-      </div>
-    </section>
+    
+
+<section class="module" id="m4_p3">
+  <h2>3. Tree of Thoughts (TOT)</h2>
+  <p>Enfoque de razonamiento que estructura la solución de problemas complejos en etapas, explora varias vías,
+     compara alternativas y decide con justificación. Útil para planificación, estrategia y toma de decisiones.</p>
+
+  <h3>Objetivo del capítulo</h3>
+  <ul>
+    <li>Crear un GPT especializado en ToT para guiar decisiones con pensamiento estructurado y verificable.</li>
+    <li>Definir configuración, flujo conversacional y criterios de evaluación para minimizar sesgos y atajos.</li>
+  </ul>
+
+  <h3>Qué es y cómo funciona</h3>
+  <p>ToT divide el problema en etapas: definición, generación de alternativas, evaluación comparativa, profundización
+     (escenarios/recursos/obstáculos) y decisión final con justificación. Evita conclusiones apresuradas y documenta el porqué.</p>
+
+  <h3>Configuración del GPT ToT</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.5rem 0;">
+    <tbody>
+      <tr>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Nombre</th>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">GPT Tree of Thoughts</td>
+      </tr>
+      <tr>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Descripción</th>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Asistente que guía decisiones complejas siguiendo el método ToT, con evaluación y ranking.</td>
+      </tr>
+      <tr>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Rol</th>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Especialista que conduce paso a paso, hace preguntas de encuadre y documenta el razonamiento.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Flujo ToT</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.5rem 0;">
+    <thead>
+      <tr>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Etapa</th>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Objetivo</th>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Qué preguntar / Producir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>Pregunta inicial</strong></td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Encuadrar el problema y el contexto.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Pedir <em>problema</em>, <em>factores</em> y <em>restricciones</em>.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>Exploración de soluciones</strong></td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Generar alternativas diversas.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">3+ opciones si el usuario no las aporta.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>Evaluación comparativa</strong></td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Valorar cada opción con criterios constantes.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Pros/Contras, Esfuerzo, Dificultad, Retos, Resultados, Prob. de éxito.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>Profundización</strong></td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Aterrizar las mejores opciones.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Escenarios, estrategia, requisitos/recursos, obstáculos y mitigación.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>Ordenamiento y justificación</strong></td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Elegir con fundamento.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Ranking de alternativas y justificación final.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Matriz de evaluación</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.5rem 0;">
+    <thead>
+      <tr>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Criterio</th>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Qué evaluar</th>
+        <th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Escala sugerida</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Pros / Contras</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Beneficios y riesgos propios de la opción.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Descripción cualitativa.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Esfuerzo inicial</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Tiempo/costos de arranque.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Bajo / Medio / Alto.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Dificultad</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Complejidad técnica u organizacional.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Baja / Media / Alta.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Retos</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Bloqueos probables y dependencia de terceros.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Listado + breve plan de mitigación.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Resultados</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Impacto esperado (alcance, tiempo, coste, calidad).</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Descripción + KPIs si aplica.</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Prob. de éxito</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Viabilidad general con lo analizado.</td>
+        <td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">0–10 o %.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Conclusiones</h3>
+  <ul>
+    <li>El método impone disciplina de pensamiento y reduce sesgos.</li>
+    <li>La calidad de las preguntas iniciales determina la calidad del resultado.</li>
+    <li>La evaluación consistente y la justificación final facilitan trazabilidad.</li>
+  </ul>
+
+  <h3>Checklist</h3>
+  <ul>
+    <li>Propósito, tono y flujo definidos para el GPT.</li>
+    <li>Preguntas de arranque listas (problema, factores, restricciones).</li>
+    <li>Generación de 3+ alternativas en ausencia de propuestas del usuario.</li>
+    <li>Matriz de evaluación aplicada de forma uniforme.</li>
+    <li>Profundización con escenarios, estrategia, requisitos y mitigación.</li>
+    <li>Ranking final con justificación y próximos pasos sugeridos.</li>
+  </ul>
+
+  <h3>Prompt listo para usar</h3>
+  <pre id="p3_prompt" style="white-space: pre-wrap; word-break: break-word; overflow-x: hidden;"><code>Eres GPT ToT un gpt especializado en procesos de tree of thoughts. Tu labor es ayudar al usuario en un proceso de razonamiento sobre su problema y lo harás siguiendo las instrucciones en este documento.
+Lo primero que harás es preguntarle al usuario sobre que AREA tiene un problema, y también que Factores debes tener en cuenta.
+Con esa respuesta harás el siguiente prompt :
+Tengo un problema relacionado con AREA. Puedes hacer un brainstorming de 3 posibles soluciones? Porfavor ten en cuenta los siguientes factores FACTORES
+Rellenarás AREA y FACTORES con la respuesta del usuario.
+Una vez hagas esta respuesta le preguntarás al usuario si quiere seguir con el ToT.
+Si el usuario te dice que continues harás el siguiente proceso:
+Para cada solución evalua su potencial de éxito considera pros y contras, esfuerzo inicial, dificultad de ejecución, retos y posibles resultados. Asigna una probabilidad de éxito a cada opción basándote en estos factores
+Tras esta respuesta preguntarás al usuario si desea seguir con el ToT
+Si te dice que si, harás el siguiente proceso
+Para cada solución profundiza en el proceso de razonamiento. Genera potenciales escenarios, estrategias de implementación, requisitos y recursos y como superar potenciales obstáculos. También considera resultados inesperados y como se podrían manejar
+Tras esta respuesta preguntarás al usuario si desea seguir con el ToT
+Si te dice que si, harás el siguiente proceso
+Basado en todas tus evaluaciones y escenarios ordena las soluciones por orden de mas adecuada para solucionar el problema a menos.
+Tras esta respuesta preguntarás al usuario si desea seguir con el ToT
+Si te dice que si, harás el siguiente proceso
+Dame una justificación para cada posición asignada y dame consideraciones finales para cada solución</code></pre>
+
+  <button class="download-txt" class="download-txt" data-filename="3.2_Prompt_Tree_of_Thoughts.txt">Descargar prompt (.txt)</button>
+</section>
+
+
 
     <section class="module" id="m4_p4">
       <h2>4. Asistente de Estudios</h2>
