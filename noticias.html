@@ -1,91 +1,135 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Noticias de IA</title>
-<link href="style.css" rel="stylesheet"/>
-<style>
-    /* Resaltar 'Contenido' como en los módulos */
-    .highlight-contenido > a,
-    .highlight-contenido .dropdown-toggle {
-      background-color: var(--primary-color);
-      color: var(--primary-text-color) !important;
-      border: 2px solid var(--primary-color);
-      padding: 10px 15px;
-      border-radius: 5px;
-    }
-    /* Enlaces de fuentes: azules, sin subrayado, con separadores */
-    .news-links { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 8px 16px; 
-      padding-left: 0; 
-      list-style: none;
-      align-items: center;
-    }
-    .news-links li { display: flex; align-items: center; }
-    .news-links a { 
-      text-decoration: none; 
-      color: #1e4ed8; 
-      font-weight: 700;
-    }
-    .news-links a:hover { text-decoration: underline; }
-    .news-links li:not(:last-child)::after { 
-      content: " | "; 
-      opacity: .6; 
-      margin-left: 12px; 
-    }
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noticias de IA</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
-<header>
-<h1>Noticias de Inteligencia Artificial</h1>
-<p>Mantente al día con las novedades más relevantes en español.</p>
-</header>
-<div class="container">
-<nav>
-<ul id="main-nav-list">
-<li><a href="index.html">Inicio</a></li>
-<li class="highlight-contenido highlight-contenido dropdown">
-<a href="#">Contenido</a>
-<ul class="dropdown-content"><li class="disabled"><a href="#">(Contenido próximamente)</a></li></ul></li>
-<!-- 'Noticias' NO aparece en este menú por decisión del sitio -->
-<li><a href="herramientas.html">Herramientas</a></li>
-<li><a href="glosario.html">Glosario</a></li>
-</ul>
-<button id="theme-toggle">🌙</button>
-<button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
-</nav>
-<main>
-<section class="module" id="intro">
-<h2>Tu resumen diario en español</h2>
-<p>Acá tendrás un acceso rápido a fuentes confiables y un espacio para listar los titulares más importantes del día.</p>
-<section class="module" id="consejos">
-<h3>Cómo mantenerse al día</h3>
-<ul class="check">
-<li>Definí 10 minutos diarios para leer titulares.</li>
-<li>Priorizá notas con impacto en tu trabajo o industria.</li>
-<li>Si un tema es clave, buscá su cobertura en más de un medio.</li>
-</ul>
-</section>
-</section>
-<section class="module" id="fuentes">
-<h3>Fuentes destacadas</h3>
-<ul class="news-links">
-<li><a href="https://www.xataka.com/categoria/inteligencia-artificial" rel="noopener noreferrer" target="_blank">Xataka · IA</a></li>
-<li><a href="https://www.genbeta.com/categoria/inteligencia-artificial" rel="noopener noreferrer" target="_blank">Genbeta · IA</a></li>
-<li><a href="https://hipertextual.com/tag/inteligencia-artificial" rel="noopener noreferrer" target="_blank">Hipertextual · IA</a></li>
-<li><a href="https://elpais.com/tecnologia/inteligencia-artificial/" rel="noopener noreferrer" target="_blank">EL PAÍS · IA</a></li>
-<li><a href="https://www.infobae.com/tag/inteligencia-artificial/" rel="noopener noreferrer" target="_blank">Infobae · IA</a></li>
-<li><a href="https://es.wired.com/tag/inteligencia-artificial" rel="noopener noreferrer" target="_blank">WIRED (ES) · IA</a></li>
-<li><a href="https://www.eldiario.es/tecnologia/inteligencia-artificial/" rel="noopener noreferrer" target="_blank">elDiario.es · IA</a></li>
-<li><a href="https://diarioia.com/" rel="noopener noreferrer" target="_blank">DiarioIA</a></li>
-</ul>
-</section>
-</main>
-</div>
-<script src="script.js"></script>
+<body class="page-noticias">
+  <header>
+    <h1>Noticias de Inteligencia Artificial</h1>
+    <p>Mantente al día con las novedades más relevantes en español y en inglés.</p>
+  </header>
+
+  <div class="container">
+    <nav>
+      <ul id="main-nav-list">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="highlight-contenido dropdown">
+          <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" href="">Contenido</a>
+          <ul class="dropdown-menu">
+            <li><a href="#noticias-es">Noticias en Español</a></li>
+            <li><a href="#noticias-en">News in English</a></li>
+            <li><a href="#youtube-es">YouTube · Español (IA)</a></li>
+          </ul>
+        </li>
+        <li><a href="herramientas.html">Herramientas</a></li>
+        <li><a href="glosario.html">Glosario</a></li>
+      </ul>
+      <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+      <button class="hamburger-menu" aria-label="Toggle navigation">☰</button>
+    </nav>
+
+    <main>
+
+      <!-- ESPAÑOL -->
+      <section id="noticias-es" class="module">
+        <h2>🗞️ Noticias en Español</h2>
+        <div class="cards-4">
+          <a class="link-card" href="https://www.xataka.com/categoria/inteligencia-artificial" target="_blank" rel="noopener noreferrer">
+            <h6>Xataka · IA</h6><p>Sección dedicada a IA en Xataka</p>
+          </a>
+          <a class="link-card" href="https://www.genbeta.com/categoria/inteligencia-artificial" target="_blank" rel="noopener noreferrer">
+            <h6>Genbeta · IA</h6><p>Novedades y guías prácticas</p>
+          </a>
+          <a class="link-card" href="https://hipertextual.com/tag/inteligencia-artificial" target="_blank" rel="noopener noreferrer">
+            <h6>Hipertextual · IA</h6><p>Análisis y actualidad</p>
+          </a>
+          <a class="link-card" href="https://elpais.com/noticias/inteligencia-artificial/" target="_blank" rel="noopener noreferrer">
+            <h6>EL PAÍS · IA</h6><p>Última hora y reportajes</p>
+          </a>
+          <a class="link-card" href="https://www.infobae.com/tag/inteligencia-artificial/" target="_blank" rel="noopener noreferrer">
+            <h6>Infobae · IA</h6><p>Tag con noticias de IA</p>
+          </a>
+          <a class="link-card" href="https://es.wired.com/tag/inteligencia-artificial" target="_blank" rel="noopener noreferrer">
+            <h6>WIRED (ES) · IA</h6><p>Selección de artículos en español</p>
+          </a>
+          <a class="link-card" href="https://www.eldiario.es/tecnologia/inteligencia-artificial/" target="_blank" rel="noopener noreferrer">
+            <h6>elDiario.es · IA</h6><p>IA y sociedad/tecnología</p>
+          </a>
+          <a class="link-card" href="https://diarioia.com/" target="_blank" rel="noopener noreferrer">
+            <h6>DiarioIA</h6><p>Medio especializado en IA</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- INGLÉS -->
+      <section id="noticias-en" class="module">
+        <h2>🌍 News in English</h2>
+        <div class="cards-4">
+          <a class="link-card" href="https://www.theverge.com/artificial-intelligence" target="_blank" rel="noopener noreferrer">
+            <h6>The Verge · AI</h6><p>News, features & investigations</p>
+          </a>
+          <a class="link-card" href="https://techcrunch.com/tag/ai/" target="_blank" rel="noopener noreferrer">
+            <h6>TechCrunch · AI</h6><p>Startups, products & funding</p>
+          </a>
+          <a class="link-card" href="https://venturebeat.com/category/ai/" target="_blank" rel="noopener noreferrer">
+            <h6>VentureBeat · AI</h6><p>Business & enterprise AI</p>
+          </a>
+          <a class="link-card" href="https://arstechnica.com/ai/" target="_blank" rel="noopener noreferrer">
+            <h6>Ars Technica · AI</h6><p>Deep tech reporting</p>
+          </a>
+          <a class="link-card" href="https://news.mit.edu/topic/artificial-intelligence2" target="_blank" rel="noopener noreferrer">
+            <h6>MIT News · AI</h6><p>Research & campus news</p>
+          </a>
+          <a class="link-card" href="https://www.bloomberg.com/ai" target="_blank" rel="noopener noreferrer">
+            <h6>Bloomberg · AI</h6><p>Markets & industry coverage</p>
+          </a>
+          <a class="link-card" href="https://www.nature.com/immersive/robotics-ai/index.html" target="_blank" rel="noopener noreferrer">
+            <h6>Nature · AI & Robotics</h6><p>Science features & analysis</p>
+          </a>
+          <a class="link-card" href="https://apnews.com/" target="_blank" rel="noopener noreferrer">
+            <h6>AP News · AI Coverage</h6><p>Wire service updates</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- YOUTUBE ESPAÑOL -->
+      <section id="youtube-es" class="module">
+        <h2>▶️ YouTube · Español (IA)</h2>
+        <p>Canales en español sobre IA, herramientas y desarrollo. Incluye tus favoritos y otros recomendados.</p>
+        <div class="cards-4">
+          <a class="link-card" href="https://www.youtube.com/@MigueBaenaIA" target="_blank" rel="noopener noreferrer">
+            <h6>@MigueBaenaIA</h6><p>IA aplicada y herramientas</p>
+          </a>
+          <a class="link-card" href="https://www.youtube.com/@la_inteligencia_artificial" target="_blank" rel="noopener noreferrer">
+            <h6>@la_inteligencia_artificial</h6><p>Divulgación por Jon Hernández</p>
+          </a>
+          <a class="link-card" href="https://www.youtube.com/@midudev" target="_blank" rel="noopener noreferrer">
+            <h6>@midudev</h6><p>Dev & tendencias (incluye IA)</p>
+          </a>
+          <a class="link-card" href="https://www.youtube.com/c/DotCSV" target="_blank" rel="noopener noreferrer">
+            <h6>@DotCSV</h6><p>IA en profundidad (Carlos Santana)</p>
+          </a>
+          <a class="link-card" href="https://www.youtube.com/@IAHispano" target="_blank" rel="noopener noreferrer">
+            <h6>@IAHispano</h6><p>Comunidad y proyectos IA</p>
+          </a>
+          <a class="link-card" href="https://www.youtube.com/@neuraliaYT" target="_blank" rel="noopener noreferrer">
+            <h6>@neuraliaYT</h6><p>Actualidad IA y robótica</p>
+          </a>
+          <a class="link-card" href="https://www.youtube.com/@midulive" target="_blank" rel="noopener noreferrer">
+            <h6>@midulive</h6><p>Directos de midudev</p>
+          </a>
+          <a class="link-card" href="https://www.youtube.com/@DotCSVLab" target="_blank" rel="noopener noreferrer">
+            <h6>@DotCSVLab</h6><p>Experimentos y demos</p>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

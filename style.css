@@ -1147,3 +1147,83 @@ nav ul li .dropdown-menu {
 nav ul li .dropdown-menu::-webkit-scrollbar { width: 8px; }
 nav ul li .dropdown-menu::-webkit-scrollbar-thumb { background: rgba(0,0,0,.15); border-radius: 4px; }
 nav ul li .dropdown-menu { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,.15) transparent; }
+
+
+/* === Unified dropdown caret (one arrow + rotate on open/hover) === */
+nav ul li.dropdown > .dropdown-toggle::after{
+  content: "▾";
+  display: inline-block;
+  margin-left: .4rem;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+/* Rotate when open (click in mobile/desktop) */
+nav ul li.dropdown.open > .dropdown-toggle::after{
+  transform: rotate(180deg);
+}
+/* Rotate on hover as well (desktop) */
+@media (hover:hover){
+  nav ul li.dropdown:hover > .dropdown-toggle::after{
+    transform: rotate(180deg);
+  }
+}
+
+
+/* ===== Noticias (página) – Estilos nuevos ===== */
+
+/* Resaltar 'Contenido' solo en Noticias */
+.page-noticias .highlight-contenido > a,
+.page-noticias .highlight-contenido .dropdown-toggle {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color) !important;
+  border: 2px solid var(--primary-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+/* Grilla de tarjetas (4 columnas en desktop, responsiva) */
+.cards-4 {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1200px) {
+  .cards-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .cards-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .cards-4 { grid-template-columns: 1fr; }
+}
+
+/* Tarjetas de enlaces */
+.link-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 10px;
+  padding: 0.95rem 1rem;
+  background: var(--muted-bg, #f6f7fb);
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+  height: 100%;
+}
+.link-card:hover {
+  transform: translateY(-2px);
+  background: var(--card-hover-bg, #eef2ff);
+  border-color: var(--primary-color, #6366f1);
+}
+.link-card h3, .link-card h4, .link-card h5, .link-card h6 {
+  margin: 0 0 .35rem;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.link-card p {
+  margin: 0;
+  opacity: .8;
+  font-size: .9rem;
+}
+
+/* Separadores suaves entre secciones */
+.module + .module { margin-top: 2rem; }

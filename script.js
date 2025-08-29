@@ -10,13 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggle) themeToggle.textContent = '🌙';
   }
 
-  // Al hacer click en el botón alternar
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const isDark = body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      themeToggle.textContent = isDark ? '☀️' : '🌙';
-    
   /* set current nav item and Contenido highlight for modules */
   try {
     const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -35,6 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   } catch(e) { /* noop */ }
+
+// Al hacer click en el botón alternar
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+    
+  
 
 });
   }
