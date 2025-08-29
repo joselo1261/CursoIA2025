@@ -153,6 +153,148 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { dd.classList.remove('closing'); }, 1200);
     });
   });
+
+
+// === Smooth scroll to anchors with sticky header offset ===
+(function(){
+  const nav = document.querySelector('nav');
+  const getOffset = () => {
+    if (!nav) return 0;
+    const r = nav.getBoundingClientRect();
+    // Sumamos un margen extra por estética
+    return Math.max(0, r.height + 12);
+  };
+  function smoothScrollTo(target){
+    const el = typeof target === 'string' ? document.querySelector(target) : target;
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - getOffset();
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+  // Interceptar clics en anchors internos
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href === '#' ) return;
+    a.addEventListener('click', (e)=>{
+      const id = href;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      smoothScrollTo(el);
+      // Actualizar hash sin salto
+      history.replaceState(null, '', id);
+      // Si venimos de un dropdown, cerrarlo
+      const dd = a.closest('li.dropdown');
+      if (dd) {
+        dd.classList.remove('open');
+        dd.classList.add('closing');
+        const t = dd.querySelector('.dropdown-toggle, .dropbtn, a');
+        if (t) t.setAttribute('aria-expanded','false');
+        setTimeout(()=> dd.classList.remove('closing'), 800);
+      }
+    });
+  });
+})();
+
+// === Keyboard accessibility for dropdown ===
+(function(){
+  document.querySelectorAll('li.dropdown').forEach(dd => {
+    const toggle = dd.querySelector('.dropdown-toggle, .dropbtn, a');
+    const items = Array.from(dd.querySelectorAll('.dropdown-menu a'));
+    if (!toggle || items.length === 0) return;
+
+    // Toggle keys
+    toggle.addEventListener('keydown', (e)=>{
+      const key = e.key;
+      if (key === 'Enter' || key === ' ') {
+        e.preventDefault();
+        dd.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(dd.classList.contains('open')));
+        if (dd.classList.contains('open')) items[0].focus();
+      } else if (key === 'ArrowDown') {
+        e.preventDefault();
+        dd.classList.add('open');
+        toggle.setAttribute('aria-expanded','true');
+        items[0].focus();
+      } else if (key === 'Escape') {
+        dd.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+
+    // Item keys
+    items.forEach((link, idx) => {
+      link.setAttribute('tabindex','0');
+      link.addEventListener('keydown', (e)=>{
+        if (e.key === 'Escape') {
+          dd.classList.remove('open');
+          toggle.setAttribute('aria-expanded','false');
+          toggle.focus();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const next = items[(idx+1) % items.length];
+          next.focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prev = items[(idx-1+items.length) % items.length];
+          prev.focus();
+        }
+      });
+    });
+  });
+})();
+
+// === Active section highlight inside dropdown while scrolling ===
+(function(){
+  // For each dropdown that contains anchors to in-page sections, track active link on scroll
+  const dropdowns = Array.from(document.querySelectorAll('li.dropdown'))
+    .map(dd => ({
+      dd,
+      links: Array.from(dd.querySelectorAll('.dropdown-menu a[href^="#"]'))
+    }))
+    .filter(x => x.links.length > 0);
+
+  if (dropdowns.length === 0) return;
+
+  const nav = document.querySelector('nav');
+  const headerOffset = nav ? (nav.getBoundingClientRect().height + 18) : 60;
+
+  function computeActive(){
+    const y = window.scrollY + headerOffset + 2;
+    dropdowns.forEach(({dd, links}) => {
+      let best = null; let bestTop = -Infinity;
+      links.forEach(a => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (!el) return;
+        const top = el.offsetTop;
+        if (top <= y && top > bestTop) { bestTop = top; best = a; }
+      });
+      links.forEach(l => l.classList.toggle('active', l === best));
+    });
+  }
+
+  // Run now and on scroll/resize (throttled with requestAnimationFrame)
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { computeActive(); ticking = false; });
+  };
+  ['scroll','resize','DOMContentLoaded'].forEach(ev => document.addEventListener(ev, onScroll, { passive: true }));
+  computeActive();
+})();
+
+// === Ensure rel=noopener on target=_blank links ===
+
+(function(){
+  document.querySelectorAll('a[target="_blank"]').forEach(a => {
+    const rel = (a.getAttribute('rel') || '').toLowerCase();
+    if (!rel.includes('noopener')) {
+      a.setAttribute('rel', (rel ? rel + ' ' : '') + 'noopener noreferrer');
+    }
+  });
+})();
+
 // === Footer ===
   const footer = document.createElement('footer');
   footer.className = 'site-footer';

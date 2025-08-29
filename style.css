@@ -1280,3 +1280,32 @@ nav ul li.dropdown.closing > .dropdown-menu {
   transform: translateY(-6px) scale(0.98) !important;
   transition: opacity .15s ease, transform .15s ease;
 }
+
+
+/* === Dropdown polish: shadow/blur + active state + focus === */
+nav ul li.dropdown > .dropdown-menu {
+  background: var(--dropdown-bg, rgba(255,255,255,0.9));
+  backdrop-filter: saturate(120%) blur(6px);
+  -webkit-backdrop-filter: saturate(120%) blur(6px);
+  box-shadow: 0 16px 36px rgba(2, 6, 23, 0.18);
+  border-radius: 10px;
+}
+body.dark-mode nav ul li.dropdown > .dropdown-menu {
+  background: rgba(9, 14, 34, 0.75);
+  box-shadow: 0 16px 36px rgba(0,0,0,.5);
+}
+
+nav ul li.dropdown .dropdown-menu a {
+  border-radius: 8px;
+  outline: none;
+}
+nav ul li.dropdown .dropdown-menu a:focus-visible {
+  box-shadow: 0 0 0 2px var(--primary-color, #1e3a89) inset;
+}
+nav ul li.dropdown .dropdown-menu a.active {
+  background: rgba(30, 58, 137, 0.14);
+  font-weight: 600;
+}
+body.dark-mode nav ul li.dropdown .dropdown-menu a.active {
+  background: rgba(147, 197, 253, 0.14);
+}
