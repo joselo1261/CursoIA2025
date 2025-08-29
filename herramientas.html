@@ -59,6 +59,11 @@ nav .dropdown .dropdown-content { position: absolute; z-index: 1200; }
 
 /* === Anchor offset so category titles remain visible === */
 h3[id^="tools-"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px); }
+
+/* Ensure anchors work regardless of tag (section/h3/div) */
+section[id^="tools-"], div[id^="tools-"]{
+  scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px);
+}
 </style></head>
 <body id="top">
 <header>
@@ -624,6 +629,47 @@ document.addEventListener('DOMContentLoaded', () => {
 <footer>
 </footer>
 </div>
+
+<script>
+// Herramientas: anclaje corrigiendo offset (nav + buscador) y apuntando al título
+(function(){
+  const nav = document.querySelector('nav');
+  const sb  = document.getElementById('tools-searchbar');
+  function getOffset(){
+    let h = 0;
+    if (nav) h += nav.getBoundingClientRect().height;
+    if (sb)  h += sb.getBoundingClientRect().height;
+    return h + 12; // pequeño margen
+  }
+  document.addEventListener('click', function(e){
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation(); // evita el listener global de script.js
+    // Si el ID está en <section>, ir a su <h3>/<h2> interno
+    let el = target;
+    if (el.tagName === 'SECTION'){
+      const h = el.querySelector('h3, h2, h1');
+      if (h) el = h;
+    }
+    const y = el.getBoundingClientRect().top + window.pageYOffset - getOffset();
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    history.replaceState(null, '', href);
+    // Cerrar dropdown si corresponde
+    const dd = a.closest('li.dropdown');
+    if (dd) {
+      dd.classList.remove('open');
+      dd.classList.add('closing');
+      setTimeout(()=> dd.classList.remove('closing'), 800);
+    }
+  }, true); // captura para adelantarnos a otros listeners
+})();
+</script>
+
 <script defer="" src="script.js"></script>
 </body>
 </html>
