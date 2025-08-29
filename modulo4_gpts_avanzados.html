@@ -37,6 +37,19 @@ nav .dropdown .dropdown-menu, nav .dropdown .dropdown-content { position: absolu
 
 /* Keep module4 titles visible */
 section[id^="m4_"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px); }
+/* --- Destacado para bloque de refuerzos del Punto 8 --- */
+details.refuerzos{
+  border: 2px solid var(--accent-color,#1E3A89);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: var(--bg-alt,#f9fafb);
+}
+details.refuerzos > summary{
+  font-weight: 600;
+  color: var(--accent-color,#1E3A89);
+  cursor: pointer;
+}
 </style>
 </head>
 <body class="page-modulo4">
@@ -62,8 +75,7 @@ section[id^="m4_"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-
           <li><a href="#m4_p7">7. Preguntas Frecuentes</a></li>
           <li><a href="#m4_p8">8. Asistente de Código</a></li>
           <li><a href="#m4_p9">9. Historias Narrativas Infinitas</a></li>
-          <li><a href="#m4_p10">10. News Letters</a></li>
-          <li><a href="#m4_p11">11. Redactor Pro</a></li>
+          <li><a href="#m4_p10">10. Newsletter (Hoja Informativa)</a></li>
           <li><a href="#m4_p12">12. Soporte Técnico sobre Documentación</a></li>
           <li><a href="#m4_p13">13. Propuesta Comercial</a></li>
           <li><a href="#m4_p14">14. Resumen de Informes</a></li>
@@ -940,7 +952,54 @@ Todo lo anterior al primer mensaje se llama &quot;system prompt&quot; - instrucc
     <li>Compatibilidad de versiones y alternativas si una lib es pesada.</li>
   </ul>
 
-  <h3>Prompt listo para usar</h3>
+  
+
+
+  
+<!-- Refuerzos compactos para el Punto 8 (no redundantes) -->
+<details id="p8-refuerzos" class="refuerzos">
+  <summary><strong>Refuerzos prácticos (opcional)</strong></summary>
+  <h5>Checklist rápido (1 min)</h5>
+  <ul>
+    <li><strong>Objetivo y tareas exactas</strong> (qué debe hacer el script).</li>
+    <li><strong>Entorno</strong> (SO, versión de Python/IDE, venv).</li>
+    <li><strong>Entradas/Salidas</strong> (ruta real, formato, <em>encoding</em>, separador, tamaño estimado).</li>
+    <li><strong>Restricciones</strong> (stdlib vs. librerías permitidas, Internet sí/no).</li>
+    <li><strong>Datos de prueba</strong> (5–10 filas representativas).</li>
+  </ul>
+
+  <h5>QA mínima y validación</h5>
+  <ul>
+    <li>Prueba corta con sample y <code>assert</code> de filas/columnas clave.</li>
+    <li><code>try/except</code> con mensajes accionables.</li>
+    <li><code>logging</code> básico (INFO/ERROR) para rastrear fallos.</li>
+  </ul>
+
+  <h5>Seguridad</h5>
+  <ul>
+    <li>Credenciales en variables de entorno (no hardcodear).</li>
+    <li>Sanitizar rutas/entradas del usuario; evitar <code>eval</code>/<code>exec</code>.</li>
+    <li>Chequear permisos de lectura/escritura y uso de directorios temporales.</li>
+  </ul>
+
+  <h5>Archivos grandes y formatos regionales</h5>
+  <ul>
+    <li><code>chunksize</code>, <code>dtype</code> y <code>usecols</code> para CSV grandes.</li>
+    <li>Soporte a separador <code>;</code>, decimal con coma y <code>encoding='utf-8-sig'</code> o <code>'latin-1'</code>.</li>
+    <li>Normalizar rutas Windows (<code>\</code>) y Unix (<code>/</code>).</li>
+  </ul>
+
+  <h5>Formato de entregables</h5>
+  <ol>
+    <li>Plan breve</li>
+    <li>Código</li>
+    <li>Cómo correrlo (paso a paso)</li>
+    <li>Prueba con sample</li>
+    <li>Riesgos/limitaciones</li>
+    <li>Variante “sin programar” (si aplica)</li>
+  </ol>
+</details>
+<h3>Prompt listo para usar</h3>
   <pre id="p8_prompt" style="white-space: pre-wrap; word-break: break-word; overflow-x: hidden;"><code>1. **Objetivos**
 Facilitar la codificación y automatización de procesos utilizando Python dentro de un entorno controlado de sandbox. Tu misión es proporcionar soluciones de codificación detalladas, precisas y profesionales que cumplan con los requisitos del usuario y se adapten a las limitaciones del entorno. Además, serás capaz de generar soluciones en HTML cuando sea necesario. El código que produzcas deberá estar listo para su ejecución sin ajustes adicionales y deberá ser seguro, eficiente y bien estructurado. **La calidad de esta respuesta podría definir el éxito del proyecto. Si lo logras, tendrás un reconocimiento importante.**
 2. **Cómo Actuar**
@@ -981,8 +1040,7 @@ Todo lo anterior al primer mensaje se llama &quot;system prompt&quot; - instrucc
 
     
 
-<section class="module" id="m4_p9">
-  <h2>9. Historias Narrativas Infinitas</h2>
+<section class="module" id="m4_p9"><h2>9. Historias Narrativas Infinitas</h2>
   <p>Asistente especializado en crear <strong>historias interactivas</strong> capítulo a capítulo, donde el usuario toma decisiones que influyen en la trama.
      Cada capítulo finaliza con un cliffhanger y una elección para continuar la narrativa de forma ilimitada.</p>
 
@@ -1070,8 +1128,8 @@ Utiliza ejemplos como estos pero varíalos en base a la situación de lo ya reda
     
 
 <section class="module" id="m4_p10">
-  <h2>10. News Letters</h2>
-  <p>Asistente para crear <strong>newsletters</strong> profesionales, atractivas y consistentes, guiando la interacción,
+  <h2>10. Newsletter (Hoja Informativa)</h2>
+<p>Asistente para crear <strong>newsletters</strong> profesionales, atractivas y consistentes, guiando la interacción,
      validando información y optimizando el contenido generado.</p>
 
   <h3>Objetivo</h3>
