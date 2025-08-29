@@ -1227,3 +1227,56 @@ nav ul li.dropdown.open > .dropdown-toggle::after{
 
 /* Separadores suaves entre secciones */
 .module + .module { margin-top: 2rem; }
+
+
+
+
+/* === Animated dropdown (fade/slide) === */
+/* Base: oculto pero ocupa lo mínimo (sin romper layout) */
+nav ul li .dropdown-menu {
+  /* mantener compatibilidad: forzamos visibilidad vía opacidad en lugar de display */
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.98);
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  will-change: opacity, transform;
+}
+
+/* Mostrar: al abrir por click o hover */
+nav ul li.dropdown.open > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+/* Desktop: permitir hover para abrir también */
+@media (hover:hover){
+  nav ul li.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+}
+
+/* Mobile: menú expandido mantiene estilo sin sombra/posicion flotante si ya lo tenías */
+#main-nav-list.active li.dropdown.open > .dropdown-menu {
+  position: static;
+  box-shadow: none;
+  border: none;
+  transform: none;
+}
+
+/* Cierre forzado al hacer click (evita quedar abierto por :hover) con animación */
+nav ul li.dropdown.closing > .dropdown-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-6px) scale(0.98) !important;
+  transition: opacity .15s ease, transform .15s ease;
+}

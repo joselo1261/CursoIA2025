@@ -137,7 +137,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // === Footer ===
+  
+  // Cerrar dropdown al elegir una opción (y no esperar al mouseleave)
+  document.querySelectorAll('li.dropdown .dropdown-menu a').forEach((a) => {
+    a.addEventListener('click', () => {
+      const dd = a.closest('li.dropdown');
+      if (!dd) return;
+      dd.classList.remove('open');
+      dd.classList.add('closing'); // fuerza ocultar incluso si sigue el hover
+      const t = dd.querySelector('.dropbtn, .dropdown-toggle, a');
+      if (t) t.setAttribute('aria-expanded','false');
+      // quitar 'closing' al salir con el mouse, o después de un fallback
+      const onLeave = () => { dd.classList.remove('closing'); dd.removeEventListener('mouseleave', onLeave); };
+      dd.addEventListener('mouseleave', onLeave, { once: true });
+      setTimeout(() => { dd.classList.remove('closing'); }, 1200);
+    });
+  });
+// === Footer ===
   const footer = document.createElement('footer');
   footer.className = 'site-footer';
 
