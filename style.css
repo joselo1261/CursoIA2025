@@ -1325,3 +1325,14 @@ body.dark-mode nav ul li.dropdown .dropdown-menu a.active {
 .heading-icon-link{ text-decoration:none; }
 .heading-icon-link:focus-visible{ outline:2px solid var(--primary-color,#1e3a89); border-radius:6px; }
 .youtube-icon:hover rect{ filter: brightness(1.05); }
+
+
+/* ===== Contacto (página) – Resaltar item en menú ===== */
+.page-contacto .highlight-contacto > a,
+.page-contacto .highlight-contacto .dropdown-toggle {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color) !important;
+  border: 2px solid var(--primary-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+}

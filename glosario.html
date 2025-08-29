@@ -64,7 +64,7 @@
 <ul id="main-nav-list">
 <li><a href="index.html">Inicio</a></li>
 <li><a href="herramientas.html">Herramientas</a></li>
-<li class="highlight-glosario"><a href="glosario.html">Glosario</a></li>
+<li class="highlight-glosario"><a href="glosario.html">Glosario</a></li><li><a href="contacto.html">Contacto</a></li>
 </ul>
 <button id="theme-toggle">🌙</button>
 <button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
@@ -407,6 +407,46 @@ document.addEventListener('DOMContentLoaded', () => {
 <footer>
 </footer>
 </div>
+
+<script>
+// Glosario: anclaje corrigiendo offset (nav + buscador) y apuntando al título
+(function(){
+  const nav = document.querySelector('nav');
+  const sb  = document.getElementById('glossary-searchbar');
+  function getOffset(){
+    let h = 0;
+    if (nav) h += nav.getBoundingClientRect().height;
+    if (sb)  h += sb.getBoundingClientRect().height;
+    return h + 12; // pequeño margen
+  }
+  document.addEventListener('click', function(e){
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    e.stopImmediatePropagation(); // evita el listener global de script.js
+    let el = target;
+    // Si el ID está en una sección de letra, ir a su <h3>/<h2>/<h1> interno
+    if (el.classList && el.classList.contains('letter-section')){
+      const h = el.querySelector('h3, h2, h1');
+      if (h) el = h;
+    }
+    const y = el.getBoundingClientRect().top + window.pageYOffset - getOffset();
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    history.replaceState(null, '', href);
+    // Cerrar dropdown si corresponde
+    const dd = a.closest('li.dropdown');
+    if (dd) {
+      dd.classList.remove('open');
+      dd.classList.add('closing');
+      setTimeout(()=> dd.classList.remove('closing'), 800);
+    }
+  }, true); // captura para adelantarnos a otros listeners
+})();
+</script>
 <script defer="" src="script.js"></script>
 </body>
 </html>

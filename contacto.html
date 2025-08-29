@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto — CursoIA2025</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{
+      --card-bg: #ffffff;
+      --card-fg: #111827;
+      --field-bg: #f9fafb;
+      --field-border: #e5e7eb;
+      --ok: #10b981;
+      --err: #ef4444;
+      --link: #1E3A89;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --card-bg: #111827;
+        --card-fg: #e5e7eb;
+        --field-bg: #0b1220;
+        --field-border: #1f2937;
+      }
+    }
+    .container-contacto{ max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+    .card{
+      background: var(--card-bg); color: var(--card-fg);
+      border: 1px solid var(--field-border);
+      border-radius: 14px; padding: 1.25rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+    .card h1{ font-size: clamp(1.25rem, 2.5vw, 1.6rem); margin: 0 0 .25rem 0; }
+    .card p.lead{ margin: 0 0 1rem 0; opacity:.8 }
+    form .row{ display:flex; gap:.75rem; flex-wrap:wrap }
+    form .row > .col{ flex:1 1 260px }
+    label{ display:block; font-size:.92rem; margin:.5rem 0 .25rem 0 }
+    input, select, textarea{
+      width:100%; background:var(--field-bg); color:inherit;
+      border:1px solid var(--field-border); border-radius:10px;
+      padding:.75rem .9rem; font: inherit; outline:none;
+    }
+    textarea{ min-height: 160px; resize: vertical }
+    .actions{ display:flex; gap:.75rem; align-items:center; margin-top: 1rem }
+    button{
+      border:0; border-radius: 10px; padding:.8rem 1.1rem; font-weight:600;
+      background: var(--link); color:#fff; cursor:pointer;
+    }
+    .muted{ opacity:.75; font-size:.92rem }
+    .status{ display:none; margin-left:.5rem; font-weight:600 }
+    .status.ok{ color: var(--ok) }
+    .status.err{ color: var(--err) }
+    .hp-wrap{ position:absolute; left:-5000px; opacity:0; pointer-events:none }
+  
+    /* ===== Ajustes Contacto (centrar menú + card azul claro) ===== */
+    .page-contacto nav ul#main-nav-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: .5rem;
+    }
+    .page-contacto .card{
+      background: #DBEAFE;              /* azul claro */
+      color: #0B2341;                    /* texto en azul oscuro institucional */
+      border: 1px solid #BBD3FF;         /* borde suave */
+    }
+    .page-contacto input, .page-contacto select, .page-contacto textarea{
+      background: #EEF4FF;               /* campos ligeramente más claros */
+      border: 1px solid #C7D8FF;
+      color: #0B2341;
+    }
+    .page-contacto .status.ok{ color:#0D9488 }   /* verde más sobrio */
+    .page-contacto .status.err{ color:#DC2626 }
+
+  
+    /* ===== Contacto: ajustes layout y azul claro ===== */
+    .page-contacto nav ul#main-nav-list{
+      display:flex; justify-content:center; align-items:center; gap:.75rem;
+    }
+    .page-contacto .card{
+      background:#DBEAFE; color:#0B2341; border:1px solid #BBD3FF;
+    }
+    .page-contacto input, .page-contacto select, .page-contacto textarea{
+      background:#EEF4FF; border:1px solid #C7D8FF; color:#0B2341;
+      box-sizing: border-box; /* evita overflow */
+    }
+    .page-contacto form .row{ display:flex; gap:.75rem; flex-wrap:wrap; }
+    .page-contacto form .row > .col{ flex:1 1 300px; min-width:260px; }
+    .page-contacto textarea{ min-height:180px; }
+    .page-contacto .status.ok{ color:#0D9488 } .page-contacto .status.err{ color:#DC2626 }
+  
+    .page-contacto label{ font-weight:700; }
+  </style>
+</head>
+<body class="page-contacto">
+  
+<nav style="margin-top:0;padding-top:0;">
+  <ul id="main-nav-list">
+    <li><a href="index.html">Inicio</a></li>
+    <li class="highlight-contacto"><a href="contacto.html">Contacto</a></li>
+  </ul>
+  <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+  <button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
+</nav>
+
+  <main class="container-contacto">
+    <div class="card">
+      <h1>Formulario de Consulta</h1>
+      <p class="lead">Dejanos tu consulta y te respondemos a la brevedad.</p>
+
+      <form id="contactForm" novalidate>
+        <div class="row">
+          <div class="col">
+            <label for="name">Nombre completo</label>
+            <input id="name" name="name" type="text" autocomplete="name" required placeholder="Ej.: Juan Pérez">
+          </div>
+          <div class="col">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="tunombre@gmail.com">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="menu">Sobre qué sección</label>
+            <select id="menu" name="menu" required>
+              <option value="" selected disabled>Elegí una opción…</option>
+              <option>Módulos</option>
+              <option>Herramientas</option>
+              <option>Noticias</option>
+              <option>Glosario</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" required placeholder="Contanos tu consulta o solicitud…"></textarea>
+
+        <div class="hp-wrap">
+          <label>Dejar vacío</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+        </div>
+
+        <div class="actions">
+          <button id="sendBtn" type="submit">Enviar</button>
+          <span id="statusOk" class="status ok">¡Mensaje enviado!</span>
+          <span id="statusErr" class="status err">Error al enviar. Probá más tarde.</span>
+        </div>
+
+        <p class="muted">Al enviar aceptás que usemos tus datos solo para responder tu consulta.</p></form>
+    </div>
+  </main>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzlHF8tVhQ-vpE3z72iOwOgOcnglQ1V_9mqwL7J4Pb3PjKbJKKDfRu6Qo9a7NWWonf2/exec";
+    const form = document.getElementById('contactForm');
+    const btn = document.getElementById('sendBtn');
+    const ok = document.getElementById('statusOk');
+    const err = document.getElementById('statusErr');
+
+    function validateEmail(email){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.style.display = 'none';
+      err.style.display = 'none';
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const menu = form.menu.value;
+      const message = form.message.value.trim();
+      const hp = form.website.value.trim();
+
+      if(!name || !validateEmail(email) || !menu || !message){
+        err.textContent = "Completá todos los campos correctamente.";
+        err.style.display = 'inline';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Enviando…";
+
+      try {
+        const payload = new URLSearchParams({
+          name, email, menu, message, hp,
+          ua: navigator.userAgent,
+          ts: new Date().toISOString()
+        });
+
+        const res = await fetch(SCRIPT_URL, {
+          method: "POST",
+          headers: {"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
+          body: payload.toString()
+        });
+
+        if(res.ok) {
+          ok.style.display = 'inline';
+          form.reset();
+        } else {
+          const t = await res.text();
+          err.textContent = "No se pudo enviar (respuesta inválida).";
+          err.style.display = 'inline';
+          console.error("Respuesta Apps Script:", t);
+        }
+      } catch (e) {
+        err.textContent = "No se pudo conectar al servidor.";
+        err.style.display = 'inline';
+        console.error(e);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Enviar";
+      }
+    });
+  </script>
+<script id="THEME_TOGGLE_CONTACTO">
+(function(){
+  const btn = document.getElementById('theme-toggle');
+  function applyTheme(mode){
+    const dark = (mode === 'dark');
+    document.body.classList.toggle('dark-mode', dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    if(btn){ btn.textContent = dark ? '🌞' : '🌙'; }
+  }
+  // Prefer saved theme; default to dark
+  const saved = localStorage.getItem('theme') || 'dark';
+  applyTheme(saved);
+  if(btn){
+    btn.addEventListener('click', function(){
+      const isDark = document.body.classList.contains('dark-mode');
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+  }
+})();
+</script>
+</body>
+</html>
