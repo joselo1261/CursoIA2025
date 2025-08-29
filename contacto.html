@@ -3,169 +3,323 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contacto — CursoIA2025</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Formulario de Consulta — GuiaIA (Opción 2)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    /* ===== Paleta inspirada en portada: navy + teal + cyan + royal blue ===== */
     :root{
-      --card-bg: #ffffff;
-      --card-fg: #111827;
-      --field-bg: #f9fafb;
-      --field-border: #e5e7eb;
+      /* Dark tokens (default) */
+      --bg: #0a1120;           /* navy profundo */
+      --bg2: #0c1629;
+      --card: rgba(14, 22, 40, .72);
+      --text: #e7f1ff;
+      --muted: #9bb0cc;
+      --line: #1d2b4a;
+      --accent-teal: #14b8a6;  /* teal */
+      --accent-cyan: #22d3ee;  /* cyan */
+      --accent-blue: #2563eb;  /* royal blue */
+      --accent-indigo: #4f46e5;/* indigo */
       --ok: #10b981;
       --err: #ef4444;
-      --link: #1E3A89;
+      --btn-dark: #0f3a75;     /* botón azul para modo claro */
     }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --card-bg: #111827;
-        --card-fg: #e5e7eb;
-        --field-bg: #0b1220;
-        --field-border: #1f2937;
-      }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body.page-contacto{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 12% -10%, rgba(34,211,238,.18) 0%, transparent 60%),
+        radial-gradient(800px 520px at 85% 12%, rgba(37,99,235,.20) 0%, transparent 62%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
-    .container-contacto{ max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
-    .card{
-      background: var(--card-bg); color: var(--card-fg);
-      border: 1px solid var(--field-border);
-      border-radius: 14px; padding: 1.25rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    }
-    .card h1{ font-size: clamp(1.25rem, 2.5vw, 1.6rem); margin: 0 0 .25rem 0; }
-    .card p.lead{ margin: 0 0 1rem 0; opacity:.8 }
-    form .row{ display:flex; gap:.75rem; flex-wrap:wrap }
-    form .row > .col{ flex:1 1 260px }
-    label{ display:block; font-size:.92rem; margin:.5rem 0 .25rem 0 }
-    input, select, textarea{
-      width:100%; background:var(--field-bg); color:inherit;
-      border:1px solid var(--field-border); border-radius:10px;
-      padding:.75rem .9rem; font: inherit; outline:none;
-    }
-    textarea{ min-height: 160px; resize: vertical }
-    .actions{ display:flex; gap:.75rem; align-items:center; margin-top: 1rem }
-    button{
-      border:0; border-radius: 10px; padding:.8rem 1.1rem; font-weight:600;
-      background: var(--link); color:#fff; cursor:pointer;
-    }
-    .muted{ opacity:.75; font-size:.92rem }
-    .status{ display:none; margin-left:.5rem; font-weight:600 }
-    .status.ok{ color: var(--ok) }
-    .status.err{ color: var(--err) }
-    .hp-wrap{ position:absolute; left:-5000px; opacity:0; pointer-events:none }
-  
-    /* ===== Ajustes Contacto (centrar menú + card azul claro) ===== */
-    .page-contacto nav ul#main-nav-list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: .5rem;
-    }
-    .page-contacto .card{
-      background: #DBEAFE;              /* azul claro */
-      color: #0B2341;                    /* texto en azul oscuro institucional */
-      border: 1px solid #BBD3FF;         /* borde suave */
-    }
-    .page-contacto input, .page-contacto select, .page-contacto textarea{
-      background: #EEF4FF;               /* campos ligeramente más claros */
-      border: 1px solid #C7D8FF;
-      color: #0B2341;
-    }
-    .page-contacto .status.ok{ color:#0D9488 }   /* verde más sobrio */
-    .page-contacto .status.err{ color:#DC2626 }
 
-  
-    /* ===== Contacto: ajustes layout y azul claro ===== */
-    .page-contacto nav ul#main-nav-list{
-      display:flex; justify-content:center; align-items:center; gap:.75rem;
+    /* ===== NAV ===== */
+    nav{
+      position: sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 17, 32, .55);
+      border-bottom: 1px solid var(--line);
     }
-    .page-contacto .card{
-      background:#DBEAFE; color:#0B2341; border:1px solid #BBD3FF;
+    nav .wrap{
+      max-width: 1100px; margin: 0 auto; padding:.55rem 1rem;
+      display:flex; align-items:center; justify-content:center; gap:1rem;
     }
-    .page-contacto input, .page-contacto select, .page-contacto textarea{
-      background:#EEF4FF; border:1px solid #C7D8FF; color:#0B2341;
-      box-sizing: border-box; /* evita overflow */
+    #main-nav-list{ list-style:none; margin:0; padding:0; display:flex; gap:.5rem }
+    #main-nav-list a{
+      display:inline-block; padding:.55rem 1rem; border-radius:12px;
+      color: var(--text); text-decoration:none; font-weight:800; letter-spacing:.2px;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
     }
-    .page-contacto form .row{ display:flex; gap:.75rem; flex-wrap:wrap; }
-    .page-contacto form .row > .col{ flex:1 1 300px; min-width:260px; }
-    .page-contacto textarea{ min-height:180px; }
-    .page-contacto .status.ok{ color:#0D9488 } .page-contacto .status.err{ color:#DC2626 }
-  
-    .page-contacto label{ font-weight:700; }
+    #main-nav-list a:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07) }
+    .highlight-contacto > a{
+      color:#fff !important;
+      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+      box-shadow: 0 10px 26px rgba(79,70,229,.28), inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    /* ===== Light mode ===== */
+    body:not(.dark-mode){
+      --bg: #f6f9ff;
+      --bg2:#eef3ff;
+      --card: rgba(255,255,255,.88);
+      --text: #0e1628;
+      --muted: #4b5567;
+      --line: #d6e0ff;
+    }
+    body:not(.dark-mode) nav{ background: rgba(255,255,255,.8); border-bottom-color: var(--line) }
+    body:not(.dark-mode) #main-nav-list a{ color:#0e1628 }
+    body:not(.dark-mode) #main-nav-list a:hover{ background: rgba(0,0,0,.06) }
+
+    /* ===== Contenedor y card ===== */
+    .shell{ max-width: 1020px; margin: 1.6rem auto; padding: 0 1rem }
+    h1{ margin:0 0 .2rem 0; font-size: clamp(1.45rem, 2.4vw, 2rem); letter-spacing:.2px }
+    .lead{ margin:0 0 1rem 0; color: var(--muted) }
+
+    .card{
+      position:relative; border-radius: 18px; padding: 1.1rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 56px rgba(0,0,0,.34);
+      overflow:hidden;
+    }
+    .card::before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 300px at 10% 5%, rgba(20,184,166,.22), transparent 60%),
+        radial-gradient(700px 380px at 95% 25%, rgba(34,211,238,.18), transparent 70%),
+        conic-gradient(from 200deg, rgba(37,99,235,.22), rgba(79,70,229,.2), transparent 40%);
+      filter: blur(14px); opacity:.32; z-index:0; transition: opacity .25s ease;
+    }
+    .card:hover::before{ opacity:.42 }
+    .card > *{ position:relative; z-index:1 }
+
+    /* ===== Form ===== */
+    form{ display:grid; gap: .8rem }
+    .row{ display:grid; grid-template-columns: 1fr; gap:.8rem }
+    @media (min-width: 880px){
+      .row.two{ grid-template-columns: 1fr 1fr }
+      .row.section-2col{ grid-template-columns: 1fr 1fr }
+    }
+
+    .field{ position:relative }
+    .field input, .field select, .field textarea{
+      width:100%;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.05));
+      border:1px solid var(--line);
+      color:var(--text);
+      padding: 1rem 1rem .9rem 2.6rem;
+      border-radius:14px;
+      outline:none;
+      transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .field textarea{ min-height: 150px; resize: vertical; padding-top: 1.5rem }
+    .field input::placeholder, .field textarea::placeholder{ color:#7f8db4 }
+    .field input:focus, .field select:focus, .field textarea:focus{
+      border-color: rgba(37,99,235,.65);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.20);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.08));
+    }
+    /* Relleno claro cuando hay valor (light) */
+    body:not(.dark-mode) .field input:not(:placeholder-shown),
+    body:not(.dark-mode) .field textarea:not(:placeholder-shown){
+      background:#ffffff;
+    }
+
+    .field label{
+      position:absolute; left: 2.6rem; top: .95rem;
+      color: var(--muted); pointer-events:none; font-weight:800;
+      transition: transform .18s ease, font-size .18s ease, top .18s ease, opacity .18s ease;
+    }
+    .field input:not(:placeholder-shown) + label,
+    .field textarea:not(:placeholder-shown) + label,
+    .field input:focus + label,
+    .field textarea:focus + label{
+      transform: translateY(-.9rem);
+      top: .3rem; font-size:.78rem; opacity:.92;
+    }
+    .field.hint-floating label{
+      transform: translateY(-.9rem);
+      top:.3rem; font-size:.78rem; opacity:.92;
+    }
+
+    /* Título + select mitad izquierda */
+    .section-wrap{ display:grid; grid-template-columns: 240px 1fr; gap:.8rem; align-items:center }
+    .label-aside{ display:flex; align-items:center; font-weight:800; color:var(--muted); padding-left:.2rem }
+    .select-field{ position:relative }
+    .select-field .icon{ top:.95rem }
+    .select-field select{ padding-left:2.6rem }
+    .select-field select:valid{ background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.10)) }
+    body:not(.dark-mode) .select-field select:valid{ background:#ffffff }
+
+    /* Opciones del desplegable (legibles en dark) */
+    .field select option{ color:#0e1628; background:#ffffff }
+    body.dark-mode .field select option{ color:#0e1628; background:#ffffff }
+    .field select option[disabled]{ color:#94a3b5 }
+
+    .icon{
+      position:absolute; left:.78rem; top:.95rem; opacity:.78;
+      width:1.1rem; height:1.1rem; pointer-events:none; color:#9fb3da;
+    }
+
+    /* === Botón === */
+    .actions{ display:flex; align-items:center; gap:.8rem; flex-wrap:wrap; margin-top:.2rem }
+    button.primary{
+      appearance:none; border:0; cursor:pointer; font-weight:900;
+      color:#0a1120; background:#fff; padding:.9rem 1.15rem; border-radius:14px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+      box-shadow: 0 12px 26px rgba(34,211,238,.20), inset 0 0 0 1px rgba(0,0,0,.06);
+      background-image: linear-gradient(180deg, #ffffff, #f6fbff);
+    }
+    button.primary:hover{ transform: translateY(-1px); box-shadow: 0 16px 30px rgba(34,211,238,.28) }
+    /* Azul en light */
+    body:not(.dark-mode) button.primary{
+      background: var(--btn-dark); color:#fff; background-image:none;
+      box-shadow: 0 12px 26px rgba(15,58,117,.34);
+    }
+    body:not(.dark-mode) button.primary:hover{ box-shadow:0 16px 34px rgba(15,58,117,.46) }
+
+    .status{ display:none; font-weight:800 }
+    .status.ok{ color:var(--ok) } .status.err{ color:var(--err) }
+
+    /* Toast */
+    .toast{
+      position:fixed; left:50%; bottom:18px; transform:translateX(-50%) translateY(24px);
+      background: rgba(16,185,129,.12); color:#d1fae5; border:1px solid rgba(16,185,129,.35);
+      padding:.65rem 1rem; border-radius:12px; backdrop-filter: blur(10px);
+      font-weight:900; opacity:0; transition: all .22s ease; z-index:60;
+    }
+    .toast.show{ opacity:1; transform:translateX(-50%) translateY(0) }
+    .toast.err{ background: rgba(239,68,68,.12); color:#fee2e2; border-color: rgba(239,68,68,.35) }
+
+    /* Light-mode toast contrast fix */
+    body:not(.dark-mode) .toast{ color:#065f46; background: rgba(16,185,129,.18); border-color: rgba(16,185,129,.40) }
+    body:not(.dark-mode) .toast.err{ color:#7f1d1d; background: rgba(239,68,68,.20); border-color: rgba(239,68,68,.42) }
+
+    /* Mobile */
+    @media (max-width: 879px){
+      .section-wrap{ grid-template-columns: 1fr }
+    }
   </style>
 </head>
 <body class="page-contacto">
-  
-<nav style="margin-top:0;padding-top:0;">
-  <ul id="main-nav-list">
-    <li><a href="index.html">Inicio</a></li>
-    <li class="highlight-contacto"><a href="contacto.html">Contacto</a></li>
-  </ul>
-  <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
-  <button aria-label="Toggle navigation" class="hamburger-menu">☰</button>
-</nav>
 
-  <main class="container-contacto">
+  <nav>
+    <div class="wrap">
+      <ul id="main-nav-list">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="highlight-contacto"><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <button id="theme-toggle" aria-label="Cambiar tema" title="Cambiar tema" style="margin-left:1rem;background:none;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:.45rem .7rem;cursor:pointer">🌙</button>
+    </div>
+  </nav>
+
+  <main class="shell">
     <div class="card">
       <h1>Formulario de Consulta</h1>
       <p class="lead">Dejanos tu consulta y te respondemos a la brevedad.</p>
 
       <form id="contactForm" novalidate>
-        <div class="row">
-          <div class="col">
+        <div class="row two">
+          <div class="field hint-floating">
+            <input id="name" name="name" type="text" placeholder="Ej.: Juan Pérez" autocomplete="name" required>
             <label for="name">Nombre completo</label>
-            <input id="name" name="name" type="text" autocomplete="name" required placeholder="Ej.: Juan Pérez">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5Zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6Z" stroke-width="1.5"/></svg>
           </div>
-          <div class="col">
+          <div class="field hint-floating">
+            <input id="email" name="email" type="email" placeholder="tunombre@gmail.com" autocomplete="email" required>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required placeholder="tunombre@gmail.com">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" stroke-width="1.5"/><path d="m3 7 9 6 9-6" stroke-width="1.5"/></svg>
           </div>
+        </div>
+
+        <!-- Mitad izquierda: título + select -->
+        <div class="row section-2col">
+          <div>
+            <div class="section-wrap">
+              <div class="label-aside">Sobre qué sección</div>
+              <div class="field select-field">
+                <select id="menu" name="menu" required>
+                  <option value="" selected disabled>Elegí una opción…</option>
+                  <option>Módulos</option>
+                  <option>Herramientas</option>
+                  <option>Noticias</option>
+                  <option>Glosario</option>
+                </select>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6" stroke-width="1.5"/></svg>
+              </div>
+            </div>
+          </div>
+          <div><!-- reservado --></div>
         </div>
 
         <div class="row">
-          <div class="col">
-            <label for="menu">Sobre qué sección</label>
-            <select id="menu" name="menu" required>
-              <option value="" selected disabled>Elegí una opción…</option>
-              <option>Módulos</option>
-              <option>Herramientas</option>
-              <option>Noticias</option>
-              <option>Glosario</option>
-            </select>
+          <div class="field hint-floating">
+            <textarea id="message" name="message" placeholder="Escribí tu consulta…" required></textarea>
+            <label for="message">Mensaje</label>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" stroke-width="1.5"/></svg>
           </div>
         </div>
 
-        <label for="message">Mensaje</label>
-        <textarea id="message" name="message" required placeholder="Contanos tu consulta o solicitud…"></textarea>
-
-        <div class="hp-wrap">
+        <!-- Honeypot -->
+        <div style="position:absolute;left:-5000px;opacity:0;pointer-events:none">
           <label>Dejar vacío</label>
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
         </div>
 
         <div class="actions">
-          <button id="sendBtn" type="submit">Enviar</button>
+          <button id="sendBtn" class="primary" type="submit">Enviar</button>
           <span id="statusOk" class="status ok">¡Mensaje enviado!</span>
           <span id="statusErr" class="status err">Error al enviar. Probá más tarde.</span>
         </div>
 
-        <p class="muted">Al enviar aceptás que usemos tus datos solo para responder tu consulta.</p></form>
+        <p class="muted" style="margin:.5rem 0 0 0; color:var(--muted)">Al enviar aceptás que usemos tus datos solo para responder tu consulta.</p>
+      </form>
     </div>
   </main>
 
+  <div id="toast" class="toast">¡Mensaje enviado!</div>
+
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzlHF8tVhQ-vpE3z72iOwOgOcnglQ1V_9mqwL7J4Pb3PjKbJKKDfRu6Qo9a7NWWonf2/exec";
+
+    // Toggle tema
+    (function(){
+      const btn = document.getElementById('theme-toggle');
+      function applyTheme(mode){
+        const isDark = (mode === 'dark');
+        document.body.classList.toggle('dark-mode', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        btn.textContent = isDark ? '🌞' : '🌙';
+      }
+      const saved = localStorage.getItem('theme') || 'dark';
+      applyTheme(saved);
+      btn.addEventListener('click', ()=>{
+        const next = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+        applyTheme(next);
+      });
+    })();
+
+    // Validación + envío
     const form = document.getElementById('contactForm');
     const btn = document.getElementById('sendBtn');
     const ok = document.getElementById('statusOk');
     const err = document.getElementById('statusErr');
+    const toast = document.getElementById('toast');
 
-    function validateEmail(email){
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    function validateEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) }
+    function showToast(text, isErr=false){
+      toast.textContent = text;
+      toast.classList.toggle('err', !!isErr);
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 2300);
     }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      ok.style.display = 'none';
-      err.style.display = 'none';
+      ok.style.display='none'; err.style.display='none';
 
       const name = form.name.value.trim();
       const email = form.email.value.trim();
@@ -175,64 +329,19 @@
 
       if(!name || !validateEmail(email) || !menu || !message){
         err.textContent = "Completá todos los campos correctamente.";
-        err.style.display = 'inline';
-        return;
+        err.style.display='inline'; showToast("Revisá los campos", true); return;
       }
 
-      btn.disabled = true;
-      btn.textContent = "Enviando…";
-
-      try {
-        const payload = new URLSearchParams({
-          name, email, menu, message, hp,
-          ua: navigator.userAgent,
-          ts: new Date().toISOString()
-        });
-
-        const res = await fetch(SCRIPT_URL, {
-          method: "POST",
-          headers: {"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
-          body: payload.toString()
-        });
-
-        if(res.ok) {
-          ok.style.display = 'inline';
-          form.reset();
-        } else {
-          const t = await res.text();
-          err.textContent = "No se pudo enviar (respuesta inválida).";
-          err.style.display = 'inline';
-          console.error("Respuesta Apps Script:", t);
-        }
-      } catch (e) {
-        err.textContent = "No se pudo conectar al servidor.";
-        err.style.display = 'inline';
-        console.error(e);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "Enviar";
-      }
+      btn.disabled = true; btn.textContent = "Enviando…";
+      try{
+        const payload = new URLSearchParams({ name, email, menu, message, hp, ua:navigator.userAgent, page:location.href, ts:new Date().toISOString() });
+        const res = await fetch(SCRIPT_URL, { method:"POST", headers:{ "Content-Type":"application/x-www-form-urlencoded;charset=UTF-8" }, body: payload.toString(), redirect:"follow" });
+        if(res.ok){ ok.style.display='inline'; showToast("¡Mensaje enviado!"); form.reset(); }
+        else { err.textContent="No se pudo enviar (respuesta inválida)."; err.style.display='inline'; showToast("No se pudo enviar", true); }
+      }catch(ex){
+        err.textContent="No se pudo conectar al servidor."; err.style.display='inline'; showToast("Sin conexión", true);
+      }finally{ btn.disabled=false; btn.textContent="Enviar"; }
     });
   </script>
-<script id="THEME_TOGGLE_CONTACTO">
-(function(){
-  const btn = document.getElementById('theme-toggle');
-  function applyTheme(mode){
-    const dark = (mode === 'dark');
-    document.body.classList.toggle('dark-mode', dark);
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-    if(btn){ btn.textContent = dark ? '🌞' : '🌙'; }
-  }
-  // Prefer saved theme; default to dark
-  const saved = localStorage.getItem('theme') || 'dark';
-  applyTheme(saved);
-  if(btn){
-    btn.addEventListener('click', function(){
-      const isDark = document.body.classList.contains('dark-mode');
-      applyTheme(isDark ? 'light' : 'dark');
-    });
-  }
-})();
-</script>
 </body>
 </html>
