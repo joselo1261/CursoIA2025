@@ -37,6 +37,19 @@ nav .dropdown .dropdown-menu, nav .dropdown .dropdown-content { position: absolu
 
 /* Keep module4 titles visible */
 section[id^="m4_"]{ scroll-margin-top: calc(var(--nav-h, 0px) + var(--searchbar-h, 0px) + 12px); }
+/* --- Destacado para bloques de refuerzos --- */
+details.refuerzos{
+  border: 2px solid var(--accent-color,#1E3A89);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: var(--bg-alt,#f9fafb);
+}
+details.refuerzos > summary{
+  font-weight: 600;
+  color: var(--accent-color,#1E3A89);
+  cursor: pointer;
+}
 </style>
 </head>
 <body class="page-modulo4">
@@ -940,7 +953,42 @@ Todo lo anterior al primer mensaje se llama &quot;system prompt&quot; - instrucc
     <li>Compatibilidad de versiones y alternativas si una lib es pesada.</li>
   </ul>
 
-  <h3>Prompt listo para usar</h3>
+  
+<details id="p8-refuerzos" class="refuerzos">
+  <summary><strong>Refuerzos prácticos (opcional)</strong></summary>
+  <h5>Checklist rápido (1 min)</h5>
+  <ul>
+    <li><strong>Objetivo y tareas exactas</strong> (qué debe hacer el script).</li>
+    <li><strong>Entorno</strong> (SO, versión de Python/IDE, venv).</li>
+    <li><strong>Entradas/Salidas</strong> (ruta real, formato, <em>encoding</em>, separador, tamaño estimado).</li>
+    <li><strong>Restricciones</strong> (stdlib vs. librerías permitidas, Internet sí/no).</li>
+    <li><strong>Datos de prueba</strong> (5–10 filas representativas).</li>
+  </ul>
+  <h5>QA mínima y validación</h5>
+  <ul>
+    <li>Prueba corta con sample y <code>assert</code> de filas/columnas clave.</li>
+    <li><code>try/except</code> con mensajes accionables.</li>
+    <li><code>logging</code> básico (INFO/ERROR) para rastrear fallos.</li>
+  </ul>
+  <h5>Seguridad</h5>
+  <ul>
+    <li>Credenciales en variables de entorno (no hardcodear).</li>
+    <li>Sanitizar rutas/entradas del usuario; evitar <code>eval</code>/<code>exec</code>.</li>
+    <li>Chequear permisos de lectura/escritura y uso de directorios temporales.</li>
+  </ul>
+  <h5>Archivos grandes y formatos regionales</h5>
+  <ul>
+    <li><code>chunksize</code>, <code>dtype</code> y <code>usecols</code> para CSV grandes.</li>
+    <li>Soporte a separador <code>;</code>, decimal con coma y <code>encoding</code> adecuado.</li>
+    <li>Normalizar rutas Windows (<code>\</code>) y Unix (<code>/</code>).</li>
+  </ul>
+  <h5>Formato de entregables</h5>
+  <ol>
+    <li>Plan breve</li><li>Código</li><li>Cómo correrlo</li>
+    <li>Prueba con sample</li><li>Riesgos/limitaciones</li><li>Variante “sin programar”</li>
+  </ol>
+</details>
+<h3>Prompt listo para usar</h3>
   <pre id="p8_prompt" style="white-space: pre-wrap; word-break: break-word; overflow-x: hidden;"><code>1. **Objetivos**
 Facilitar la codificación y automatización de procesos utilizando Python dentro de un entorno controlado de sandbox. Tu misión es proporcionar soluciones de codificación detalladas, precisas y profesionales que cumplan con los requisitos del usuario y se adapten a las limitaciones del entorno. Además, serás capaz de generar soluciones en HTML cuando sea necesario. El código que produzcas deberá estar listo para su ejecución sin ajustes adicionales y deberá ser seguro, eficiente y bien estructurado. **La calidad de esta respuesta podría definir el éxito del proyecto. Si lo logras, tendrás un reconocimiento importante.**
 2. **Cómo Actuar**
@@ -1462,7 +1510,37 @@ Solicita una revisión general para verificar coherencia, claridad y fluidez en 
     <li>Si falta info, indicar exactamente qué y cómo continuar.</li>
   </ul>
 
-  <h3>Prompt listo para usar</h3>
+  
+<details id="p12-refuerzos" class="refuerzos">
+  <summary><strong>Refuerzos prácticos (opcional)</strong></summary>
+  <h5>Intake mínimo (antes de responder)</h5>
+  <ul>
+    <li><strong>Producto/versión</strong> y <strong>SO/entorno</strong>.</li>
+    <li><strong>Error exacto</strong> y <strong>pasos previos</strong>.</li>
+    <li><strong>Doc utilizada</strong> (sección/página o enlace).</li>
+  </ul>
+  <h5>Jerarquía de fuentes</h5>
+  <ul>
+    <li><strong>Adjunta &gt; Web</strong> en caso de conflicto (release notes &gt; manual &gt; FAQ).</li>
+    <li>Si no hay cobertura: indicalo y ofrecé opciones (adjuntar doc, buscar web oficial, escalar).</li>
+  </ul>
+  <h5>Formato de respuesta</h5>
+  <ol>
+    <li><strong>Causa</strong></li><li><strong>Solución</strong></li><li><strong>Validación</strong></li><li><strong>Referencia</strong></li>
+  </ol>
+  <h5>Seguridad</h5>
+  <ul>
+    <li>Confirmar acciones <strong>destructivas</strong>; usar <code>--dry-run</code> si existe.</li>
+    <li>Advertir <strong>riesgos/downtime</strong> antes de ejecutar.</li>
+  </ul>
+  <h5>QA rápido</h5>
+  <ul>
+    <li>Reproducibilidad: versión/SO probados.</li>
+    <li>Verificación: resultado esperado tras el último paso.</li>
+    <li>Variantes: ruta alternativa si cambió la UI/versión.</li>
+  </ul>
+</details>
+<h3>Prompt listo para usar</h3>
   <pre id="p12_prompt" style="white-space: pre-wrap; word-break: break-word; overflow-x: hidden;"><code>Eres un asistente virtual que puede responder consultas basadas en la documentación proporcionada de un sitio web. Para ello, utilizarás la URL de un sitio web de documentación para acceder al contenido y proporcionar respuestas precisas.
 ---
 ## **Objetivo**
@@ -1508,20 +1586,85 @@ Tu objetivo es:
 
 
     <section class="module" id="m4_p13">
-      <h2>13. Propuesta Comercial</h2>
-      <p>Generá propuestas claras y consistentes a partir de brief y plantillas: alcance, entregables, plazos y costos.</p>
-      <div class="table-responsive">
-        <table class="tabla tabla-compacta">
-          <thead><tr><th>Sección</th><th>Contenido</th></tr></thead>
-          <tbody>
-            <tr><td>Resumen ejecutivo</td><td>1–2 párrafos</td></tr>
-            <tr><td>Alcance y entregables</td><td>Bullets medibles</td></tr>
-            <tr><td>Cronograma</td><td>Hitos por semana</td></tr>
-            <tr><td>Inversión</td><td>Tabla + condiciones</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+  <h2>13. Propuesta Comercial</h2>
+  <p>Asistente para elaborar propuestas comerciales claras y persuasivas, integrando diagnóstico, solución propuesta, ROI y próximos pasos. Trabaja por iteraciones con el comercial hasta validar la versión final.</p>
+
+  <h3>Objetivo</h3>
+  <ul>
+    <li>Producir propuestas completas y orientadas a decisión.</li>
+    <li>Usar información provista por el comercial y la base de conocimiento.</li>
+  </ul>
+
+  <h3>Estructura recomendada</h3>
+  <table style="width:100%;border-collapse:collapse;margin:0.5rem 0;">
+    <thead>
+      <tr><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Sección</th><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Contenido</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>1. Resumen ejecutivo</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Dolor actual, oportunidad y propuesta de alto nivel.</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>2. Situación actual</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Parque de impresión, volúmenes, costos, incidentes, contratos vigentes.</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>3. Requisitos y objetivos</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Disponibilidad, seguridad, calidad, SLA, presupuesto.</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>4. Propuesta técnica</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Arquitectura, equipamiento/servicios, roles y alcance.</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>5. Plan de implementación</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Hitos, cronograma, riesgos y mitigaciones.</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>6. Casos de éxito</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Elegir 3 casos relevantes y justificar la elección.</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>7. ROI y costos</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Estimación de ahorro, TCO y modelo comercial.</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>8. Próximos pasos</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Validación, pruebas piloto y agenda de trabajo.</td></tr>
+    </tbody>
+  </table>
+
+  <details id="p13-refuerzos" class="refuerzos">
+    <summary><strong>Refuerzos prácticos (opcional)</strong></summary>
+    <h5>Intake mínimo</h5>
+    <ul>
+      <li>Industria, sedes y parque actual.</li>
+      <li>Dolores y objetivos (ahorro, disponibilidad, seguridad, calidad).</li>
+      <li>Restricciones: presupuesto, plazos, proveedores existentes.</li>
+    </ul>
+    <h5>Iteración</h5>
+    <ul>
+      <li>Validar cada sección con el comercial.</li>
+      <li>Para casos de éxito, elegir 3 desde <code>casos.txt</code> y avisar antes de incluir.</li>
+    </ul>
+    <h5>QA</h5>
+    <ul>
+      <li>Consistencia de cifras y supuestos; evitar contradicciones.</li>
+      <li>Claridad del ROI y <em>next steps</em> con responsables y fechas tentativas.</li>
+    </ul>
+  </details>
+
+  <h3>Prompt listo para usar</h3>
+  <pre style="white-space: pre-wrap; word-break: break-word; overflow-x: hidden;"><code># Objetivos
+**Definición Clara y General:**  
+eres un asistente experto en sistemas de impresión que facilita la creación de propuestas para empresas con el objetivo de optimizar sus sistemas de impresión en oficinas.
+**Misión:**  
+Ayudar al comercial a desarrollar propuestas claras, completas y efectivas utilizando la información proporcionada, la base de conocimiento y los casos de éxito relevantes.
+# Cómo Actuar
+**Instrucciones Generales:**  
+1. Comunicarte de manera profesional y confiada.  
+2. Solicitar toda la información relevante al comercial antes de iniciar el proceso.  
+3. Analizar y estructurar los datos obtenidos para desarrollar propuestas personalizadas.  
+4. Validar el contenido de las propuestas con el usuario y realizar ajustes si es necesario.  
+**Estrategias Clave:**  
+- Mantener un enfoque centrado en el cliente.  
+- Utilizar la base de conocimiento y los documentos adjuntos como referencia principal.  
+- Buscar la retroalimentación activa del usuario para iterar y mejorar.  
+# Instrucciones Concretas
+1. Solicita al comercial toda la información relevante disponible.  
+2. Analiza los datos recibidos y completa los campos del índice de la propuesta.  
+3. Abre la herramienta CANVAS para validar la propuesta con el comercial.  
+4. Si falta información, solicítala al comercial de manera específica.  
+5. Pregunta si la propuesta es óptima y ajusta según las indicaciones del comercial.  
+6. Para el punto 9 (casos de éxito):  
+   - Consulta el documento &quot;casos.txt&quot;.  
+   - Elige los 3 casos más relevantes para el cliente en cuestión.  
+   - Informa al usuario antes de proceder.  
+7. Itera hasta que el comercial confirme que la propuesta está lista.  
+# Refuerzo de Instrucciones
+**Puntos Clave:**  
+- Repite las instrucciones principales al inicio de cada iteración para asegurar consistencia.  
+- Valida continuamente el entendimiento con el comercial antes de avanzar.</code></pre>
+  <button class="download-txt" data-filename="13.2_Prompt_Propuesta_Comercial.txt">Descargar prompt (.txt)</button>
+</section>
 
     <section class="module" id="m4_p14">
   <h2>14. Resumen de Informes</h2>
@@ -1531,49 +1674,29 @@ Tu objetivo es:
   <ul>
     <li>Resumir con precisión manteniendo el mensaje central y la trazabilidad.</li>
     <li>Entregar tres niveles de salida según la necesidad del lector.</li>
-    <li>Adecuar el tono (técnico/divulgativo) y resaltar recomendaciones accionables.</li>
+    <li>Adecuar el tono y resaltar recomendaciones accionables.</li>
   </ul>
-
-  <h3>Cómo actuar</h3>
-  <ol>
-    <li>Solicitar el <em>texto fuente</em> o sección a resumir.</li>
-    <li>Confirmar <em>nivel</em> (1, 2 o 3) y <em>audiencia</em>.</li>
-    <li>Generar el resumen y validar coherencia con el original.</li>
-    <li>Entregar y ofrecer alternativa de nivel/formato si conviene.</li>
-  </ol>
 
   <h3>Niveles de resumen</h3>
   <table style="width:100%;border-collapse:collapse;margin:0.5rem 0;">
     <thead>
-      <tr><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Nivel</th><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Formato</th><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Uso recomendado</th></tr>
+      <tr><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Nivel</th><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Formato</th><th style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Uso recomendado</th></tr>
     </thead>
     <tbody>
-      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>1</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Bullets (6–10)</td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Lectura rápida</td></tr>
-      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>2</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Párrafos breves</td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Contexto adicional</td></tr>
-      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;"><strong>3</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">≈1 página</td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);vertical-align:top;text-align:left;">Profundización completa</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>1</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Bullets (6–10)</td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Lectura rápida</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>2</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Párrafos breves</td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Contexto adicional</td></tr>
+      <tr><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;"><strong>3</strong></td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">≈1 página</td><td style="padding:8px;border:1px solid var(--card-border,#e5e7eb);text-align:left;vertical-align:top;">Profundización completa</td></tr>
     </tbody>
   </table>
 
-  <!-- Refuerzos compactos para el Punto 14 (no redundantes) -->
   <details id="p14-refuerzos" class="refuerzos">
     <summary><strong>Refuerzos prácticos (opcional)</strong></summary>
     <h5>Intake mínimo</h5>
-    <ul>
-      <li>Tipo de documento, objetivo y audiencia.</li>
-      <li>Nivel requerido y extensión deseada.</li>
-      <li>Si hay métricas o cifras críticas, destacarlas.</li>
-    </ul>
+    <ul><li>Tipo de documento, audiencia y objetivo.</li><li>Nivel requerido y extensión deseada.</li></ul>
     <h5>Fidelidad &amp; estilo</h5>
-    <ul>
-      <li>No inventar; respetar terminología y cifras.</li>
-      <li>Ajustar tecnicismo al lector y mantener orden lógico.</li>
-    </ul>
+    <ul><li>No inventar; respetar terminología/cifras.</li><li>Ajustar tecnicismo al lector y mantener orden lógico.</li></ul>
     <h5>QA rápido</h5>
-    <ul>
-      <li>Sin redundancias entre niveles.</li>
-      <li>Coherencia entre secciones y referencias.</li>
-      <li>Marcar dudas o lagunas del texto fuente.</li>
-    </ul>
+    <ul><li>Sin redundancias entre niveles.</li><li>Coherencia y referencias correctas.</li><li>Marcar dudas o lagunas.</li></ul>
   </details>
 
   <h3>Prompt listo para usar</h3>
