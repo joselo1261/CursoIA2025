@@ -1520,7 +1520,57 @@ Solicita una revisión general para verificar coherencia, claridad y fluidez en 
     <li>Si falta info, indicar exactamente qué y cómo continuar.</li>
   </ul>
 
-  <h3>Prompt listo para usar</h3>
+  
+<!-- Refuerzos compactos para el Punto 12 (no redundantes) -->
+<details id="p12-refuerzos" class="refuerzos">
+  <summary><strong>Refuerzos prácticos (opcional)</strong></summary>
+
+  <h5>Intake mínimo (antes de responder)</h5>
+  <ul>
+    <li><strong>Producto/versión</strong> y <strong>SO/entorno</strong>.</li>
+    <li><strong>Error exacto</strong> (mensaje o síntoma) y <strong>pasos previos</strong>.</li>
+    <li><strong>Doc utilizada</strong> (sección/página o enlace) para trazar la referencia.</li>
+  </ul>
+
+  <h5>Jerarquía de fuentes</h5>
+  <ul>
+    <li><strong>Adjunta &gt; Web</strong> en caso de conflicto.</li>
+    <li>Orden sugerido: <em>release notes</em> → manual técnico → FAQ.</li>
+    <li>Si no hay cobertura: indicalo y ofrecé opciones (adjuntar doc, buscar web oficial, escalar).</li>
+  </ul>
+
+  <h5>Formato de respuesta</h5>
+  <ol>
+    <li><strong>Causa</strong></li>
+    <li><strong>Solución paso a paso</strong></li>
+    <li><strong>Validación</strong> (qué debería verse/ocurrir)</li>
+    <li><strong>Referencia</strong> (sección X.Y o pág. N)</li>
+  </ol>
+
+  <h5>Seguridad</h5>
+  <ul>
+    <li>Confirmar acciones <strong>destructivas</strong>; sugerir <code>--dry-run</code> si existe.</li>
+    <li>Advertir <strong>riesgos/downtime</strong> antes de ejecutar.</li>
+  </ul>
+
+  <h5>QA rápido</h5>
+  <ul>
+    <li><strong>Reproducibilidad</strong>: indicar versión/SO donde se probó.</li>
+    <li><strong>Verificación</strong>: resultado esperado tras el último paso.</li>
+    <li><strong>Variantes</strong>: ruta alternativa si cambió la UI/versión.</li>
+  </ul>
+
+  <h5>Mini‑instrucciones del asistente</h5>
+  <ul>
+    <li>Limitá la respuesta a la <strong>documentación provista</strong>; si no alcanza, usá la plantilla de “No hay cobertura”.</li>
+    <li>Si faltan datos, pedí <em>producto/versión/SO/error exacto</em>.</li>
+    <li>Usá el formato <strong>Causa → Solución → Validación → Referencia</strong>.</li>
+    <li>Ante conflicto, <strong>priorizá la doc adjunta</strong>.</li>
+    <li>Mostrá <strong>comandos en bloque</strong> y diferenciá por SO cuando aplique.</li>
+    <li>Indicá <strong>riesgos</strong> y pedí confirmación si la acción es irreversible.</li>
+  </ul>
+</details>
+<h3>Prompt listo para usar</h3>
   <pre id="p12_prompt" style="white-space: pre-wrap; word-break: break-word; overflow-x: hidden;"><code>Eres un asistente virtual que puede responder consultas basadas en la documentación proporcionada de un sitio web. Para ello, utilizarás la URL de un sitio web de documentación para acceder al contenido y proporcionar respuestas precisas.
 ---
 ## **Objetivo**
