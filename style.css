@@ -1336,3 +1336,24 @@ body.dark-mode nav ul li.dropdown .dropdown-menu a.active {
   padding: 10px 15px;
   border-radius: 5px;
 }
+
+
+/* Logo en footer (InoTech) */
+
+
+/* Logo en footer (InoTech) – tamaño responsive */
+.site-footer .footer-logo{
+  height: 42px;              /* desktop grande */
+  width: auto;
+  vertical-align: middle;
+  margin-right: 12px;
+  display: inline-block;
+  background: transparent;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.28)) drop-shadow(0 1px 1px rgba(0,0,0,.22));
+}
+@media (max-width: 900px){
+  .site-footer .footer-logo{ height: 36px; }  /* tablets */
+}
+@media (max-width: 600px){
+  .site-footer .footer-logo{ height: 30px; }  /* mobile */
+}

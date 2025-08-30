@@ -300,9 +300,16 @@ document.addEventListener('DOMContentLoaded', () => {
   footer.className = 'site-footer';
 
   const p = document.createElement('p');
-  p.innerHTML = '2025 - Realizado por Ing. Jose Luis Elisseche (InoTech) - ';
+  p.innerHTML = '2025 - Realizado por Ing. Jose Luis Elisseche - ';
 
-  // Enlace LinkedIn justo después del nombre
+  
+  // Logo InoTech al inicio del footer
+  const logoIno = document.createElement('img');
+  logoIno.src = 'InoTech.png';
+  logoIno.alt = 'InoTech';
+  logoIno.className = 'footer-logo';
+  p.prepend(logoIno);
+// Enlace LinkedIn justo después del nombre
   const a = document.createElement('a');
   a.href = 'https://www.linkedin.com/in/jle1261/';
   a.target = '_blank';
