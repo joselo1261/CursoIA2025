@@ -1,4 +1,3 @@
-
 // ======= script_ML.js — v16 =======
 // Objetivos:
 // - Construir/usar el sidebar ML.
@@ -200,12 +199,14 @@
  * - No interfiere con otros módulos
  */
 (function(){
+  if (document.getElementById('module-search-script')) { return; }
+
   const input = document.getElementById('module-search');
   const clearBtn = document.getElementById('module-clear');
   const stats = document.getElementById('module-stats');
   if(!input || !stats) return;
 
-  const scope = document.getElementById('ml-main') || document.getElementById('module-container') || document.querySelector('main');
+  const scope = document.body;
   if(!scope) return;
 
   // calcular offset para que el título/resultado no quede tapado por header y buscador
@@ -277,7 +278,35 @@
     const container = firstHit.closest('h1,h2,h3,section,.module,.card') || firstHit;
     container.classList.add('ml-hit');
 
-    // Scroll con offset
+    // Si el hit está en el sidebar, alinear esa tarjeta y (si tiene href) saltar a su sección
+    const sidebar = document.getElementById('ml-sidebar');
+    if (sidebar && sidebar.contains(firstHit)) {
+      // Alinear la tarjeta del sidebar
+      const card = firstHit.closest('a.ml-card') || firstHit.closest('a');
+      if (card) {
+        // asegurar visibilidad en el sidebar
+        const cr = card.getBoundingClientRect();
+        const sr = sidebar.getBoundingClientRect();
+        if (cr.top < sr.top + 8 || cr.bottom > sr.bottom - 8) {
+          sidebar.scrollTo({ top: sidebar.scrollTop + (cr.top - sr.top) - 8, behavior: 'smooth' });
+        }
+        // si apunta a una sección del contenido, ir también allí
+        const href = card.getAttribute('href') || '';
+        if (href.startsWith('#')) {
+          const target = document.getElementById(href.slice(1));
+          if (target) {
+            const off2 = getOffset();
+            const r2 = target.getBoundingClientRect();
+            const y2 = window.scrollY + r2.top - off2;
+            window.scrollTo({ top: y2, behavior: 'smooth' });
+            stats.textContent = `Mostrando 1 de ${count} coincidencia(s)`;
+            return; // ya hicimos el scroll principal
+          }
+        }
+      }
+    }
+
+    // Scroll con offset al contenedor del resultado
     const off = getOffset();
     const rect = container.getBoundingClientRect();
     const y = window.scrollY + rect.top - off;
@@ -300,3 +329,51 @@
   }
 })();
 /* ML-SEARCH-FIX END */
+
+/* Herramientas: Buscador de tarjetas */
+if (location.pathname.includes("herramientas")) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('module-search');
+    const clearBtn = document.getElementById('module-clear');
+    const stats = document.getElementById('module-stats');
+    const container = document.getElementById('tools-container') || document;
+    const cards = Array.from(container.querySelectorAll('li.tool-card'));
+    const sections = Array.from(container.querySelectorAll('section[id^="tools-"], div[id^="tools-"]'));
+
+    if (!input || !clearBtn || !stats || cards.length === 0) return;
+
+    const total = cards.length;
+    const strip = s => (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+    function buildMap(s){ const map=[]; const norm=[]; let i=0; for (const ch of s){ const st=strip(ch); norm.push(st); for(let k=0;k<st.length;k++) map.push(i); i+=ch.length; } return { norm:norm.join(''), map }; }
+    function hi(el,q){ if(!el) return; if(!el.dataset.orig) el.dataset.orig = el.textContent; const orig=el.dataset.orig; if(!q){ el.innerHTML=orig; return; }
+      const {norm,map}=buildMap(orig); const qn=strip(q).toLowerCase(); let from=0,out='',last=0;
+      while(true){ const idx=norm.toLowerCase().indexOf(qn,from); if(idx===-1) break; const start=map[idx]; const end=(idx+qn.length<map.length)?map[idx+qn.length]:orig.length;
+        out += orig.slice(last,start) + '<mark>' + orig.slice(start,end) + '</mark>'; last=end; from=idx+qn.length; } out+=orig.slice(last); el.innerHTML=out; }
+
+    function scrollToFirstMatch(){ const first = document.querySelector('li.tool-card mark'); if(first){ first.scrollIntoView({behavior:'smooth', block:'start'}); const cs = getComputedStyle(document.documentElement); const navH = parseInt(cs.getPropertyValue('--nav-h'))||0; const sbH = parseInt(cs.getPropertyValue('--searchbar-h'))||0; window.scrollBy({ top: -(navH + sbH + 8), left: 0, behavior: 'smooth' }); } }
+
+    function apply(scroll){
+      const q = input.value.trim();
+      let visible = 0;
+      cards.forEach(li => {
+        const name = li.querySelector('a'); const desc = li.querySelector('p');
+        const hay = strip((name&&name.textContent)+' '+(desc&&desc.textContent)).toLowerCase();
+        const ok = !q || hay.includes(strip(q).toLowerCase());
+        li.style.display = ok ? '' : 'none';
+        hi(name, ok ? q : ''); hi(desc, ok ? q : '');
+        if (ok) visible++;
+      });
+      sections.forEach(sec => {
+        const any = Array.from(sec.querySelectorAll('li.tool-card')).some(li => li.style.display !== 'none');
+        sec.style.display = any ? '' : 'none';
+      });
+      stats.textContent = `Mostrando ${visible} de ${total} herramientas`;
+      if (scroll && q) scrollToFirstMatch();
+    }
+
+    input.addEventListener('input', () => apply(true));
+    clearBtn.addEventListener('click', () => { input.value=''; input.focus(); apply(true); });
+    apply(false);
+  });
+}

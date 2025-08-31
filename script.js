@@ -156,6 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // === Smooth scroll to anchors with sticky header offset ===
+if (!location.pathname.includes('herramientas')) {
+(function(){
+
 (function(){
   const nav = document.querySelector('nav');
   const getOffset = () => {
@@ -195,6 +198,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
+
+})();
+}
 // === Keyboard accessibility for dropdown ===
 (function(){
   document.querySelectorAll('li.dropdown').forEach(dd => {
