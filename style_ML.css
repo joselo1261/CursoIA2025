@@ -34,6 +34,26 @@ body.ml-wide .page, body.ml-wide .site-main, body.ml-wide main, body.ml-wide .ma
   padding-right: 2px;
 }
 
+/* Línea divisoria animada para buscadores */
+#module-searchbar::after,
+#tools-searchbar::after,
+#glossary-searchbar::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, #a3d5ff, #1e90ff, #a3d5ff);
+  background-size: 200% 100%;
+  animation: moveLine 6s linear infinite;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+@keyframes moveLine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
 /* quitar título lateral */
 #ml-sidebar .ml-title{ display:none !important; }
 
@@ -223,4 +243,85 @@ main .tool-card-grid,
 /* Compensación automática para títulos anclables */
 h1[id], h2[id], h3[id], h4[id], section[id^="tools-"] {
   scroll-margin-top: calc(var(--nav-h, 60px) + var(--searchbar-h, 60px) + 12px);
+}
+
+/* ==== ML Divider v2 (absolute) ====
+   Soluciona que ::after no se muestre por ser ítem flex.
+   Pone una línea azul suave animada pegada al borde inferior del bloque del buscador,
+   sin requerir JS. Aplica a módulos, herramientas y glosario. */
+#module-searchbar, #tools-searchbar, #glossary-searchbar {
+  position: sticky; /* ya está en la mayoría, lo reforzamos */
+}
+
+#module-searchbar::after,
+#tools-searchbar::after,
+#glossary-searchbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;             /* pegada al borde inferior */
+  height: 3px;
+  background: linear-gradient(90deg, #a3d5ff, #1e90ff, #a3d5ff);
+  background-size: 200% 100%;
+  animation: moveLine 6s linear infinite;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* La animación ya existe más arriba; la dejamos aquí por si falta en algún build */
+@keyframes moveLine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==== ML Divider v3 (grey + spacing) ====
+   - Agrega un pequeño espacio inferior al bloque del buscador
+   - Línea gris sutil con animación suave, a ancho completo
+*/
+#module-searchbar, #tools-searchbar, #glossary-searchbar{
+  padding-bottom: 8px !important;  /* separa la línea del input/botón */
+  position: sticky;
+}
+
+#module-searchbar::after,
+#tools-searchbar::after,
+#glossary-searchbar::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0;
+  height: 2px;                           /* más sutil */
+  background: linear-gradient(90deg, #e5e7eb, #9ca3af, #e5e7eb); /* gris claro -> medio -> claro */
+  background-size: 200% 100%;
+  animation: moveLine 8s linear infinite; /* un poco más lenta */
+  border-radius: 2px;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* ==== ML Clear Button v1 (gris + texto negro) ==== */
+#module-clear.ml-clear-btn,
+#module-clear,
+.ml-clear-btn {
+  background: #e5e7eb !important;    /* gris claro como la línea */
+  color: #111111 !important;          /* letras negras */
+  border: 1.5px solid #9ca3af !important;  /* gris medio */
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 600;
+  box-shadow: none;
+  transition: filter .15s ease, transform .05s ease, box-shadow .2s ease;
+}
+
+.ml-clear-btn:hover {
+  filter: brightness(0.97);
+}
+
+.ml-clear-btn:active {
+  transform: translateY(1px);
+}
+
+.ml-clear-btn:focus-visible {
+  outline: 3px solid #9ca3af;
+  outline-offset: 2px;
 }
